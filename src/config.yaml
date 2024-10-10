@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Hachipoo Apps
+  site: 'https://hachipoo.vercel.app'
   base: '/'
   trailingSlash: false
 
@@ -9,22 +9,22 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: HachipooApps
+    template: '%s — HachipooApps'
+  description: "\U0001F680  Dockside is your friendly file shelf next to the macOS Dock, where you can drag and drop files, folders, apps, images, videos, and text for quick access or later use, without interrupting your workflow. It also displays recent screenshots and downloads for easy retrieval. Lightweight and always visible, Dockside helps you stay organized, manage frequently used items, create quick notes, and keep your desktop clutter-free—all without getting in your way."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: HachipooApps
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@HachipooApps'
+    site: '@HachipooApps'
     cardType: summary_large_image
 
 i18n:
