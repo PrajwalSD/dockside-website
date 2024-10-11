@@ -83,11 +83,14 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        Dockside is your friendly file shelf next to the macOS Dock, where you can drag and drop files, folders, apps, images, videos, and even text for quick access or later use, without interrupting your workflow. It also displays recent screenshots and downloads for easy retrieval. Lightweight and always visible, Dockside helps you stay organized, manage frequently used items, create quick notes, and keep your desktop clutter-free—all without getting in your way. 
+        Dockside is your friendly file shelf next to the macOS Dock, where you can drag and drop files, folders, apps, images, videos, and even text for quick access or later use, without interrupting your workflow. It also displays recent screenshots and downloads for easy retrieval. Lightweight and always visible, Dockside helps you stay organized, manage frequently used items, create quick notes, and keep your desktop clutter-free—all without getting in your way.
+        <br/><br/>
+        Dockside is Apple Notarized, ensuring it meets Apple's high security standards.
         <br/><br/>
         You can explore all of Dockside’s features with a free 14-day trial, or purchase a one-time license for just $5.99, no subscriptions.
       </span>
     </Fragment>
+
   </Hero2>
 
 	<Features3
@@ -104,7 +107,7 @@ const metadata = {
 		},
 		{
 		title: 'Dockside is ready to go',
-		description: 'Once installed, Dockside sits on both sides of your macOS Dock, adjusting to available space. The left side allows easy file drops, while the right keeps recent screenshots and downloads accessible. Always visible, yet unobtrusive.',
+		description: 'Once installed and required permissions are granted, Dockside sits on both sides of your macOS Dock, adjusting to available space. The left side allows easy file drops, while the right keeps recent screenshots and downloads accessible. Always visible, yet unobtrusive.',
 		icon: 'tabler:square-number-2',
 		},
 		{
@@ -249,34 +252,46 @@ const metadata = {
     </Fragment>
   </Content>
 
-<Features3  
-	id="data-privacy"  
-	title="Your Data, Only on Your Device"
-	subtitle="Dockside is designed with your privacy as a top priority. It ensures that all your files, data, and activities stay secure on your device, without ever leaving your machine."
-	tagline="Just a file shelf"
-	columns={2}  
-	items={[  
-		{  
-		title: 'No data collection',
-		description: `Dockside does not collect any data—your files, actions, and usage remain entirely on your device. There are no background processes sending information anywhere.`,
-		icon: 'tabler:shield-lock',
-		},  
-		{  
-		title: 'Operates offline',
-		description: 'Dockside works entirely offline, with the only exception being a one-time license activation. After that, the app functions without any internet connection, keeping your data local and private.',
-		icon: 'tabler:cloud-off',  
-		},  
-		{  
-		title: 'No external servers',
-		description: 'Your files and data never leave your machine. Dockside does not interact with any external servers, ensuring everything stays on your local device for complete security.',
-		icon: 'tabler:server-off',  
-		},  
-		{  
-		title: 'Developed with care',
-		description: `As an indie developer, I built Dockside with a focus on privacy and utility. I have no need for your data and no interest in collecting it—my goal is to provide a simple, efficient tool for managing your files while keeping your privacy intact.`,
-		icon: 'tabler:user-circle',
-		},  
-	]}  
-/>  
+  <Features3  
+    id="data-privacy"  
+    title="Your Data, Only on Your Device"
+    subtitle="Dockside is designed with your privacy as a top priority. It ensures that all your files, data, and activities stay secure on your device, without ever leaving your machine."
+    tagline="Just a file shelf"
+    columns={2}  
+    items={[  
+      {  
+      title: 'No data collection',
+      description: `Dockside does not collect any data—your files, actions, and usage remain entirely on your device. There are no background processes sending information anywhere.`,
+      icon: 'tabler:shield-lock',
+      },  
+      {  
+      title: 'Operates offline',
+      description: 'Dockside works entirely offline, with the only exception being a one-time license activation. After that, the app functions without any internet connection, keeping your data local and private.',
+      icon: 'tabler:cloud-off',  
+      },  
+      {  
+      title: 'No external servers',
+      description: 'Your files and data never leave your machine. Dockside does not interact with any external servers, ensuring everything stays on your local device for complete security.',
+      icon: 'tabler:server-off',  
+      },  
+      {  
+      title: 'Apple Notarized',
+      description: `Dockside is Apple Notarized, meaning it has been verified by Apple to be free of malware. This further ensures the security and privacy of the app on your Mac.`,
+      icon: 'tabler:lock',  
+      },  
+      {  
+      title: 'Uses only Apple APIs',
+      description: 'Dockside exclusively uses Apple’s secure and vetted APIs, ensuring that the app follows strict privacy and security guidelines, providing a seamless and trusted experience.',
+      icon: 'tabler:apple',
+      },
+      {  
+      title: 'Developed with care',
+      description: `As an indie developer, I built Dockside with a focus on privacy and utility. I have no need for your data and no interest in collecting it—my goal is to provide a simple, efficient tool for managing your files while keeping your privacy intact.`,
+      icon: 'tabler:user-circle',
+      },  
+    ]}  
+  />
+
+
 
 </Layout>
