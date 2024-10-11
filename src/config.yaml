@@ -1,6 +1,6 @@
 site:
   name: Hachipoo Apps
-  site: 'https://hachipoo.vercel.app'
+  site: 'https://hachipoo.com'
   base: '/'
   trailingSlash: false
 
