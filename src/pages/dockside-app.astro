@@ -23,7 +23,8 @@ const googlePlayImg = '~/assets/images/google-play.png';
 const googlePlayDownloadLink = 'https://github.com/onwidget/astrowind';
 
 const metadata = {
-  title: 'Dockside App for Mac',
+  title: 'Dockside App for Mac: Your friendly file shelf that lives next to your macOS Dock',
+  ignoreTitleTemplate: true,
 };
 ---
 
@@ -34,7 +35,8 @@ const metadata = {
       links={[
         { text: 'Features', href: '#features' },
         { text: 'Privacy', href: '#data-privacy' },
-		{ text: 'Usage Tips', href: '/dockside-usage-tips' },
+        { text: 'FAQs', href: '#FAQs' },
+		    { text: 'Usage Tips', href: '/dockside-usage-tips' },
         { text: 'Contact', href: '/contact' },
       ]}
       actions={[
@@ -556,4 +558,47 @@ const metadata = {
       },
     ]}
   />
+
+    <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    id="FAQs"
+    title="Frequently Asked Questions"
+    subtitle="Get answers to common questions about Dockside"
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'Is Dockside safe to use?',
+        description:
+          'Yes! Dockside is Apple Notarized, which means it has passed Apple’s security checks and is free from malware. It also operates entirely offline, ensuring your files and data stay on your device.',
+      },
+      {
+        title: 'Can I try Dockside before buying it?',
+        description:
+          'Absolutely! Dockside offers a 14-day free trial so you can explore all of its features before deciding to purchase a lifetime license for $5.99.',
+      },
+      {
+        title: 'Does Dockside store my files or data in the cloud?',
+        description:
+          'No, Dockside does not use any external servers. All your files, actions, and data remain entirely on your device, ensuring your privacy and security.',
+      },
+      {
+        title: 'What happens after my free trial ends?',
+        description:
+          'After the 14-day trial period, Dockside will prompt you to purchase a lifetime license for $5.99. Once purchased, all features will remain unlocked permanently—no subscriptions, just a one-time fee.',
+      },
+      {
+        title: "What's the future roadmap for Dockside?",
+        description:
+          'With enough support, Dockside aims to add more workflow-enhancing features. Future improvements could include support for auto-hiding, integration with other apps, quick access to AI tools like ChatGPT, Continuity Features, and even an iOS/iPadOS app for seamless sharing across devices via iCloud.',
+      },
+      {
+        title: 'How can I customize Dockside to suit my workflow?',
+        description:
+          'Dockside offers various customization options. You can switch between themes, adjust space allocation for recent screenshots and downloads, and even choose how items behave when dragged—whether to copy, move, or take another action that fits your workflow needs.',
+      },
+    ]}
+  />
+
 </Layout>
