@@ -4,19 +4,19 @@ site:
   base: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  googleSiteVerificationId: IJso4pM5jMVHMCrVgzdyBWN6IA5B8o5MfiqfSPrJAJA
 
 # Default SEO metadata
 metadata:
   title:
-    default: HachipooApps
-    template: '%s — HachipooApps'
-  description: "\U0001F680  Dockside is your friendly file shelf next to the macOS Dock, where you can drag and drop files, folders, apps, images, videos, and text for quick access or later use, without interrupting your workflow. It also displays recent screenshots and downloads for easy retrieval. Lightweight and always visible, Dockside helps you stay organized, manage frequently used items, create quick notes, and keep your desktop clutter-free—all without getting in your way."
+    default: 'Hachipoo Apps'
+    template: '%s — Hachipoo Apps'
+  description: "Dockside is your friendly file shelf next to the macOS Dock"
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: HachipooApps
+    site_name: 'Hachipoo Apps'
     images:
       - url: '~/assets/images/default.png'
         width: 1200
