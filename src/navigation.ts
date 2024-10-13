@@ -23,18 +23,12 @@ export const headerData = {
 };
 
 export const footerData = {
-  links: [
-    {
-      title: 'Company',
-      links: [
-        { text: 'About', href: '/about' },
-        { text: 'Blog', href: '/blog' }
-      ],
-    },
-  ],
   secondaryLinks: [
     { text: 'Terms', href: getPermalink('/terms') },
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
+	{ text: 'About', href: '/about' },
+	{ text: 'Contact', href: '/contact' },
+	{ text: 'Blog', href: '/blog' }
   ],
   socialLinks: [
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
@@ -42,6 +36,6 @@ export const footerData = {
   ],
   footNote: `
     <img class="w-5 h-4  float-left rounded-sm" src="/logo.png" alt="onWidget logo" loading="lazy"></img>
-     Hachipoo Apps and Dockside · All rights reserved.
+     &nbspHachipoo Apps and Dockside · All rights reserved.
   `,
 };
