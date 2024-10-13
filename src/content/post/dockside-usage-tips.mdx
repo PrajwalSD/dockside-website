@@ -31,6 +31,67 @@ Dockside consists of two key sections:
 - **Screenshots and Downloads Dockside (Right Side):** This section automatically tracks and displays your recent screenshots and downloads, providing easy access to them. **You cannot drag and drop items into this side**—it serves purely as an access point.
 ![Screenshots and Downloads Dockside](/screenshotsanddownloads.png)
 
+--- 
+
+### Visual Cues & Behavior
+
+Dockside provides helpful visual cues and responsive behavior to enhance your experience:
+
+1. **Bounce Effect on Drop**: When dropping items into Dockside, the icons bounce to give you a visual cue of where the files are placed. This makes it easy to visually track and locate items you’ve just added.
+
+2. **Green Dot Indicator** 🟢: Items recently added to Dockside—such as dropped files, new screenshots, or newly downloaded items—are marked with a green dot. This makes it easy to spot recent changes for quick access or drag-out operations later.
+![Dockside Green Dot](/screenshotsanddownloads.png)
+
+3. **Auto-Hide Functionality**: Dockside fades away when no activity is detected, helping you stay focused on your work. It reappears as soon as it detects dragging or mouse movement, ready to assist with docking.
+![Fade away](/fadeout.gif)
+
+---
+
+### Dockside Controls
+
+Dockside includes several convenient buttons to help you manage your files efficiently:
+
+1. **Create Note** 📝: Click this button to quickly create a new note. This is useful for jotting down information or reminders directly in Dockside without needing to open another application.
+   
+2. **Refresh Button** 🔄: The refresh button serves multiple purposes:
+   - **Remove Non-Existent Files**: It clears out any files or items in Dockside that no longer exist on your system.
+   - **Reset Dockside Size**: This button automatically resizes Dockside to fit the available space on your screen, optimizing your workspace.
+
+3. **Remove All Items Button** ❌: This button gives you control over clearing files in Dockside:
+   - **Remove All Files**: If no files are selected, clicking this button will remove all items from Dockside.
+   - **Remove Selected Files**: If you’ve selected specific files (via checkboxes), clicking the button will only remove those selected items, leaving the rest intact.
+
+These buttons are designed to keep Dockside organized, flexible, and easy to use for all your file management needs.
+
+---
+
+### Mouse Actions
+
+Dockside offers a range of mouse actions to help you interact with files and the Dockside interface more efficiently. You can perform actions directly on files or on the Dockside itself (including the empty space).
+
+#### Mouse Actions on Files:
+
+- **Hover**: Move your mouse over a file to see a preview. For known file types, Dockside uses Quick Look previews, but for text files, it offers a custom preview that allows you to scroll through the document without even moving the mouse away from the icon. Simply use your scroll wheel when the preview appears (just hold the mouse still) to navigate through the content!
+  ![Preview](/PreviewScroll.png)
+
+- **Double-click**: Open the file by double-clicking it. This action launches the file in its associated application.
+- **Right-click**: Right-click on a file to bring up the context menu showing basic info about the item on the top and provides additional options such as opening with another app, renaming, sharing, or deleting the file.
+  ![Right click file](/rightclick-file.png)
+
+- **Single-click**: Click once on the file’s checkbox to select it. You can select multiple files this way.
+- **Drag**: Click and hold your mouse to drag and create a selection rectangle. This action allows you to select multiple files at once by encompassing them within the rectangle.
+
+#### Mouse Actions on Dockside (Empty Space):
+
+- **Double-click on empty space**: Double-clicking anywhere on the empty space in Dockside will force a refresh of the Dockside size, ensuring it automatically adjusts to fit the available space on your screen.
+- **Right-click on empty space**: Right-clicking on the Dockside (without selecting any files) will bring up the Dockside options menu. This menu includes options like:
+  - **Select All**: Selects all files currently visible in Dockside.
+  - **Remove All Files**: Removes all files from Dockside.
+  - **Settings**: Opens Dockside’s settings for further customization.
+    ![Right click](/rightclick-dockside.png)
+
+These actions give you quick and efficient ways to interact with both files and Dockside itself, making file management easier and more intuitive.
+
 ---
 
 ### Multiple File Selection
@@ -47,7 +108,7 @@ Selecting multiple files in Dockside is simple and flexible. Here are three meth
 
 ### Keyboard Shortcuts for Efficiency
 
-Dockside supports various keyboard shortcuts to streamline file management, just like Finder:
+The mouse actions may not be enough for many like me, Dockside supports various keyboard shortcuts to streamline file management, just like Finder:
 
 - **Copy/Paste:** Use `⌘ + C` and `⌘ + V` to copy and paste files.
 - **Select All:** Use `⌘ + A` to select all files in Dockside.
@@ -65,8 +126,10 @@ Dockside is designed to feel as intuitive as Finder, making file management smoo
 
 Sometimes a file listed in Dockside is deleted from the disk. When this happens:
 
-- **Auto Cleanup:** Hover over the file, and Dockside will automatically delete it from the list.
+- **Auto Cleanup:** Hover over the file, and Dockside will automatically delete it from the list when they have been deleted from the source.
 - **Manual Cleanup:** Use the refresh icon to remove any non-existent files or empty quick notes from Dockside.
+
+![No file](/non-exist-file.png)
 
 ---
 
@@ -77,6 +140,8 @@ Dockside keeps track of recently added files, making it easy for you to quickly 
 - **Recent Files:** Files that are already in Dockside will appear greyed out in the recently added list.
 - **Recent Quick Notes:** Dockside also tracks your recently created quick notes for easy reference.
 
+![Recent files](/recentfiles.png)
+
 ---
 
 ### Customise
@@ -86,7 +151,6 @@ Dockside offers several customization options to fit your workflow:
 - **Resize the Shelf**: Adjust the size of Dockside based on your screen real estate and how many files you need quick access to.
 
 ![Styles](/Themes3.gif)
-
 
 ---
 
@@ -99,8 +163,7 @@ Dockside offers several advanced settings to fine-tune how it behaves on your Ma
 - **Control Drag-and-Drop Behavior:**  
   - Disable “Store only item references” if you prefer to store a copy of the item in Dockside. The location where this item is saved is also something you can specify using Files location, if you want this to be in the iCloud/OneDrive/DropBox - configure this in the settings.
   - Enable or disable the "Remove items after dragging out" option based on your workflow.
-
-![Styles](/Settings.gif)
+	![Styles](/Settings.gif)
 
 These advanced settings give you full control over how Dockside integrates into your desktop experience.
 
@@ -113,7 +176,6 @@ Dockside allows activation on up to **three devices** at a time. If you need to 
 - **Deactivation:** Simply deactivate Dockside on one machine before activating it on another.
 - **License Sharing:** License sharing is not permitted, and using the license on more than three devices simultaneously is a violation of the terms of service.
 
-
 ---
 
 ### Data Privacy
@@ -125,7 +187,7 @@ Your privacy is our priority. Dockside is designed to operate locally on your ma
 
 You can trust that Dockside is built with privacy at its core. As an indie developer, I built Dockside with a focus on privacy and utility. I have no need for your data and no interest in collecting it—my goal is to provide a simple, efficient tool for managing your files while keeping your privacy intact.
 
-
+[Read our privacy policy](/privacy)
 
 ---
 
