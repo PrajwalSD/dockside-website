@@ -33,8 +33,8 @@ const metadata = {
       position="right"
       links={[
         { text: 'Features', href: '#features' },
-        { text: 'Usage Tips', href: '/dockside-usage-tips' },
-        { text: 'Data Privacy', href: '#data-privacy' },
+        { text: 'Privacy', href: '#data-privacy' },
+		{ text: 'Usage Tips', href: '/dockside-usage-tips' },
         { text: 'Contact', href: '/contact' },
       ]}
       actions={[
@@ -468,7 +468,7 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Other features</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Additional features</h3>
     </Fragment>
   </Content>
 
@@ -505,7 +505,9 @@ const metadata = {
     image={{
       src: '/Settings.gif', // Replace with the relevant image
       alt: 'Customisation Settings Image',
-    }}
+    },{src: '/Settings.gif', // Replace with the relevant image
+      alt: 'Customisation Settings Image',}
+	}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Customisation</h3>
