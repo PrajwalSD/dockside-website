@@ -22,13 +22,13 @@ Dockside is a versatile file shelf app designed to streamline your workflow on m
 
 ---
 
-### File Dockside vs. Screenshots and Downloads Dockside
+### File Dockside vs. Screenshots & Downloads Dockside
 
-Dockside consists of two key sections:
+Dockside consists of two areas:
 
-- **File Dockside (Left Side):** This is where you can drag and drop items such as files, folders, apps, images, videos, text snippets, and even screenshots.
+- **File Dockside (Left Side):** This sits on the left side of the macOS Dock and it is where you can drag and drop items such as files, folders, apps, pdfs, images, videos, and even text snippets from your local machine or from other external sources like web.
 ![Files Dockside](/files.png)
-- **Screenshots and Downloads Dockside (Right Side):** This section automatically tracks and displays your recent screenshots and downloads, providing easy access to them. **You cannot drag and drop items into this side**—it serves purely as an access point.
+- **Screenshots and Downloads Dockside (Right Side):** This area sits on the right side of the Dock and it automatically monitors and displays your recent screenshots and downloads, providing easy access to them. **You cannot drag and drop items into this side**—it serves purely as an access point. You can also configure Dockside to monitor the Clipboard for the Screenshots to download them for you for later use.
 ![Screenshots and Downloads Dockside](/screenshotsanddownloads.png)
 
 --- 
@@ -42,7 +42,7 @@ Dockside provides helpful visual cues and responsive behavior to enhance your ex
 2. **Green Dot Indicator** 🟢: Items recently added to Dockside—such as dropped files, new screenshots, or newly downloaded items—are marked with a green dot. This makes it easy to spot recent changes for quick access or drag-out operations later.
 ![Dockside Green Dot](/screenshotsanddownloads.png)
 
-3. **Auto-Hide Functionality**: Dockside fades away when no activity is detected, helping you stay focused on your work. It reappears as soon as it detects dragging or mouse movement, ready to assist with docking.
+3. **Auto-Hide Functionality**: Dockside fades away when no activity is detected, helping you stay focused on your work. It reappears as soon as it detects dragging or mouse movement, ready to assist with docking. Optionally, you can also hide the Dock completely using the Settings menu and reveal when you need to drop or take mouse closer to it. The Docks automatically hides when the app is in full screen mode or if the Dock itself is in a auto-hide mode.
 ![Fade away](/fadeout.gif)
 
 ---
@@ -65,6 +65,23 @@ These buttons are designed to keep Dockside organized, flexible, and easy to use
 
 ---
 
+### Dockside Options in Settings
+
+Dockside can be customized to fit your workflow and screen size:
+
+1. **Files Location & Count** 📝: Set where temporary files that are dropped from exteneral sources like web are saved (default is "Downloads"). This is also where the local item copies are saved when "Store Only Item References" is turned off. Adjust how many files (up to 15) and notes (up to 10) are shown, beyond which the Dockside will remove the oldest item to hold the new item automatically.
+
+2. **Screenshots** 📸: 
+   - **Location**: Define where screenshots are stored in your computer (default is "Desktop"). The Dockside looks for the screenshots attribute in the file to determine if the image is a screenshots, not all image files present in the directory are shown here.
+   - **Clipboard Monitoring**: Enable automatic download of Clipboard screenshots for later use in Screenshots area (if the destination is set to Clipboard for the macOS screenshots)
+   - **Screenshots Width & Count**: Adjust the display width and number of screenshots (up to 10). This will be automatically adjusted from the Downloads area.
+
+3. **Downloads** ⬇️: Control how many recent downloads are shown (up to 10).
+
+![Dockside Settings](/DocksideSettings.png)
+
+---
+
 ### Mouse Actions
 
 Dockside offers a range of mouse actions to help you interact with files and the Dockside interface more efficiently. You can perform actions directly on files or on the Dockside itself (including the empty space).
@@ -79,7 +96,7 @@ Dockside offers a range of mouse actions to help you interact with files and the
   ![Right click file](/rightclick.png)
 
 - **Single-click**: Click once on the file’s checkbox to select it. You can select multiple files this way.
-- **Drag**: Click and hold your mouse to drag and create a selection rectangle. This action allows you to select multiple files at once by encompassing them within the rectangle.
+- **Drag to select**: Click and hold your mouse to drag and create a selection rectangle. This action allows you to select multiple files at once by encompassing them within the rectangle.
 
 #### Mouse Actions on Dockside (Empty Space):
 
@@ -90,7 +107,7 @@ Dockside offers a range of mouse actions to help you interact with files and the
   - **Settings**: Opens Dockside’s settings for further customization.
     ![Right click](/rightclick-dockside.png)
 
-These actions give you quick and efficient ways to interact with both files and Dockside itself, making file management easier and more intuitive.
+These actions give you quick and efficient ways to interact with both files and Dockside itself in addition to the drag and drop functionality, making the item management easier and more intuitive.
 
 ---
 
@@ -108,7 +125,7 @@ Selecting multiple files in Dockside is simple and flexible. Here are three meth
 
 ### Keyboard Shortcuts for Efficiency
 
-The mouse actions may not be enough for many like me, Dockside supports various keyboard shortcuts to streamline file management, just like Finder:
+The mouse actions may not be enough for many like me, Dockside supports few handy keyboard shortcuts to streamline file management, just like Finder:
 
 - **Copy/Paste:** Use `⌘ + C` and `⌘ + V` to copy and paste files.
 - **Select All:** Use `⌘ + A` to select all files in Dockside.
@@ -135,10 +152,12 @@ Sometimes a file listed in Dockside is deleted from the disk. When this happens:
 
 ### Recently Added Files
 
-Dockside keeps track of recently added files, making it easy for you to quickly add them back if needed. 
+Dockside keeps track of recently added files and recently created notes, making it easy for you to quickly add them back if needed. 
 
 - **Recent Files:** Files that are already in Dockside will appear greyed out in the recently added list.
 - **Recent Quick Notes:** Dockside also tracks your recently created quick notes for easy reference.
+
+You can also go the directory where these files are stored and managed by Dockside using the menu option.
 
 ![Recent files](/recentfiles.png)
 
@@ -146,10 +165,10 @@ Dockside keeps track of recently added files, making it easy for you to quickly 
 
 ### Customise
 
-Dockside offers several customization options to fit your workflow:
-- **Themes and Styles**: Change the appearance of the file shelf to suit your aesthetic preferences.
-- **Resize the Shelf**: Adjust the size of Dockside based on your screen real estate and how many files you need quick access to.
-
+Dockside offers several customisation options to fit your workflow:
+- **Styles & Appearance**: Change the appearance of the file shelf to suit your aesthetic preferences.
+- **Resize and Auto-hide**: You can activate sensitive mode to react dynamically to the Dock changes to allow Dockside to adjust to the available space. Optionally, you can enable auto-hide option to hide away the Dockside.
+![Styles](/ThemeSetting.png)
 ![Styles](/Themes3.gif)
 
 ---
@@ -163,7 +182,12 @@ Dockside offers several advanced settings to fine-tune how it behaves on your Ma
 - **Control Drag-and-Drop Behavior:**  
   - Disable “Store only item references” if you prefer to store a copy of the item in Dockside. The location where this item is saved is also something you can specify using Files location, if you want this to be in the iCloud/OneDrive/DropBox - configure this in the settings.
   - Enable or disable the "Remove items after dragging out" option based on your workflow.
-	![Styles](/Settings2.gif)
+
+- **Enhanced Sizing Response:** Dockside will react to small changes in Dock size changes, make it more fluid in nature. This might be annoying at times, so by default it is turned off. To manually resize the Dockside for any changes in the Dock, just click or double-click the empty space of the Dockside.
+
+- **Ignore apps:** Dockside will automatically detect full screen apps and auto-hide when you are on it to keep your work distraction free. If there's an app that is registered in macOS as a full-screen app and is interfering with your workflow, identify such apps by looking through the running apps list with a [X] suffix (indicates that app is registered to be running in full screen mode) and add them to the ignore list, click 'Apply' and restart Dockside app.
+
+![Styles](/AdvancedSettings.png)
 
 These advanced settings give you full control over how Dockside integrates into your desktop experience.
 
@@ -174,7 +198,6 @@ These advanced settings give you full control over how Dockside integrates into 
 Dockside allows activation on up to **three devices** at a time. If you need to use Dockside on another machine:
 
 - **Deactivation:** Simply deactivate Dockside on one machine before activating it on another.
-- **License Sharing:** License sharing is not permitted, and using the license on more than three devices simultaneously is a violation of the terms of service.
 
 ---
 
@@ -191,5 +214,5 @@ You can trust that Dockside is built with privacy at its core. As an indie devel
 
 ---
 
-We hope these tips help you get the most out of Dockside. For any further questions or assistance, feel free to reach out at **hachipoo.apps@gmail.com**.
+We hope these tips help you get the most out of Dockside. For any further questions or assistance, feel free to reach out at **hachipoo.apps@gmail.com** or through our Discord Server.
 
