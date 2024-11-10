@@ -17,6 +17,9 @@ const {
   bg = await Astro.slots.render('bg'),
   video = await Astro.slots.render('video'), // New video prop or slot for videos
 } = Astro.props;
+
+// Function to check if video URL is a Vimeo link
+const isVimeo = (url) => typeof url === 'string' && url.includes('vimeo.com');
 ---
 
 <section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
@@ -62,19 +65,32 @@ const {
       <div class="basis-1/2">
         {video ? (
           <div class="relative m-auto max-w-5xl">
-            <video
-              class="mx-auto rounded-md w-full"
-              src={typeof video === 'string' ? video : video.src} // Check if video is a string or an object
-              autoplay
-              muted
-              loop
-              controls
-              playsinline
-              width="100%"
-              height="auto"
-            >
-              Your browser does not support the video tag.
-            </video>
+            {isVimeo(video) ? (
+              // Embed Vimeo video using a responsive iframe with autoplay enabled
+              <iframe
+                class="mx-auto rounded-md w-full h-full aspect-video"
+                src={`${video.replace('vimeo.com', 'player.vimeo.com/video')}?autoplay=1&muted=1&loop=1`}
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+                title="Embedded Vimeo Video"
+              ></iframe>
+            ) : (
+              // Standard video element for non-Vimeo links
+              <video
+                class="mx-auto rounded-md w-full"
+                src={typeof video === 'string' ? video : video.src}
+                autoplay
+                muted
+                loop
+                controls
+                playsinline
+                width="100%"
+                height="auto"
+              >
+                Your browser does not support the video tag.
+              </video>
+            )}
           </div>
         ) : (
           image && (
