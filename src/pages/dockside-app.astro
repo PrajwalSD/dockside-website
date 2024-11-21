@@ -39,7 +39,8 @@ const metadata = {
         { text: 'Features', href: '#features' },
         { text: 'Usage Tips', href: '/dockside-usage-tips' },
 		{ text: 'Changelog', href: 'https://github.com/PrajwalSD/Dockside/releases' },
-		{ text: 'Privacy', href: '#data-privacy' },
+		// { text: 'Privacy', href: '#data-privacy' },
+		{ text: 'Developers', href: '/developers' },
 		{ text: 'FAQs', href: '#FAQs' },
         { text: 'Support', href: '/contact' },
       ]}
@@ -622,12 +623,16 @@ const metadata = {
       {
         title: 'Does it support multiple monitors and multiple Desktops?',
         description:
-          'Dockside fully supports multiple monitors including multiple Desktops. Just like the Dock, it stays on the primary monitor next to the Dock. Simply put, wherever the Dock goes, Dockside follows :)',
+          'Dockside fully supports multiple monitors including multiple Desktops. Just like the Dock, it stays on the primary monitor next to the Dock. Simply put, wherever the Dock goes, Dockside follows. You can also manually pin the Dockside to a specific screen/display if you need to.',
       },
       {
         title: 'Does it support hidden Dock or full screen apps?',
         description:
           'Yes, Dockside will remain hidden whenever the Dock is hidden, whether in hidden mode or during full-screen apps. When you need to access Dockside, simply move your mouse to the bottom of the screen, and it will appear right where you would expect it, just like the Dock.',
+      },
+      {
+        title: 'Can other apps talk to Dockside?',
+        description: 'Yes, other apps can add files to Dockside shelf simply by using <div style="display: inline-block; border: 1px solid #ccc; padding: 7px; border-radius: 10px; background-color: #00000; margin: 0;"><code>open -a Dockside.app /path/to/file</code></div> or by calling the Service <div style="display: inline-block; border: 1px solid #ccc; padding: 7px; border-radius: 10px; background-color: #00000; margin: 0;"><code>Add to Dockside</code></div>',
       },
     ]}
   />

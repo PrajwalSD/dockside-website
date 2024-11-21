@@ -1,0 +1,77 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Developers',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
+
+  <HeroText tagline="Welcome," title="Let’s Build Something Amazing Together!" />
+
+  <!-- About Section ****************** -->
+
+  <section class="py-16 text-center">
+	<p style="max-width: 1000px; margin: 0 auto 20px; font-size: 1.25rem;">
+		You can integrate your app with Dockside to send files or plain text to its shelf in two simple ways
+	</p>
+	<table style="max-width: 1000px; margin: 0 auto; border-collapse: collapse; width: 100%; font-size: 1rem; text-align: left;">
+	  <thead>
+		<tr>
+		  <th style="border-bottom: 2px solid #ccc; padding: 10px;">Method</th>
+		  <th style="border-bottom: 2px solid #ccc; padding: 10px;">Description</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		<tr>
+		  <td style="border-bottom: 1px solid #ccc; padding: 10px;"><strong>Via Command</strong></td>
+		  <td style="border-bottom: 1px solid #ccc; padding: 10px;">
+			Use the command <div style="display: inline-block; border: 1px solid #ccc; padding: 7px; border-radius: 10px; background-color: #00000; margin: 0;"><code>open -a Dockside.app /path/to/file</code></div> to send a file or folder to Dockside. 
+			Replace <code>/path/to/file</code> with the full path of the file or folder. This method is ideal for automation, scripts, or terminal usage.
+		  </td>
+		</tr>
+		<tr>
+		  <td style="padding: 10px;"><strong>Via Service "Add to Dockside"</strong></td>
+		  <td style="padding: 10px;">
+			Call the registered macOS Service "Add to Dockside" to integrate seamlessly with your app, simply send the intended URLs to the item or even plain text as <code>NSPasteboard</code> object, Dockside will do the rest.
+			<b><a href="https://www.popclip.app/extensions/x/p8rrp7" target="_blank"> Popclip integrates with Dockside using this option.</a></b>
+		  </td>
+		</tr>
+	  </tbody>
+	</table>
+
+	<HeroText tagline="List of Apps Supporting Dockside"/>
+	<ul style="list-style: disc; max-width: 1000px; margin: 0 auto; text-align: centre; font-size: 1rem; padding-left: 20px;">
+	  <b><a href="https://www.popclip.app/extensions/x/p8rrp7" target="_blank">Popclip </a></b> - send selected text to Dockside shelf (extension)
+	</ul>
+  </section>
+  
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="If you have any queries or need help, please reach out"
+    items={[
+      {
+        title: 'FAQs',
+		description: 'See the <a href="/dockside-app#FAQs" style="text-decoration: underline;">FAQs section</a>',
+		icon: 'tabler:globe',
+      },
+      {
+        title: 'Discord',
+        description: '<a href="https://discord.gg/vpqMjQns46" style="text-decoration: underline;">Join Discord Community</a>',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'Email',
+        description: '<a href="mailto:hachipoo.apps@gmail.com" style="text-decoration: underline;">hachipoo.apps@gmail.com</a>',
+        icon: 'tabler:mail',
+      }
+    ]}
+  />
+</Layout>
