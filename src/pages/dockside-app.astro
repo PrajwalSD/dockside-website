@@ -3,6 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Header from '~/components/widgets/Header.astro';
 import { Icon } from 'astro-icon/components';
+import HeroText from '~/components/widgets/HeroText.astro';
+
 
 
 import Hero2 from '~/components/widgets/Hero2.astro';
@@ -93,7 +95,7 @@ const metadata = {
         getting in your way.
         <br /><br />
     	Dockside is Apple Notarized, ensuring it meets Apple's high security standards. 
-		Explore all of Dockside’s features with a free 14-day trial, or purchase a one-time license for just $5.99, no subscriptions. 
+		Explore all of Dockside’s features with a <u>free 14-day trial</u>, or purchase a <u>one-time license for just $5.99</u>, no subscriptions. 
 		<br /><br />
 		Supports macOS 13.0+ (Ventura and above)
       </span>
@@ -419,21 +421,21 @@ const metadata = {
         icon: 'tabler:drag-drop',
       },
       {
-        title: 'Clipboard Integration',
-        description:
-          'Drop anything directly from your Clipboard into Dockside using keyboard shortcuts, making it quick and convenient to store and access copied content even from your iCloud devices.',
-        icon: 'tabler:clipboard',
-      },
-      {
         title: 'Create Quick Notes',
         description:
           'Capture quick notes right within Dockside. A click away for those times when you need to jot something down quickly.',
         icon: 'tabler:note',
       },
+	  {
+		title: 'App Drawer',
+		description:
+			'Effortlessly organise your apps with the App Drawer. Drag and drop apps into Dockside for quick access, and they will automatically be stored in the App Drawer!',
+		icon: 'tabler:apps',
+	  },
       {
         title: 'Optimise Images/Videos/PDFs (via Clop)',
         description:
-          'Effortlessly reduce file sizes with a single click for optimized storage and sharing. Uses the amazing <a href="https://lowtechguys.com/clop/" style="text-decoration: underline;">Clop app</a> for this which is integrated right into the Dockside with support for bulk operations.',
+          'Effortlessly reduce file sizes with a single click for optimised storage and sharing. Uses the amazing <a href="https://lowtechguys.com/clop/" style="text-decoration: underline;">Clop app</a> for this which is integrated right into the Dockside with support for bulk operations.',
         icon: 'tabler:note',
       },
     ]}
@@ -453,9 +455,15 @@ const metadata = {
       {
         title: 'Downloads and Screenshots',
         description:
-          'Your most recent downloads and screenshots are always available in Dockside, ready to share. If you like to see something else here, you can customise this area to access your favorite folders.',
+          'Your most recent downloads and screenshots are always available in Dockside, ready to share.',
         icon: 'tabler:download',
       },
+	  {
+		title: 'Customizable Shelves',
+		description:
+			'Tailor your Dockside experience by configuring these shelves to monitor your favorite folders or the “Recents” shelf. Quickly access what you need most, all from within Dockside.',
+		icon: 'tabler:adjustments',
+	  },
       {
         title: 'Super Quick Previews',
         description:
@@ -467,13 +475,7 @@ const metadata = {
         description:
           'Use familiar macOS shortcuts like copy, paste, select all, and delete—Dockside functions just like Finder for a seamless experience.',
         icon: 'tabler:keyboard',
-      },
-      {
-        title: 'History of Recently Added Files',
-        description:
-          'Dockside keeps track of recently added files and notes created, so you can quickly access the most recent items you’ve added and add them again if you need it.',
-        icon: 'tabler:history',
-      },
+      }
     ]}
     image={{
       src: '/Screenshots2.png', // Replace with the relevant image
@@ -491,7 +493,7 @@ const metadata = {
    <section class="bg-blue-50 dark:bg-slate-800 not-prose">
 	<div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
 	  <span class="font-bold">
-		<Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" />For optimal use of the Dockside app, refer to our user guide: 
+		<Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /> Want to know more, check our detailed usage guide: 
 	  </span> 
 	  <a href="/dockside-usage-tips" class="text-blue-600 dark:text-blue-400 underline">Dockside Usage Tips</a>
 	</div>
@@ -518,7 +520,7 @@ const metadata = {
       {
         title: 'Adjust Space for Screenshots and Downloads',
         description:
-          'Customise the space allocated for recent screenshots and downloads, prioritising whichever you use more frequently.',
+          'Customise the space allocated for recent screenshots and downloads, prioritising whichever you use more frequently OR use this shelf to monitor your favourite folders or even Recent files.',
         icon: 'tabler:layout-columns',
       },
       {
@@ -581,6 +583,15 @@ const metadata = {
     ]}
   />
 
+  <section class="bg-blue-50 dark:bg-slate-800 not-prose">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
+	  <span class="font-bold">
+		<Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /> Are you a developer, looking to integrate your app with Dockside? Check out:
+	  </span> 
+	  <a href="/developers" class="text-blue-600 dark:text-blue-400 underline">Third-party Apps</a>
+	</div>
+  </section>  
+
   <!-- FAQs Widget ******************* -->
 
   <FAQs
@@ -632,8 +643,12 @@ const metadata = {
       },
       {
         title: 'Can other apps talk to Dockside?',
-        description: 'Yes, other apps can add files to Dockside shelf simply by using <div style="display: inline-block; border: 1px solid #ccc; padding: 7px; border-radius: 10px; background-color: #00000; margin: 0;"><code>open -a Dockside.app /path/to/file</code></div> or by calling the Service <div style="display: inline-block; border: 1px solid #ccc; padding: 7px; border-radius: 10px; background-color: #00000; margin: 0;"><code>Add to Dockside</code></div>',
+        description: 'Yes, apps can integrate with Dockside to sent text or files/folders to the shelf. See <a href="/developers" class="text-blue-600 dark:text-blue-400 underline">Third-party Apps</a> for more info.',
       },
+      {
+        title: 'Is this a Dock replacement app?',
+        description: 'No, Dockside is more like a Dock companion app. See <a href="/dockside-usage-tips" class="text-blue-600 dark:text-blue-400 underline">Dockside Usage Tips</a>',
+      }
     ]}
   />
 </Layout>
