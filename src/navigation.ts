@@ -30,7 +30,7 @@ export const footerData = {
   secondaryLinks: [
     { text: 'Terms', href: getPermalink('/terms') },
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
-    { text: 'Developers', href: getPermalink('/developers') },
+    { text: 'Integrations', href: getPermalink('/integrations') },
 	{ text: 'About', href: '/about' },
 	{ text: 'Contact', href: '/contact' },
 	{ text: 'Blog', href: '/blog' }
