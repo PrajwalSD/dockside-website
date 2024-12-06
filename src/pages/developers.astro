@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import AppList from './components/AppList.astro';
 
 const metadata = {
   title: 'Developers',
@@ -44,18 +45,11 @@ const metadata = {
 		</tr>
 	  </tbody>
 	</table>
-
-	<HeroText tagline="List of Apps Supporting Dockside" />
-	<ul style="list-style: none; max-width: 1000px; margin: 0 auto; text-align: center; font-size: 1rem; padding-left: 0;">
-	  <li style="display: flex; align-items: center; margin-bottom: 10px;">
-		<img src="https://lowtechguys.com/static/img/clop-icon.png" alt="Clop Icon" style="width: 24px; height: 24px; margin-right: 10px;">
-		<b><a href="https://lowtechguys.com/clop/#integration" target="_blank">Clop</a></b>&#xA0; - send optimised items to Dockside shelf
-	  </li>
-	  <li style="display: flex; align-items: center;">
-		<img src="https://www.popclip.app/icon128.png" alt="Popclip Icon" style="width: 24px; height: 24px; margin-right: 10px;">
-		<b><a href="https://www.popclip.app/extensions/x/p8rrp7" target="_blank">Popclip</a></b>&#xA0; - send selected text to Dockside shelf (extension)
-	  </li>
-	</ul>
+	
+	<layout>
+	  <HeroText tagline="List of Apps Supporting Dockside" />
+	  <AppList />
+	</layout>
 	
   </section>
   

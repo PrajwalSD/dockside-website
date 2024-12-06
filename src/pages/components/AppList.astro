@@ -1,0 +1,41 @@
+---
+const apps = [
+  {
+    name: "Clop",
+    description: "Send optimized items to Dockside shelf",
+    url: "https://lowtechguys.com/clop/#integration",
+    icon: "https://lowtechguys.com/static/img/clop-icon.png",
+  },
+  {
+    name: "Popclip",
+    description: "Send selected text to Dockside shelf (extension)",
+    url: "https://www.popclip.app/extensions/x/p8rrp7",
+    icon: "https://www.popclip.app/icon128.png",
+  },
+];
+---
+
+<section style="padding: 2rem 1rem; text-align: center;">
+  <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Apps Supporting Dockside</h2>
+  <ul style="list-style: none; padding: 0; max-width: 600px; margin: 0 auto;">
+    {apps.map((app) => (
+      <li
+        style="display: flex; align-items: center; padding: 1rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;"
+      >
+        <img
+          src={app.icon}
+          alt={`${app.name} Icon`}
+          style="width: 32px; height: 32px; margin-right: 12px; border-radius: 50%;"
+        />
+        <div style="text-align: left;">
+          <b>
+            <a href={app.url} target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: #007BFF;">
+              {app.name}
+            </a>
+          </b>
+          <p style="margin: 0; font-size: 0.9rem; color: #555;">{app.description}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>
