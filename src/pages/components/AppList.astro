@@ -2,7 +2,7 @@
 const apps = [
   {
     name: "Clop",
-    description: "Send optimized items to Dockside shelf",
+    description: "Send optimised items to Dockside shelf",
     url: "https://lowtechguys.com/clop/#integration",
     icon: "https://lowtechguys.com/static/img/clop-icon.png",
   },
@@ -16,16 +16,16 @@ const apps = [
 ---
 
 <section style="padding: 2rem 1rem; text-align: center;">
-  <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Apps Supporting Dockside</h2>
+  <h2 style="font-size: 2.0rem; font-weight: bold; margin-bottom: 1.5rem;">These amazing apps already integrate with Dockside</h2>
   <ul style="list-style: none; padding: 0; max-width: 600px; margin: 0 auto;">
     {apps.map((app) => (
       <li
-        style="display: flex; align-items: center; padding: 1rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;"
+        style="display: flex; align-items: center; padding: 1rem; margin-bottom: 1rem; border: 1.5px solid #d7d7d7; border-radius: 8px; background-color: #efefef;"
       >
         <img
           src={app.icon}
           alt={`${app.name} Icon`}
-          style="width: 32px; height: 32px; margin-right: 12px; border-radius: 50%;"
+          style="width: 44px; height: 44px; margin-right: 12px; border-radius: 50%;"
         />
         <div style="text-align: left;">
           <b>

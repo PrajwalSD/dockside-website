@@ -19,7 +19,7 @@ const metadata = {
 
   <section class="py-16 text-center">
 	<p style="max-width: 1000px; margin: 0 auto 20px; font-size: 1.25rem;">
-		You can integrate your app with Dockside to send files or plain text to its shelf in two simple ways
+		You can integrate your app with Dockside to send files or plain text to its shelf
 	</p>
 	<table style="max-width: 1000px; margin: 0 auto; border-collapse: collapse; width: 100%; font-size: 1rem; text-align: left;">
 	  <thead>
@@ -32,7 +32,7 @@ const metadata = {
 		<tr>
 		  <td style="border-bottom: 1px solid #ccc; padding: 10px;"><strong>Via Command</strong></td>
 		  <td style="border-bottom: 1px solid #ccc; padding: 10px;">
-			Use the command <div style="display: inline-block; border: 1px solid #ccc; padding: 7px; border-radius: 10px; background-color: #00000; margin: 0;"><code>open -a Dockside.app /path/to/file</code></div> to send a file or folder to Dockside. 
+			Use the command <div style="display: inline-block; border: 1px solid #ccc; padding: 3px; border-radius: 10px; background-color: #00000; margin: 0;"><code>open -a Dockside.app /path/to/file</code></div> to send a file or folder to Dockside. 
 			Replace <code>/path/to/file</code> with the full path of the file or folder. This method is ideal for automation, scripts, or terminal usage.
 		  </td>
 		</tr>
@@ -46,18 +46,17 @@ const metadata = {
 	  </tbody>
 	</table>
 	
-	<layout>
-	  <HeroText tagline="List of Apps Supporting Dockside" />
-	  <AppList />
-	</layout>
-	
   </section>
+
+  <layout>
+	<AppList />
+  </layout>
   
 
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="If you have any queries or need help, please reach out"
+    title="Any queries or need help, please reach out"
     items={[
       {
         title: 'FAQs',
