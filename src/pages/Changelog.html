@@ -27,8 +27,12 @@
 </head>
 <body>
     <h1>Dockside Changelog</h1>
-    <p><strong>Version:</strong> 1.9.12</p>
+    <p><strong>Version:</strong> 1.9.13</p>
     <h2>New Features</h2>
-    <ul><li>You can now increase or decrease the drag (zoom) window height. To help reduce the mouse travel needed when dragging item to the files shelf.</li><li>Customise Dockside further by hiding the item and section labels in the shelf.</li></ul>
+    <ul><li>You can now trigger a Quick Look preview using a keyboard shortcut - hit space bar when you click an icon in the shelf to reveal a full sized Quick Look preview.</li></ul>
+    <h2>Fixes</h2>
+    <ul><li>Reduced the sensitivity level of text/string drag detection in other text editor apps.</li><li>Added "HazeOver" to the list of apps to be ignored from potentially triggering Dockside to go into auto-hide mode during system restarts.</li><li>Fixed an issue where the Dockside Settings panel (if open) would aggressively reset the space.</li><li>Fixed an issue where the filename in the quick preview appeared in black text in dark mode, making it illegible.</li></ul>
+    <h2>Improvements</h2>
+    <ul><li>Mouse-click will now show quick preview too.</li><li>Implemented handling of custom URL schemes (`dockside://`) for app actions to support third-party apps to better integrate with Dockside and for users to aid with scripting/automation. See https://hachipoo.com/integrations for more info.</li></ul>
 </body>
 </html>
