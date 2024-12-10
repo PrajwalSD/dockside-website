@@ -22,46 +22,49 @@ const metadata = {
 	<p style="max-width: 1000px; margin: 0 auto 20px; font-size: 1.15rem; line-height: 1.5;">
 	  You can interact with Dockside to add files, folders or plain text to shelf using the below.
 	</p>
-	<table style="max-width: 1000px; margin: 0 auto; border-collapse: collapse; width: 100%; font-size: 0.9rem; text-align: left; border: 1px solid #ccc;">
-	  <thead>
-		<tr style="background-color: #f4f4f4; color: #333;">
-		  <th style="padding: 10px; border: 1px solid #ccc;">Method</th>
-		  <th style="padding: 10px; border: 1px solid #ccc;">Description</th>
-		</tr>
-	  </thead>
-	  <tbody>
-		<tr>
-		  <td style="padding: 10px; border: 1px solid #ccc;"><strong>via Custom URL</strong></td>
-		  <td style="padding: 10px; border: 1px solid #ccc;">
-			<div style="display: inline-block; border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #f9f9f9; font-family: monospace; font-size: 0.85rem;">dockside://action/add?file=path/to/file</div> to send a file or folder to Dockside.
-			<br>
-			<div style="display: inline-block; border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #f9f9f9; font-family: monospace; font-size: 0.85rem;">dockside://action/clear-files-shelf</div> to clear all items from the Files shelf.
-		  </td>
-		</tr>
-		<tr style="background-color: #f9f9f9;">
-		  <td style="padding: 10px; border: 1px solid #ccc;"><strong>via Command<br>(ideal for scripting and automation)</strong></td>
-		  <td style="padding: 10px; border: 1px solid #ccc;">
-			<div style="display: inline-block; border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #ffffff; font-family: monospace; font-size: 0.85rem;">open -a Dockside.app "/path/to/file"</div> to send a file or folder to Dockside.
-			<br><br> or use Custom URL:<br>
-			<div style="display: inline-block; border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #ffffff; font-family: monospace; font-size: 0.85rem;">open "dockside://action/add?file=path/to/file"</div> to send a file or folder to Dockside.
-			<br>
-			<div style="display: inline-block; border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #ffffff; font-family: monospace; font-size: 0.85rem;">open "dockside://action/clear-files-shelf"</div> to clear all items from the Files shelf.
-			<br><br>
-			<b><a href="https://lowtechguys.com/clop/#integration" target="_blank" style="color: #007bff; text-decoration: none;">Clop integrates with Dockside using this method.</a></b>
+	<div style="padding: 0 16px;"> <!-- Added padding for mobile view -->
+	  <table style="max-width: 1000px; margin: 0 auto; border-collapse: collapse; width: 100%; font-size: 0.9rem; text-align: left; border: 1px solid #ccc;">
+		<thead>
+		  <tr style="background-color: #f4f4f4; color: #333;">
+			<th style="padding: 10px; border: 1px solid #ccc;">Method</th>
+			<th style="padding: 10px; border: 1px solid #ccc;">Description</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<td style="padding: 10px; border: 1px solid #ccc;"><strong>via Custom URL</strong></td>
+			<td style="padding: 10px; border: 1px solid #ccc;">
+			  <div style="display: inline-block; border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #f9f9f9; font-family: monospace; font-size: 0.85rem;">dockside://action/add?file=path/to/file</div> to send a file or folder to Dockside.
+			  <br>
+			  <div style="display: inline-block; border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #f9f9f9; font-family: monospace; font-size: 0.85rem;">dockside://action/clear-files-shelf</div> to clear all items from the Files shelf.
 			</td>
-		</tr>
-		<tr>
-		  <td style="padding: 10px; border: 1px solid #ccc;"><strong>via Service</strong></td>
-		  <td style="padding: 10px; border: 1px solid #ccc;">
-			Call the registered macOS Service "Add to Dockside" to integrate seamlessly with your app. Simply send the intended URLs or even plain text as 
-			<code style="border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #f9f9f9; font-family: monospace; font-size: 0.85rem;">NSPasteboard</code> object. Dockside will do the rest.
-			<br><br>
-			<b><a href="https://www.popclip.app/extensions/x/p8rrp7" target="_blank" style="color: #007bff; text-decoration: none;">Popclip integrates with Dockside to send the selected plain text to shelf using this method.</a></b>
-		  </td>
-		</tr>
-	  </tbody>
-	</table>
+		  </tr>
+		  <tr style="background-color: #f9f9f9;">
+			<td style="padding: 10px; border: 1px solid #ccc;"><strong>via Command<br>(ideal for scripting and automation)</strong></td>
+			<td style="padding: 10px; border: 1px solid #ccc;">
+			  <div style="display: inline-block; border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #ffffff; font-family: monospace; font-size: 0.85rem;">open -a Dockside.app "/path/to/file"</div> to send a file or folder to Dockside.
+			  <br><br> or use Custom URL:<br>
+			  <div style="display: inline-block; border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #ffffff; font-family: monospace; font-size: 0.85rem;">open "dockside://action/add?file=path/to/file"</div> to send a file or folder to Dockside.
+			  <br>
+			  <div style="display: inline-block; border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #ffffff; font-family: monospace; font-size: 0.85rem;">open "dockside://action/clear-files-shelf"</div> to clear all items from the Files shelf.
+			  <br><br>
+			  <b><a href="https://lowtechguys.com/clop/#integration" target="_blank" style="color: #007bff; text-decoration: none;">Clop integrates with Dockside using this method.</a></b>
+			</td>
+		  </tr>
+		  <tr>
+			<td style="padding: 10px; border: 1px solid #ccc;"><strong>via Service</strong></td>
+			<td style="padding: 10px; border: 1px solid #ccc;">
+			  Call the registered macOS Service "Add to Dockside" to integrate seamlessly with your app. Simply send the intended URLs or even plain text as 
+			  <code style="border: 1px solid #ccc; padding: 3px 6px; border-radius: 5px; background-color: #f9f9f9; font-family: monospace; font-size: 0.85rem;">NSPasteboard</code> object. Dockside will do the rest.
+			  <br><br>
+			  <b><a href="https://www.popclip.app/extensions/x/p8rrp7" target="_blank" style="color: #007bff; text-decoration: none;">Popclip integrates with Dockside to send the selected plain text to shelf using this method.</a></b>
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
   </section>
+  
   
   <style>
 	body {
