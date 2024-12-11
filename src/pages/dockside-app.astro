@@ -417,7 +417,7 @@ const metadata = {
       {
         title: 'Drag and Drop Anything',
         description:
-          'Easily drag and drop files, folders, apps, images, videos, links, and even text into Dockside for quick access and later use.',
+          'Easily drag and drop files, folders, apps, images, videos, links, and even text into Dockside for quick access and later use. Dockside fits even with small spaces around Dock whilst still being useful!',
         icon: 'tabler:drag-drop',
       },
       {
@@ -426,18 +426,18 @@ const metadata = {
           'Capture quick notes right within Dockside. A click away for those times when you need to jot something down quickly.',
         icon: 'tabler:note',
       },
+      {
+        title: 'Utilities',
+        description:
+          'Dockside offers a range of file utilities on the items in shelf - reduce file size, compress as zip, remove image metadata, upload to cloud to generate a shareable link and many more...',
+        icon: 'tabler:file-diff',
+      },
 	  {
 		title: 'App Drawer',
 		description:
 			'Effortlessly organise your apps with the App Drawer. Drag and drop apps into Dockside for quick access, and they will automatically be stored in the App Drawer!',
 		icon: 'tabler:apps',
 	  },
-      {
-        title: 'Optimise Images/Videos/PDFs (via Clop)',
-        description:
-          'Effortlessly reduce file sizes with a single click for optimised storage and sharing. Uses the amazing <a href="https://lowtechguys.com/clop/" style="text-decoration: underline;">Clop app</a> for this which is integrated right into the Dockside with support for bulk operations.',
-        icon: 'tabler:note',
-      },
     ]}
     image={{
       src: '/Main5a.png', // Replace with the relevant image
@@ -484,6 +484,47 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Additional features</h3>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="Utilities & Integrations"
+    isReversed
+    items={[
+	{
+		title: 'Optimize Images, Videos, and PDFs (via Clop)',
+		description:
+		'Easily reduce file sizes with a single click for streamlined storage and sharing. This feature leverages the powerful <a href="https://lowtechguys.com/clop/#integration" style="text-decoration: underline;">Clop app</a>, fully integrated into Dockside with support for bulk operations.',
+		icon: 'tabler:file-diff',
+	},
+	{
+		title: 'Upload Files to the Cloud (via Dropshare)',
+		description:
+		'Upload files and instantly share links using Dropshare, which supports over 29 cloud services. Dockside seamlessly integrates with the <a href="https://support.dropshare.app/hc/en-us/articles/17220738142738-How-can-I-enable-Dropshare-integrations" style="text-decoration: underline;">Dropshare app</a> for a hassle-free experience.',
+		icon: 'tabler:cloud-upload',
+	},
+	{
+		title: 'Apple Shortcuts and Services',
+		description:
+		'Run workflow-related Shortcuts directly from shelf items and access Services seamlessly within Dockside.',
+		icon: 'tabler:apps',
+	},
+	{
+		title: 'Third-Party App Integration, Scripting, and Automation',
+		description:
+		'Integrate your app with Dockside with ease, and automate your workflows using AppleScript. Check out our detailed <a href="/integrations" style="text-decoration: underline;">Integration User Guide</a> for step-by-step instructions.',
+		icon: 'tabler:robot',
+	},
+    ]}
+    image={{
+      src: '/integrations.png', // Replace with the relevant image
+      alt: 'Dockside App Overview - Features Part 3',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Utilities</h3>
     </Fragment>
   </Content>
 
