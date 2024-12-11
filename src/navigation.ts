@@ -29,7 +29,7 @@ export const headerData = {
 export const footerData = {
   secondaryLinks: [
     { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: 'Privacy', href: getPermalink('/privacy') },
     { text: 'Integrations', href: getPermalink('/integrations') },
 	{ text: 'About', href: '/about' },
 	{ text: 'Contact', href: '/contact' },
