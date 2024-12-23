@@ -5,7 +5,6 @@ import Header from '~/components/widgets/Header.astro';
 import { Icon } from 'astro-icon/components';
 import HeroText from '~/components/widgets/HeroText.astro';
 
-
 import Prices from '~/components/widgets/Pricing.astro';
 
 import Hero2 from '~/components/widgets/Hero2.astro';
@@ -41,17 +40,17 @@ const metadata = {
       links={[
         { text: 'Features', href: '#features' },
         { text: 'Usage Tips', href: '/dockside-usage-tips' },
-		{ text: 'Changelog', href: 'https://github.com/PrajwalSD/Dockside/releases' },
-		// { text: 'Privacy', href: '#data-privacy' },
-		{ text: 'Integrations', href: '/integrations' },
-		{ text: 'FAQs', href: '#FAQs' },
+        { text: 'Changelog', href: 'https://github.com/PrajwalSD/Dockside/releases' },
+        // { text: 'Privacy', href: '#data-privacy' },
+        { text: 'Integrations', href: '/integrations' },
         { text: 'Support', href: '/contact' },
       ]}
       actions={[
         {
           variant: 'secondary',
-          text: 'Download Now',
+          text: 'Download',
           href: 'https://github.com/PrajwalSD/Dockside/releases/latest/download/Dockside.dmg',
+          icon: 'tabler:download',
         },
         {
           variant: 'primary',
@@ -69,7 +68,7 @@ const metadata = {
   <Hero2
     tagline=""
     actions={[
-	  {
+      {
         text: '14-day Free Trial',
         href: 'https://github.com/PrajwalSD/Dockside/releases/latest/download/Dockside.dmg',
         icon: 'tabler:download',
@@ -90,19 +89,22 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="sm:inline">
-        Dockside is your friendly file shelf next to the Dock, where you can drag & drop files, folders, images, URLs, apps, and even text for quick access or later use. It also
-        displays recent screenshots and downloads for easy access. Lightweight and there when you need it, fading away when you don't, Dockside helps you manage frequently used items—all without
-        getting in your way.
+        Dockside is your friendly file shelf next to the Dock, where you can drag & drop files, folders, images, URLs,
+        apps, and even text for quick access or later use. It also displays recent screenshots and downloads for easy
+        access. Lightweight and there when you need it, fading away when you don't, Dockside helps you manage frequently
+        used items—all without getting in your way.
         <br /><br />
-    	Dockside is Apple Notarized, ensuring it meets Apple's high security standards. 
-		Explore all of Dockside’s features with a <a style="text-decoration: underline; text-decoration-style: dotted;">free 14-day trial</a>, or purchase a <a style="text-decoration: underline; text-decoration-style: dotted;">one-time license for just $5.99</a>, no subscriptions. 
-		<br /><br />
-		Supports macOS 13.0+ (Ventura and above)
+        Dockside is Apple Notarized, ensuring it meets Apple's high security standards. Explore all of Dockside’s features
+        with a <a style="text-decoration: underline; text-decoration-style: dotted;">free 14-day trial</a>, or purchase
+        a <a style="text-decoration: underline; text-decoration-style: dotted;">one-time license for just $5.99</a>, no
+        subscriptions.
+        <br /><br />
+        Supports macOS 13.0+ (Ventura and above)
       </span>
     </Fragment>
   </Hero2>
 
-   <!-- Content Widget **************** -->
+  <!-- Content Widget **************** -->
 
   <div
     class="relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default"
@@ -131,9 +133,8 @@ const metadata = {
         data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/Headline.astro"
         data-astro-source-loc="32:21"
       >
-	  Whether you're managing projects at work, studying for exams, working on creative projects, coding your app
-	  or using your Mac casually, Dockside is the perfect companion to your Dock.
-	  Let's get you started!
+        Whether you're managing projects at work, studying for exams, working on creative projects, coding your new app
+        or using your Mac casually, Dockside is the perfect companion to your Dock. Let's get you started!
       </p>
     </div>
     <div
@@ -222,7 +223,18 @@ const metadata = {
               data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/ItemGrid.astro"
               data-astro-source-loc="49:18"
             >
-			Begin by <a href="https://github.com/PrajwalSD/Dockside/releases/latest/download/Dockside.dmg" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">downloading the Dockside app</a>, compatible with macOS 13.0+ (Ventura and later). Enjoy a 14-day free trial to explore all the features. If you love it, you can <a href="https://hachipoo.gumroad.com/l/dockside" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">purchase a one-time lifetime license</a>.            </p>
+              Begin by <a
+                href="https://github.com/PrajwalSD/Dockside/releases/latest/download/Dockside.dmg"
+                class="text-blue-600 dark:text-blue-400 underline"
+                style="text-decoration: underline;  text-decoration-style: dotted;">downloading the Dockside app</a
+              >, compatible with macOS 13.0+ (Ventura and later). Enjoy a 14-day free trial to explore all the features.
+              If you love it, you can <a
+                href="https://hachipoo.gumroad.com/l/dockside"
+                class="text-blue-600 dark:text-blue-400 underline"
+                style="text-decoration: underline;  text-decoration-style: dotted;"
+                >purchase a one-time lifetime license</a
+              >.
+            </p>
           </div>
         </div>
       </div><div
@@ -278,8 +290,8 @@ const metadata = {
               data-astro-source-loc="49:18"
             >
               Once installed and required permissions are granted, Dockside sits on both sides of your macOS Dock,
-              adjusting to available space. The left Files shelf allows easy file drops, while the right Screenshots shelf keeps recent
-              screenshots and downloads accessible. Always visible, yet unobtrusive.
+              adjusting to available space. The left Files shelf allows easy file drops, while the right Screenshots
+              shelf keeps recent screenshots and downloads accessible. Always visible, yet unobtrusive.
             </p>
           </div>
         </div>
@@ -336,9 +348,10 @@ const metadata = {
               data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/ItemGrid.astro"
               data-astro-source-loc="49:18"
             >
-              Simply drag files, folders, images, apps, text, or any draggable content into Dockside for quick access whenever you need it. It’s like having your favorite tools always within reach!
-              Love using keyboard shortcuts? We’ve got you covered there, too—quick, easy access to your essentials is
-              just a keystroke away, making your workflow faster and smoother than ever!
+              Simply drag files, folders, images, apps, text, or any draggable content into Dockside for quick access
+              whenever you need it. It’s like having your favorite tools always within reach! Love using keyboard
+              shortcuts? We’ve got you covered there, too—quick, easy access to your essentials is just a keystroke
+              away, making your workflow faster and smoother than ever!
             </p>
           </div>
         </div>
@@ -413,8 +426,7 @@ const metadata = {
     items={[
       {
         title: 'Drag and Drop Anything',
-        description:
-          'Easily drag and drop files, folders, apps, images, videos, links, and even plain text.',
+        description: 'Easily drag and drop files, folders, apps, images, videos, links, and even plain text.',
         icon: 'tabler:drag-drop',
       },
       {
@@ -429,12 +441,12 @@ const metadata = {
           'Dockside offers a range of file utilities on the items in shelf - reduce file size, compress as zip, remove image metadata, extract text from image, upload to cloud to generate a shareable link and many more...',
         icon: 'tabler:file-diff',
       },
-	  {
-		title: 'App Drawer',
-		description:
-			'Drag and drop apps into Dockside for quick access, and they will automatically be stored in the App Drawer!',
-		icon: 'tabler:apps',
-	  },
+      {
+        title: 'App Drawer',
+        description:
+          'Drag and drop apps into Dockside for quick access, and they will automatically be stored in the App Drawer!',
+        icon: 'tabler:apps',
+      },
     ]}
     image={{
       src: '/Main5a.png', // Replace with the relevant image
@@ -442,7 +454,7 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Shelf features</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Shelf features:</h3>
     </Fragment>
   </Content>
 
@@ -451,16 +463,15 @@ const metadata = {
     items={[
       {
         title: 'Downloads and Screenshots',
-        description:
-          'Your most recent downloads and screenshots are always available in Dockside, ready to share.',
+        description: 'Your most recent downloads and screenshots are always available in Dockside, ready to share.',
         icon: 'tabler:download',
       },
-	  {
-		title: 'Customisable Shelves',
-		description:
-			'Tailor your Dockside experience by configuring these shelves to monitor your favorite folders or the “Recents” shelf. Quickly access what you need most, all from within Dockside.',
-		icon: 'tabler:adjustments',
-	  },
+      {
+        title: 'Customisable Shelves',
+        description:
+          'Tailor your Dockside experience by configuring these shelves to monitor your favorite folders or the “Recents” shelf. Quickly access what you need most, all from within Dockside.',
+        icon: 'tabler:adjustments',
+      },
       {
         title: 'Super Quick Previews',
         description:
@@ -472,7 +483,7 @@ const metadata = {
         description:
           'Use familiar macOS shortcuts like copy, paste, select all, and delete—Dockside functions just like Finder for a seamless experience.',
         icon: 'tabler:keyboard',
-      }
+      },
     ]}
     image={{
       src: '/Screenshots2.png', // Replace with the relevant image
@@ -480,7 +491,7 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">More than just a shelf</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">More than just a shelf:</h3>
     </Fragment>
   </Content>
 
@@ -490,30 +501,30 @@ const metadata = {
     id="Utilities & Integrations"
     isReversed
     items={[
-	{
-		title: 'Optimise Images, Videos, and PDFs (via Clop)',
-		description:
-		'Easily reduce file sizes with a single click for streamlined storage and sharing. This feature leverages the powerful <a href="https://lowtechguys.com/clop/#integration" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Clop app</a>, fully integrated into Dockside with support for bulk operations.',
-		icon: 'tabler:file-diff',
-	},
-	{
-		title: 'Upload Files to the Cloud (via Dropshare)',
-		description:
-		'Upload files and instantly share links using Dropshare, which supports over 29 cloud services. Dockside seamlessly integrates with the <a href="https://support.dropshare.app/hc/en-us/articles/17220738142738-How-can-I-enable-Dropshare-integrations" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Dropshare app</a> for a hassle-free experience.',
-		icon: 'tabler:cloud-upload',
-	},
-	{
-		title: 'Apple Shortcuts and Services',
-		description:
-		'Run workflow-related Shortcuts directly from shelf items and access Services seamlessly within Dockside.',
-		icon: 'tabler:apps',
-	},
-	{
-		title: 'Third-Party App Integration, Scripting, and Automation',
-		description:
-		'Integrate your app with Dockside with ease, and automate your workflows using AppleScript. Check out our detailed <a href="/integrations" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Integration User Guide</a> for step-by-step instructions.',
-		icon: 'tabler:robot',
-	},
+      {
+        title: 'Optimise Images, Videos, and PDFs (via Clop)',
+        description:
+          'Easily reduce file sizes with a single click for streamlined storage and sharing. This feature leverages the powerful <a href="https://lowtechguys.com/clop/#integration" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Clop app</a>, fully integrated into Dockside with support for bulk operations.',
+        icon: 'tabler:file-diff',
+      },
+      {
+        title: 'Upload Files to the Cloud (via Dropshare)',
+        description:
+          'Upload files and instantly share links using Dropshare, which supports over 29 cloud services. Dockside seamlessly integrates with the <a href="https://support.dropshare.app/hc/en-us/articles/17220738142738-How-can-I-enable-Dropshare-integrations" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Dropshare app</a> for a hassle-free experience.',
+        icon: 'tabler:cloud-upload',
+      },
+      {
+        title: 'Apple Shortcuts and Services',
+        description:
+          'Run workflow-related Shortcuts directly from shelf items and access Services seamlessly within Dockside.',
+        icon: 'tabler:apps',
+      },
+      {
+        title: 'Third-Party App Integration, Scripting, and Automation',
+        description:
+          'Integrate your app with Dockside with ease, and automate your workflows using AppleScript. Check out our detailed <a href="/integrations" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Integration User Guide</a> for step-by-step instructions.',
+        icon: 'tabler:robot',
+      },
     ]}
     image={{
       src: '/integrations.png', // Replace with the relevant image
@@ -521,22 +532,21 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Utilities & Integrations</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Utilities & Integrations:</h3>
     </Fragment>
   </Content>
 
+  <!-- Content Widget **************** -->
 
-   <!-- Content Widget **************** -->
-
-   <section class="bg-blue-50 dark:bg-slate-800 not-prose">
-	<div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
-	  <span class="font-bold">
-		<Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /> Want to know more, check our detailed usage guide: 
-	  </span> 
-	  <a href="/dockside-usage-tips" class="text-blue-600 dark:text-blue-400 underline">Dockside Usage Tips</a>
-	</div>
-  </section>  
-  
+  <section class="bg-blue-50 dark:bg-slate-800 not-prose">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
+      <span class="font-bold">
+        <Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /> Want to know more, check our detailed
+        usage guide:
+      </span>
+      <a href="/dockside-usage-tips" class="text-blue-600 dark:text-blue-400 underline">Dockside Usage Tips</a>
+    </div>
+  </section>
 
   <!-- Content Widget **************** -->
 
@@ -574,49 +584,42 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Controls and Settings</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Controls and Settings:</h3>
     </Fragment>
   </Content>
-
-   <!-- HeroText Widget ******************* -->
-
-   <HeroText
-   tagline="Licensing"
-   title="Pay Once, Use Forever."
-   subtitle="Simple pricing, one choice, no hidden fees, no subscriptions."
- />
-
- <!-- Pricing Widget ******************* -->
-
- <Prices
-   prices={[
-	 {
-	   title: 'standard',
-	   subtitle: 'Personal use',
-	   price: 5.99,
-	   period: 'Lifetime License',
-	   items: [
-		 {
-		   description: 'Lifetime license',
-		 },
-		 {
-		   description: 'Up to 3 devices',
-		 },
-		 {
-		   description: 'Unlimited updates and support',
-		 }
-	   ],
-	   callToAction: {
-		 target: '_blank',
-		 text: 'Buy License',
-		 href: 'https://hachipoo.gumroad.com/l/dockside',
-	   },
-	   hasRibbon: true,
-	   ribbonTitle: 'only choice',
-	 }
-   ]}
- />
-
+  
+  <!-- Pricing Widget ******************* -->
+  <Prices
+	title="Pay Once, Use Forever."
+	subtitle="Simple pricing, one choice, no hidden fees, no subscriptions."
+	tagline="Licensing"
+    prices={[
+      {
+        title: 'standard',
+        subtitle: 'Personal use',
+        price: 5.99,
+        period: 'Lifetime License',
+        items: [
+          {
+            description: 'Lifetime license',
+          },
+          {
+            description: 'Up to 3 devices',
+          },
+          {
+            description: 'Unlimited updates and support',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Buy License',
+          href: 'https://hachipoo.gumroad.com/l/dockside',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'Lifetime License',
+      },
+    ]}
+  />
 
   <Features3
     id="data-privacy"
@@ -662,13 +665,14 @@ const metadata = {
   />
 
   <section class="bg-blue-50 dark:bg-slate-800 not-prose">
-	<div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
-	  <span class="font-bold">
-		<Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /> Are you a developer, looking to integrate your app with Dockside? Check out:
-	  </span> 
-	  <a href="/integrations" class="text-blue-600 dark:text-blue-400 underline">Third-party App Integrations</a>
-	</div>
-  </section>  
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
+      <span class="font-bold">
+        <Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /> Are you a developer, looking to
+        integrate your app with Dockside? Check out:
+      </span>
+      <a href="/integrations" class="text-blue-600 dark:text-blue-400 underline">Third-party App Integrations</a>
+    </div>
+  </section>
 
   <!-- FAQs Widget ******************* -->
 
@@ -721,12 +725,14 @@ const metadata = {
       },
       {
         title: 'Does Dockside integrate with other apps OR others app integrate with Dockside?',
-        description: 'Yes, apps can integrate with Dockside to send plain text or files/folders to the shelf. See <a href="/integrations" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Third-party App Integrations</a> for more info.',
+        description:
+          'Yes, apps can integrate with Dockside to send plain text or files/folders to the shelf. See <a href="/integrations" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Third-party App Integrations</a> for more info.',
       },
       {
         title: 'Is this a Dock replacement app?',
-        description: 'No, Dockside is more like a Dock companion app. See <a href="/dockside-usage-tips" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Dockside Usage Tips</a>',
-      }
+        description:
+          'No, Dockside is more like a Dock companion app. See <a href="/dockside-usage-tips" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Dockside Usage Tips</a>',
+      },
     ]}
   />
 </Layout>
