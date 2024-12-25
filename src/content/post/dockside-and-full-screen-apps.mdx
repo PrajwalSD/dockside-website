@@ -1,0 +1,47 @@
+---
+publishDate: 2024-12-25T20:17:01Z
+title: How does Dockside manage full screen apps?
+excerpt: ""
+image: /FullScreenAppsInDockside.png
+category: Userguides
+tags:
+  - dockside
+  - knowledgeBaseArticles
+metadata:
+  canonical: https://hachipoo.com/dockside-and-full-screen-apps
+---
+
+import DListItem from '~/components/ui/DListItem.astro';
+import ToggleTheme from '~/components/common/ToggleTheme.astro';
+
+## Behaviour
+
+When any app enters full-screen mode, Dockside (like the Dock) will detect this automatically, hide itself, and reveal when the mouse is hovered near the screen edge. 
+
+> You can reveal Dockside temporarily using the `Shift + Fn` keyboard shortcut instead of mouse hover.
+
+There are a few apps that can falsely trigger Dockside into thinking they are taking up the entire screen, causing it to hide itself, which can be annoying. Unfortunately, Dockside has to handle this manually.
+
+## Can I Ignore/Exclude Certain Apps from Triggering Dockside’s Hide Mode?
+
+Yes, you can add an app that triggers Dockside hide mode (falsely) to the ignore list and you can always remove/add more to this list in future. Navigate to Dockside settings under the Advanced tab, and Dockside will automatically detect full-screen apps, allowing you to easily add them to the ignore list.
+![Dockside Full-Screen Apps](/FullScreenAppsInDockside.png)
+
+By default, the following apps and services are ignored by Dockside:
+* Dock
+* Dockside
+* loginwindow
+* Wallpaper
+* Window Server
+* Control Center
+* Notification Center
+* Finder
+* Logi Options+
+* Logi Options
+* Magnet
+* Screenshot
+* screencapture
+* CleanShot X
+* HazeOver
+
+If you see any other apps falsely triggering the auto-hide mode in Dockside, report it here: https://dockside.featurebase.app/p/submit-an-app-that-falsely-triggers-dockside-into-auto-hide
