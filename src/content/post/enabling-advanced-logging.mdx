@@ -1,0 +1,33 @@
+---
+publishDate: 2024-12-24T18:33:01Z
+title: Enable Advanced Logging in Dockside
+excerpt: ""
+image: /dockside-advanced-settings.png
+category: Userguides
+tags:
+  - dockside
+  - knowledgeBaseArticles
+metadata:
+  canonical: https://hachipoo.com/enable-advanced-logging
+---
+
+import DListItem from '~/components/ui/DListItem.astro';
+import ToggleTheme from '~/components/common/ToggleTheme.astro';
+
+## Overview
+
+To enable developer to debug an issue, Dockside includes a verbose logging mode to help the developer debug issues efficiently. This mode provides detailed insights into app operations, such as API calls, internal processes, and error traces.
+
+Please note that **no personal data is collected or shared when verbose logging mode is enabled**. Logs are strictly used for debugging purposes and stay within the app's environment.
+
+---
+
+### How to Enable Advanced Logging
+
+Open the Dockside app and go to Settings and check the **Enable Advanced Logging for Developer** option.
+![Dockside Advanced Settings](/dockside-advanced-settings.png)
+
+Dockside will then generate verbose logs as a file on disk, which can be shared with the developer for debugging.
+
+When requested by the developer, download the generated log using the **Download log...** button and share the zip file.
+
