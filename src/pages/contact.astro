@@ -3,6 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Prices from '~/components/widgets/Pricing.astro';
+import Headline from '~/components/ui/Headline.astro';
 
 const metadata = {
   title: 'Contact',
@@ -10,30 +12,50 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+	 <!-- Features2 Widget ************** -->
+	 <Features2
+	 title="Join our community"
+	 subtitle='Reach out to us for anything'
+	 items={[
+	   {
+		 title: 'FAQs',
+		 description: 'See the <a href="/dockside-app#FAQs" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">FAQs section</a>',
+		 icon: 'tabler:globe',
+	   },
+	   {
+		 title: 'Discord',
+		 description: '<a href="https://discord.gg/vpqMjQns46" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Join Discord Community</a>',
+		 icon: 'tabler:headset',
+	   },
+	   {
+		 title: 'Email',
+		 description: '<a href="mailto:hachipoo.apps@gmail.com" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">hachipoo.apps@gmail.com</a>',
+		 icon: 'tabler:mail',
+	   }
+	 ]}
+   />
+   
+   <Headline 
+		title="Feature Requests or Report Bugs?" 
+		subtitle='Submit it here: <a href="https://dockside.featurebase.app/" target="_blank" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">dockside.featurebase.app</a>'
+	/>
 
-  <!-- Features2 Widget ************** -->
+	<Headline 
+    	title="Roadmap" 
+		subtitle='What are we busy working on: <a href="https://dockside.featurebase.app/roadmap" target="_blank" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Check out our roadmap</a>'
+		tagline="" 
+	/>
 
-  <Features2
-    title="We are here to help!"
-    items={[
-      {
-        title: 'FAQs',
-		description: 'See the <a href="/dockside-app#FAQs" style="text-decoration: underline;">FAQs section</a>',
-		icon: 'tabler:globe',
-      },
-      {
-        title: 'Discord',
-        description: '<a href="https://discord.gg/vpqMjQns46" style="text-decoration: underline;">Join Discord Community</a>',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: '<a href="mailto:hachipoo.apps@gmail.com" style="text-decoration: underline;">hachipoo.apps@gmail.com</a>',
-        icon: 'tabler:mail',
-      }
-    ]}
-  />
+	<div class="iframe-container" style="margin-bottom: 2rem; max-width: 1200px; margin-left: auto; margin-right: auto; border: 1px solid #595959; border-radius: 12px; overflow: hidden;">
+		<iframe 
+		  src="https://dockside.featurebase.app/roadmap" 
+		  style="width: 100%; height: 1200px; border: none;" 
+		  title="Dockside Featurebase Embed">
+		</iframe>
+	  </div>
+	  
+
 </Layout>
+
+  
