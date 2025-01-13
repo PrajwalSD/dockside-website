@@ -2,8 +2,7 @@
 title: 'Terms and Conditions'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
-
-_Last updated_: October 09, 2024
+_Last updated_: January 13, 2025
 
 Please read these terms and conditions carefully before using Our Service.
 
@@ -18,21 +17,13 @@ The words of which the initial letter is capitalized have meanings defined under
 For the purposes of these Terms and Conditions:
 
 - **Affiliate** means an entity that controls, is controlled by, or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest, or other securities entitled to vote for election of directors or other managing authority.
-  
 - **Country** refers to: London, United Kingdom.
-  
 - **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Hachipoo Apps, London, UK.
-  
 - **Device** means any device that can access the Service such as a computer, a cellphone, or a digital tablet.
-  
 - **Service** refers to the Dockside application and the Website.
-  
 - **Terms and Conditions** (also referred to as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service.
-  
 - **Third-party Social Media Service** means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included, or made available by the Service.
-  
 - **Website** refers to Hachipoo, accessible from [https://hachipoo.com](https://hachipoo.com).
-  
 - **You** means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.
 
 ## Acknowledgment
@@ -57,11 +48,12 @@ Your access to and use of the Service is also conditioned on Your acceptance of 
 
 - Each license can be activated on a maximum of **three (3) machines**. If You wish to use the license on a different machine, You must first **deactivate** the license on one of the currently activated devices.
 - The option to deactivate the license is available within the app and allows You to transfer the license between devices as needed.
+- **Important:** Ensure the license is deactivated before uninstalling the app. Uninstalling the app without deactivating the license will not free up the license for use on another machine, and no additional licenses can be requested. Any issues with deactivation, reach out to Us for support.
 
 ## License Sharing Prohibited
 
 - **License sharing is strictly prohibited**. The license You purchase is intended for use only by You and is non-transferable. Sharing the license with others is a violation of these Terms and may result in termination of the license without notice or refund.
-  
+
 ## Links to Other Websites
 
 Our Service may contain links to third-party websites or services that are not owned or controlled by the Company.
