@@ -1,0 +1,20 @@
+---
+import { Crisp } from "crisp-sdk-web";
+
+const loadCrisp = () => {
+  if (typeof window !== "undefined" && typeof document !== "undefined") {
+    Crisp.configure("535090dc-a6a2-46a9-a9d2-8ad08c18482f");
+  }
+};
+---
+
+<script>
+  // Ensure the Crisp widget is initialized only in the browser
+  if (typeof window !== "undefined") {
+    import("crisp-sdk-web").then(({ Crisp }) => {
+      Crisp.configure("535090dc-a6a2-46a9-a9d2-8ad08c18482f");
+    });
+  }
+</script>
+
+<!-- This component doesn't render any UI elements -->

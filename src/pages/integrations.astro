@@ -5,26 +5,16 @@ import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import AppList from './components/AppList.astro';
 import AppList2 from './components/AppList2.astro';
+import CrispWidget from "../components/CrispWidget.astro";
 
 const metadata = {
   title: 'Integrations',
 };
 ---
 
-
-<script type="text/javascript">
-	window.$crisp = [];
-	window.CRISP_WEBSITE_ID = '535090dc-a6a2-46a9-a9d2-8ad08c18482f';
-	(function () {
-	  d = document;
-	  s = d.createElement('script');
-	  s.src = 'https://client.crisp.chat/l.js';
-	  s.async = 1;
-	  d.getElementsByTagName('head')[0].appendChild(s);
-	})();
-  </script>
-
 <Layout metadata={metadata}>
+	<CrispWidget />
+
   <!-- HeroText Widget ******************* -->
 
   <HeroText tagline="Welcome," title="Let’s Build Something Amazing Together!" />
