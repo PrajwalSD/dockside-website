@@ -25,15 +25,6 @@ const { metadata = {} } = Astro.props;
 const { language, textDirection } = I18N;
 ---
 
-<script>
-	// Ensure the Crisp widget is initialized only in the browser
-	if (typeof window !== "undefined") {
-	  import("crisp-sdk-web").then(({ Crisp }) => {
-		Crisp.configure("535090dc-a6a2-46a9-a9d2-8ad08c18482f");
-	  });
-	}
-  </script>
-
 <!doctype html>
 
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
@@ -48,6 +39,14 @@ const { language, textDirection } = I18N;
 
     <!-- Comment the line below to disable View Transitions -->
     <ViewTransitions fallback="swap" />
+	<script>
+		// Ensure the Crisp widget is initialized only in the browser
+		if (typeof window !== "undefined") {
+		  import("crisp-sdk-web").then(({ Crisp }) => {
+			Crisp.configure("535090dc-a6a2-46a9-a9d2-8ad08c18482f");
+		  });
+		}
+	  </script>
   </head>
 
   <body class="antialiased text-default bg-page tracking-tight">
