@@ -104,11 +104,29 @@ const metadata = {
         a <a style="text-decoration: underline; text-decoration-style: dotted;">one-time license for just $5.99</a>, no
         subscriptions.
         <br /><br />
-        Supports macOS 13.0+ (Ventura and above)
+        Supports macOS 13.0+ (Ventura and above). Try a 14-day free trial to explore all features!
       </span>
     </Fragment>
   </Hero2>
 
+  <section class="bg-blue-50 dark:bg-slate-800 not-prose">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 py-2 text-md text-center font-medium">
+	  <span class="font-regular">
+		<Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /> Install via
+	  </span>
+	  <a href="https://formulae.brew.sh/cask/dockside" class="text-blue-600 dark:text-blue-400 underline">Homebrew</a>:
+	  <div class="bg-black text-white rounded-lg p-2 mt-2 inline-flex items-center text-sm font-mono">
+		<code id="brew-command">brew install --cask dockside</code>
+		<button 
+		  onclick="navigator.clipboard.writeText(document.getElementById('brew-command').innerText)" 
+		  class="ml-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg p-1">
+		  <Icon name="tabler:copy" class="w-4 h-4" />
+		</button>
+	  </div>
+	</div>
+  </section>
+  
+  
   <!-- Content Widget **************** -->
 
   <div
