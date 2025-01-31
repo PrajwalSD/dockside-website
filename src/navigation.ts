@@ -33,7 +33,8 @@ export const footerData = {
     { text: 'Integrations', href: getPermalink('/integrations') },
 	{ text: 'About', href: '/about' },
 	{ text: 'Contact', href: '/contact' },
-	{ text: 'Blog', href: '/blog' }
+	{ text: 'Blog', href: '/blog' },
+	{ text: 'Roadmap', href: '/roadmap' }
   ],
   socialLinks: [
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/HachipooApps' },
