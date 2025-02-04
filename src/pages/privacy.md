@@ -14,6 +14,18 @@ Dockside is designed to operate entirely offline, with no background data collec
 - **No Personal Data Collected:** Dockside does not collect any personal data. The app operates locally on your machine, and your files and actions are never sent to external servers or shared with third parties.
 - **No Usage Data:** Dockside does not track your usage, such as how often or when you use the app. Everything remains on your local device.
 - **Offline Functionality:** Dockside functions without an internet connection, except for a one-time license activation. Once your license is activated, the app will not require or use any internet connectivity.
+
+## Error Reporting
+
+Dockside uses [Sentry](https://sentry.io/) for collecting crash data when the app crashes and only if the user has explicitly given permission via the app settings. Sentry is a popular service used by many popular mac apps like Clop.
+
+The crash data may contain:
+
+- **Device Info:** Such as OS version and Mac type.
+- **IP Address:** For diagnostic purposes.
+
+This data is solely used to identify and fix issues to improve the app's stability and performance. No personal data beyond the specified diagnostic information is collected.
+
   
 ## License Activation
 
