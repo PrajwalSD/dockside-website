@@ -20,14 +20,14 @@ The only time Dockside connects to the internet is during the initial license ac
 
 ## Error Reporting
 
-Dockside uses [Sentry](https://sentry.io/) for collecting crash data when the app crashes and only if the user has explicitly given permission via the app settings. Sentry is a popular service used by many popular mac apps like Clop.
+Dockside uses [Sentry](https://sentry.io/) for collecting crash data when the app crashes and <u>only if the user has explicitly given permission via the app settings</u>. Sentry is a popular service used by many popular mac apps like Clop.
 
 The crash data may contain:
 
 - **Device Info:** Such as OS version and Mac type.
 - **IP Address**
 
-This data is solely used to identify and fix issues to improve the app's stability and performance. No personal data beyond the specified diagnostic information is collected. We are not intersted in any other data
+This data is solely used to identify and fix issues to improve the app's stability and performance. No personal data beyond the specified diagnostic information is collected. We are not intersted in any other data.
 
 ## Security of Your Data
 
@@ -35,7 +35,7 @@ Since Dockside does not collect or transmit any data, your files and personal in
 
 ## Third-Party Integrations
 
-Dockside does not integrate with third-party data services without your explicit permission, and no external service providers have access to your personal data or activity. All your files and personal information remain securely on your device. Additionally, apps like Clop, Popclip and Dropshare, which work alongside Dockside when installed locally on your machine, do not access any data without direct user action.Dockside does not integrate with third-party data services without your explicit permission, and no external service providers have access to your personal data or activity. Your files and personal information stay entirely on your machine. Apps like Clop and Dropshare that works with Dockside also don't access data without user action
+Dockside does not integrate with third-party data services without your explicit permission, and no external service providers have access to your personal data or activity. All your files and personal information remain securely on your device. Additionally, apps like Clop, Popclip and Dropshare, which work alongside Dockside when installed locally on your machine, do not access any data without direct user action.Dockside does not integrate with third-party data services without your explicit permission, and no external service providers have access to your personal data or activity. Your files and personal information stay entirely on your machine. Apps like Clop and Dropshare that works with Dockside also don't access data without user action.
 
 ## Indie Developer Commitment
 
@@ -53,4 +53,4 @@ We may update our Privacy Policy occasionally, primarily for legal reasons or to
 
 If you have any questions about this Privacy Policy or about Dockside, feel free to reach out via email:
 
-- By email: hachipoo.apps@gmail.com
+- By Email: hachipoo.apps@gmail.com
