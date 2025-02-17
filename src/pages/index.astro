@@ -24,7 +24,6 @@ const metadata = {
 
   <!-- Hero Widget ******************* -->
 
-
   <Hero
     actions={[
       {
@@ -34,33 +33,23 @@ const metadata = {
         target: ''
       }
     ]}
-    
-    image={{ 
-		src: '/IntroBanner.png', 
-		alt: 'Dockland App for Mac Hero Image',
-		style: { 
-			width: '100%',  // Ensures the image width fits its container
-			height: '100%',  // Ensures the image height fits its container
-			objectFit: 'fill'  // Ensures the image is not distorted or cropped
-		}
-	}}
   >
   {/* Add image above the title */}
-  <img 
-    src="/512-mac.png" 
-    alt="Dockside Hero Image"
-    style={{
-      display: 'block',  // Makes the image a block element
-      margin: '0 auto',  // Centers the image horizontally
-      width: '50%',      // Adjusts the width of the image (change as necessary)
-      height: 'auto',    // Maintains the aspect ratio
-      objectFit: 'cover',  // Ensures the image fits well within its container
-      marginBottom: '1rem'  // Adds some space below the image
-    }}
-  />
-
+  
     <Fragment slot="title">
-      <span class="text-accent dark:text-white highlight">Dockside for Mac</span>
+		<img 
+	src="/appIcon1024px.png" 
+	alt="Dockside Hero Image"
+	style={{
+		display: 'block',  // Makes the image a block element
+		margin: '0 auto',  // Centers the image horizontally
+		width: '30%',      // Adjusts the width of the image (change as necessary)
+		height: '30%',    // Maintains the aspect ratio
+		objectFit: 'cover',  // Ensures the image fits well within its container
+		marginBottom: '+1rem'  // Adds some space below the image
+	}}
+/>
+      <span class="text-accent dark:text-white highlight no-margin">Dockside for Mac</span>
 	   <span class="hidden xl:inline"></span>
     </Fragment>
 
