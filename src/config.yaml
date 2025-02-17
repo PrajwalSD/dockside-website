@@ -11,7 +11,7 @@ metadata:
   title:
     default: 'Hachipoo Apps'
     template: '%s — Hachipoo Apps'
-  description: "Dockside is your friendly file shelf next to the macOS Dock"
+  description: "Dockside is your friendly file shelf for Mac. Dockside lives next to the Dock. Drag & drop files, folders, links, apps, and even text for use now or later. Access your recent screenshots, downloads or monitor your favourite folders. Dockside helps you manage frequently used items on your Mac—all without getting in your way. "
   robots:
     index: true
     follow: true
