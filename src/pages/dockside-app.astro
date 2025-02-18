@@ -52,13 +52,13 @@ const metadata = {
       ]}
       actions={[
         {
-          variant: 'secondary',
+          variant: 'primary',
           text: 'Download',
           href: 'https://github.com/PrajwalSD/Dockside/releases/latest/download/Dockside.dmg',
           icon: 'tabler:download',
         },
         {
-          variant: 'primary',
+          variant: 'secondary',
           text: 'Buy Now</span>',
           href: 'https://hachipoo.gumroad.com/l/dockside',
         },
@@ -74,11 +74,12 @@ const metadata = {
     tagline=""
     actions={[
       {
+		variant: 'primary',
         text: 'Download 14-day Free Trial	',
         href: 'https://github.com/PrajwalSD/Dockside/releases/latest/download/Dockside.dmg',
+		icon: 'tabler:download'
       },
       {
-        variant: 'primary',
         target: '_blank',
         text: `Buy Lifetime License<span class="font-light from-neutral-50	"> &#xA0;($5.99)</span>`,
         href: 'https://hachipoo.gumroad.com/l/dockside',
@@ -93,16 +94,17 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="sm:inline">
-        Dockside is your friendly file shelf next to the Dock for you Mac. Drag & drop files, folders, links,
-        apps, and even text for use now or later. Access your recent screenshots, downloads or monitor your favourite folders. 
-		Dockside helps you manage frequently used items on your Mac—all without getting in your way.
+		Dockside is your friendly file shelf app for Mac, living next to your Dock and making the most of the unused space around it for quick access to your frequently used items on your Mac—without ever getting in your way.
+		<br /><br />
+		Drag and drop files, folders, links, apps, and even text snippets for immediate or later use on the left. 
+		Quickly access your recent screenshots and downloads, or even monitor your favorite folders on the right.
         <br /><br />
         Dockside is Apple notarized, ensuring it meets Apple's high security standards. Explore the full app
         with a <a style="text-decoration: underline; text-decoration-style: dotted;">free 14-day trial</a>, or purchase
         a <a style="text-decoration: underline; text-decoration-style: dotted;">lifetime license for $5.99</a>, no
         subscriptions.
         <br /><br />
-        Supports macOS 13.0+ (Ventura+). Download below or install via <a href="https://formulae.brew.sh/cask/dockside" style="text-decoration: underline; text-decoration-style: dotted;">Homebrew</a>.
+        <a style="text-decoration: underline; text-decoration-style: dotted;">Native Swift app—fast and responsive</a>. Supports macOS 13.0+ (Ventura+). Download below or install via <a href="https://formulae.brew.sh/cask/dockside" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline; text-decoration-style: dotted;">Homebrew</a>.
       </span>
     </Fragment>
   </Hero2>
