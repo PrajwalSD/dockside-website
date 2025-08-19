@@ -11,50 +11,44 @@ const {
   tagline = '',
   testimonials = [],
   callToAction,
-
   id,
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props;
+  isRolling = false, // NEW
+} = Astro.props as Props;
+
+// duplicate for seamless marquee when rolling
+const rollingList = isRolling ? [...testimonials, ...testimonials] : testimonials;
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
 
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    {
-      testimonials &&
-        testimonials.map(({ title, testimonial, name, job, image }) => (
+  { !isRolling ? (
+    /* Normal grid */
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        testimonials && testimonials.map(({ title, testimonial, name, job, image }) => (
           <div class="flex h-auto">
             <div class="flex flex-col p-4 md:p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600">
               {title && <h2 class="text-lg font-medium leading-6 pb-4">{title}</h2>}
               {testimonial && (
                 <blockquote class="flex-auto">
-                  <p class="text-muted">" {testimonial} "</p>
+                  <p class="text-muted whitespace-normal break-words">" {testimonial} "</p>
                 </blockquote>
               )}
-
               <hr class="border-slate-200 dark:border-slate-600 my-4" />
-
               <div class="flex items-center">
                 {image && (
                   <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">
                     {typeof image === 'string' ? (
                       <Fragment set:html={image} />
                     ) : (
-                      <Image
-                        class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-full min-h-full"
-                        width={40}
-                        height={40}
-                        widths={[400, 768]}
-                        layout="fixed"
-                        {...image}
-                      />
+                      <Image class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-full min-h-full" width={40} height={40} widths={[400, 768]} layout="fixed" {...image} />
                     )}
                   </div>
                 )}
-
                 <div class="grow ml-3 rtl:ml-0 rtl:mr-3">
                   {name && <p class="text-base font-semibold">{name}</p>}
                   {job && <p class="text-xs text-muted">{job}</p>}
@@ -63,8 +57,48 @@ const {
             </div>
           </div>
         ))
-    }
-  </div>
+      }
+    </div>
+  ) : (
+    /* Rolling marquee */
+    <div class="relative overflow-hidden py-2">
+      <!-- gradient fades that match the page background in both themes -->
+      <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-50 dark:from-slate-900 to-transparent"></div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-50 dark:from-slate-900 to-transparent"></div>
+
+      <div class="flex gap-4 whitespace-nowrap will-change-transform animate-[marquee_28s_linear_infinite] hover:[animation-play-state:paused]">
+        {
+          rollingList.map(({ title, testimonial, name, job, image }, i) => (
+            <figure class="inline-flex w-[320px] shrink-0 rounded-2xl border border-slate-200 dark:border-slate-600 bg-white/70 dark:bg-slate-800/60 dark:shadow-none backdrop-blur-sm dark:backdrop-blur-0 overflow-hidden p-4 shadow-sm">
+              <div class="flex flex-col">
+                {title && <h2 class="text-sm font-medium leading-6 pb-2">{title}</h2>}
+                {testimonial && (
+                  <blockquote class="text-xs italic text-slate-600 dark:text-slate-300 whitespace-normal break-words leading-relaxed">
+					“{testimonial}”
+				</blockquote>
+                )}
+                <div class="mt-3 flex items-center">
+                  {image && (
+                    <div class="h-8 w-8 rounded-full border border-slate-200 dark:border-slate-600">
+                      {typeof image === 'string' ? (
+                        <Fragment set:html={image} />
+                      ) : (
+                        <Image class="h-8 w-8 rounded-full min-w-full min-h-full" width={32} height={32} widths={[400, 768]} layout="fixed" {...image} />
+                      )}
+                    </div>
+                  )}
+                  <figcaption class="ml-2 text-xs text-slate-500 dark:text-slate-400">
+                    {name && <span class="font-medium text-slate-900 dark:text-slate-100">{name}</span>}{job && <span class="mx-1">·</span>}{job}
+                  </figcaption>
+                </div>
+              </div>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  )}
+
   {
     callToAction && (
       <div class="flex justify-center mx-auto w-fit mt-8 md:mt-12 font-medium">
@@ -73,3 +107,10 @@ const {
     )
   }
 </WidgetWrapper>
+
+<style is:global>
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* list rendered twice */
+}
+</style>

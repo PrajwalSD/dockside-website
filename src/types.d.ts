@@ -232,9 +232,11 @@ export interface Pricing extends Omit<Headline, 'classes'>, Widget {
 }
 
 export interface Testimonials extends Omit<Headline, 'classes'>, Widget {
-  testimonials?: Array<Testimonial>;
-  callToAction?: CallToAction;
-}
+	testimonials?: Array<Testimonial>;
+	callToAction?: CallToAction;
+	/** enables auto-scrolling marquee */
+	isRolling?: boolean; // <— add this
+  }
 
 export interface Brands extends Omit<Headline, 'classes'>, Widget {
   icons?: Array<string>;
