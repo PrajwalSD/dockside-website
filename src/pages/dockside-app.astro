@@ -13,6 +13,7 @@ import Features3 from '~/components/widgets/Features3.astro';
 import Content from '~/components/widgets/Content.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import RedditFeed from '~/components/widgets/RedditFeed.astro';
+import IntegrationsMarquee from '~/components/widgets/IntegrationsMarquee.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
@@ -264,32 +265,12 @@ const metadata = {
   
   <!-- Content Widget **************** -->
 
-  <div
-    class="relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default"
-    data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/WidgetWrapper.astro"
-    data-astro-source-loc="28:4"
-  >
-    <div
-      class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl"
-      data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/Headline.astro"
-      data-astro-source-loc="21:82"
-    >
-      <p
-        class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase"
-        data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/Headline.astro"
-        data-astro-source-loc="23:10"
-      >
-      </p><h2
-        class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl"
-        data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/Headline.astro"
-        data-astro-source-loc="26:10"
-      >
+  <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default" data-reveal="section">
+    <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+      <h2 class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl" data-reveal="blur">
         Dockside is the perfect companion to your Dock
-      </h2><p
-        class="mt-4 text-muted text-xl"
-        data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/Headline.astro"
-        data-astro-source-loc="32:21"
-      >
+      </h2>
+      <p class="mt-4 text-muted text-xl" data-reveal="blur">
 	  Whether you're studying for exams, tackling creative projects, managing tasks at work, coding your next app, or simply using your Mac for everyday tasks, 
 	  Dockside is the ultimate Dock companion—streamlining your workflow and always ready when you need it.
       </p>
@@ -297,60 +278,71 @@ const metadata = {
     <div
       aria-hidden="true"
       class="aspect-w-16 aspect-h-7"
-      data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/widgets/Features3.astro"
-      data-astro-source-loc="36:58"
     >
-      <div
-        class="w-full object-cover rounded-xl mx-auto bg-gray-500 shadow-lg"
-        data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/widgets/Features3.astro"
-        data-astro-source-loc="39:88"
-      >
-        <img
-          src="/Themes5.gif"
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"
-          class="w-full h-80 object-cover rounded-xl mx-auto bg-gray-500 shadow-lg"
-          width="NaN"
-          height="320"
-          widths="400,768"
-          layout="fullWidth"
-          alt="Dockside App for Mac Overview"
-          style="width:auto;height:auto;object-fit:fit"
-          loading="lazy"
-          decoding="async"
-          data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/common/Image.astro"
-          data-astro-source-loc="62:6"
-        />
-      </div>
+      <SectionImage
+        src="/Themes5.gif"
+        alt="Dockside App for Mac Overview"
+        class="w-full h-80 object-cover rounded-xl mx-auto shadow-lg"
+        width={768}
+        height={320}
+      />
     </div>
   </div>
-  <div
-    class="relative mx-auto max-w-7xl px-4 md:px-6 py-4 md:py-16 lg:py-20 text-default"
-    data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/WidgetWrapper.astro"
-    data-astro-source-loc="28:4"
-  >
-    <div
-      class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl"
-      data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/Headline.astro"
-      data-astro-source-loc="21:82"
-    >
-      <p
-        class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase"
-        data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/Headline.astro"
-        data-astro-source-loc="23:10"
-      >
-	  	Customise your experience
-      </p><h2
-        class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl"
-        data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/Headline.astro"
-        data-astro-source-loc="26:10"
-      >
+
+  <!-- Wherever your Dock goes -->
+  <section id="dock-flexibility" class="relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default bg-slate-50/50 dark:bg-slate-800/30" data-reveal="section">
+    <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+      <p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase" data-reveal="blur">Flexibility</p>
+      <h2 class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl mt-2" data-reveal="blur">
+        Wherever your Dock goes, Dockside follows
+      </h2>
+      <p class="mt-4 text-muted text-xl" data-reveal="blur">
+        Works with the Dock in any mode—bottom, left, or right. Pin to any screen, pin to any edge. Your setup, your rules.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6 max-w-4xl mx-auto items-center">
+      <div class="flex flex-col items-center gap-2">
+        <SectionImage
+          src="/dockside-dock-left.png"
+          alt="Dockside on left edge – vertical dock mode"
+          class="w-full rounded-xl shadow-lg object-contain"
+          width={300}
+          height={400}
+          />
+        <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Works on any edge</span>
+      </div>
+      <div class="flex flex-col gap-6">
+        <div class="flex flex-col items-center gap-2">
+          <SectionImage
+            src="/dockside-screen-pin.png"
+            alt="Pin Dockside to any screen"
+            class="w-full rounded-xl shadow-lg object-contain"
+            width={300}
+            height={320}
+          />
+          <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Pin to any screen</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <SectionImage
+            src="/dockside-position-menu.png"
+            alt="Position on screen – Left, Bottom, Right"
+            class="w-full rounded-xl shadow-lg object-contain"
+            width={300}
+            height={320}
+          />
+          <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Pin to any edge</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-4 md:py-16 lg:py-20 text-default" data-reveal="section">
+    <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+      <p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase" data-reveal="blur">Customise your experience</p>
+      <h2 class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl" data-reveal="blur">
         Make the Dockside work for you
-      </h2><p
-        class="mt-4 text-muted text-xl"
-        data-astro-source-file="/Users/prajwalshettyd/Developer/git/dockside-website/src/components/ui/Headline.astro"
-        data-astro-source-loc="32:21"
-      >
+      </h2>
+      <p class="mt-4 text-muted text-xl" data-reveal="blur">
 	  Dockside offers extensive customisation with fine-grained controls, allowing you to tailor its behavior, appearance, and functionality to suit your workflow.
 	  Explore the features below.
 	</p>
@@ -631,6 +623,9 @@ const metadata = {
       },
     ]}
   />	
+
+  <!-- Integrations marquee (icons + names, no duplicates) -->
+  <IntegrationsMarquee />
 
   <Features3
     id="data-privacy"
