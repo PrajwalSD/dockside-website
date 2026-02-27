@@ -1,0 +1,66 @@
+---
+/**
+ * Section image with skeleton placeholder and smooth fade-in on load.
+ * Use for section images (gifs, screenshots) that may take time to load.
+ */
+export interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  width?: number | string;
+  height?: number | string;
+  loading?: 'lazy' | 'eager';
+  /** Use for first visible section image to hint high priority */
+  fetchPriority?: 'high' | 'low' | 'auto';
+  [key: string]: unknown;
+}
+
+const { src, alt, class: className, width, height, loading = 'lazy', fetchPriority, ...rest } = Astro.props;
+---
+
+<div class="section-image-wrapper relative overflow-hidden rounded-lg" data-section-image>
+  <div class="section-image-skeleton absolute inset-0 bg-slate-200 dark:bg-slate-700 animate-pulse" aria-hidden="true"></div>
+  <img
+    src={src}
+    alt={alt}
+    width={typeof width === 'number' ? width : undefined}
+    height={typeof height === 'number' ? height : undefined}
+    loading={loading}
+    decoding="async"
+    fetchpriority={fetchPriority}
+    class={`section-image-img block w-full h-auto object-cover opacity-0 transition-opacity duration-500 ${className ?? ''}`}
+    data-section-img
+    {...rest}
+  />
+</div>
+
+<style>
+  .section-image-wrapper {
+    min-height: 120px;
+  }
+  .section-image-wrapper.loaded .section-image-img {
+    opacity: 1;
+  }
+  .section-image-wrapper.loaded .section-image-skeleton {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+</style>
+
+<script>
+  function initSectionImages() {
+    document.querySelectorAll('[data-section-image]').forEach((wrapper) => {
+      const img = wrapper.querySelector('img[data-section-img]') as HTMLImageElement | null;
+      if (!img) return;
+      if (img.complete) {
+        wrapper.classList.add('loaded');
+      } else {
+        img.addEventListener('load', () => wrapper.classList.add('loaded'));
+        img.addEventListener('error', () => wrapper.classList.add('loaded'));
+      }
+    });
+  }
+  initSectionImages();
+  document.addEventListener('astro:page-load', initSectionImages);
+</script>

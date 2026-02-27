@@ -19,6 +19,7 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
+import SectionImage from '~/components/common/SectionImage.astro';
 
 import { Vimeo } from 'astro-embed';
 
@@ -116,7 +117,7 @@ const metadata = {
 
   <section class="not-prose">
 	<div class="max-w-4xl mx-auto px-4 sm:px-6 py-3">
-	  <div class="flex flex-wrap md:flex-nowrap items-center justify-center gap-3 md:gap-4">
+	  <div class="flex flex-wrap md:flex-nowrap items-stretch justify-center gap-3 md:gap-4">
 		<!-- Homebrew install -->
 		<div class="flex flex-nowrap items-center gap-2 rounded-xl bg-slate-200/80 dark:bg-slate-700/50 px-3 py-2 shadow-sm ring-1 ring-slate-300/50 dark:ring-slate-600/50 shrink-0">
 		  <Icon name="tabler:download" class="w-4 h-4 shrink-0 text-slate-600 dark:text-slate-300" aria-hidden="true" />
@@ -468,29 +469,26 @@ const metadata = {
       <p class="text-muted dark:text-slate-400 mt-2">Run AppleScript, shell scripts, CLI commands, Quick Actions, share sheets—and your whole workflow—from one place.</p>
     </Fragment>
     <div slot="image" class="flex flex-col gap-4 pt-8 md:pt-12">
-      <img
+      <SectionImage
         src="/drop-zones.gif"
         alt="Dockside Drop Zones - configure up to 4 zones on your shelf"
-        class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg object-cover"
+        class="mx-auto w-full rounded-lg shadow-lg object-cover"
         width={600}
         height={320}
-        loading="lazy"
       />
-      <img
+      <SectionImage
         src="/drop-zones-actions.gif"
         alt="Dockside Drop Zones - run AppleScript, shell scripts, CLI, Quick actions, share sheets"
-        class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg object-cover"
+        class="mx-auto w-full rounded-lg shadow-lg object-cover"
         width={600}
         height={320}
-        loading="lazy"
       />
-      <img
+      <SectionImage
         src="/drop-zones-settings.png"
         alt="Drop Zones settings - configure icon, name, file type, action, destination and post-drop"
         class="mx-auto w-full rounded-lg bg-slate-800 shadow-lg object-contain border border-slate-700/50"
         width={600}
         height={340}
-        loading="lazy"
       />
     </div>
   </Content>
@@ -582,13 +580,12 @@ const metadata = {
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Controls and Settings:</h3>
     </Fragment>
     <div slot="image" class="relative m-auto max-w-4xl pt-8 md:pt-12">
-      <img
+      <SectionImage
         src="/Settings.gif"
         alt="Customisation Settings Image"
-        class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg object-cover"
+        class="mx-auto w-full rounded-lg shadow-lg object-cover"
         width={600}
         height={400}
-        loading="lazy"
       />
     </div>
   </Content>

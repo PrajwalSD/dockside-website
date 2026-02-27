@@ -2,7 +2,7 @@
 import Headline from '~/components/ui/Headline.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import Image from '~/components/common/Image.astro';
+import SectionImage from '~/components/common/SectionImage.astro';
 import type { Features as Props } from '~/types';
 
 const {
@@ -40,13 +40,14 @@ const {
           {typeof image === 'string' ? (
             <Fragment set:html={image} />
           ) : (
-            <Image
-              class="w-full h-80 object-cover rounded-xl mx-auto bg-gray-500 shadow-lg"
-              width="auto"
+            <SectionImage
+              src={typeof (image as { src?: string })?.src === 'string' ? (image as { src: string }).src : ''}
+              alt={(image as { alt?: string })?.alt ?? ''}
+              class="w-full h-80 object-cover rounded-xl mx-auto shadow-lg"
+              width={768}
               height={320}
-              widths={[400, 768]}
-              layout="fullWidth"
-              {...image}
+              loading="eager"
+              fetchPriority="high"
             />
           )}
         </div>
