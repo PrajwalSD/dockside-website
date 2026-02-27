@@ -43,6 +43,17 @@ import { UI } from 'astrowind:config';
   function initRevealAnimations() {
     const revealEls = document.querySelectorAll('[data-reveal], [data-reveal-stagger]');
     if (!revealEls.length) return;
+    function setVisibleIfInView(el) {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const threshold = vh * 0.1;
+      if (rect.top < vh - threshold && rect.bottom > threshold) {
+        el.classList.add('is-visible');
+      }
+    }
+    revealEls.forEach((el) => {
+      setVisibleIfInView(el);
+    });
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
