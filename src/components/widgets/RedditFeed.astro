@@ -85,11 +85,11 @@ const infiniteTrack = [...displayItems, ...displayItems, ...displayItems];
 const hasItems = infiniteTrack.length > 0;
 ---
 
+{hasItems && (
 <WidgetWrapper id={id} isDark={isDark} containerClass="max-w-none">
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
 
   <div id="reddit-feed-mount">
-  {hasItems ? (
     <div class="reddit-infinite-outer relative overflow-hidden -mx-4 sm:-mx-6 md:-mx-8 mt-6 md:mt-8">
       <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 md:w-32 reddit-infinite-fade reddit-infinite-fade--left" aria-hidden="true"></div>
       <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 md:w-32 reddit-infinite-fade reddit-infinite-fade--right" aria-hidden="true"></div>
@@ -126,19 +126,6 @@ const hasItems = infiniteTrack.length > 0;
         ))}
       </div>
     </div>
-  ) : (
-    <div class="text-center py-12 px-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-600 bg-slate-50/50 dark:bg-slate-800/30" data-reveal="up">
-      <div class="text-[#FF4500] mb-4">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-16 h-16 mx-auto" fill="currentColor">
-          <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.25-1.249z"/>
-        </svg>
-      </div>
-      <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-2">No posts or comments yet for "Dockside" on r/macapps</h3>
-      <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-md mx-auto">
-        Be the first to share! r/macapps is where Mac users discuss great apps.
-      </p>
-    </div>
-  )}
   </div>
 
   {callToAction?.href && (
@@ -149,6 +136,7 @@ const hasItems = infiniteTrack.length > 0;
     </div>
   )}
 </WidgetWrapper>
+)}
 
 <style is:global>
   .reddit-infinite-fade {
