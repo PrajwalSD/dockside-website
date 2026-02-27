@@ -18,83 +18,85 @@ interface Links {
 export interface Props {
   links: Array<Links>;
   secondaryLinks: Array<Link>;
+  connectLinks?: Array<Link>;
   socialLinks: Array<Link>;
   footNote?: string;
   theme?: string;
 }
 
-const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+const { socialLinks = [], secondaryLinks = [], connectLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
 ---
 
-<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
-  <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300">
-    <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
-      <div class="col-span-12 lg:col-span-4">
-        <div class="mb-2">
-          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
-        </div>
-        <div class="text-sm text-muted flex gap-1">
+<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-700/80 not-prose bg-slate-50/50 dark:bg-slate-900/50']}>
+  <div class="dark:bg-dark absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+      <!-- Brand -->
+      <div class="lg:col-span-2">
+        <a class="inline-block font-bold text-2xl text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors" href={getHomePermalink()}>{SITE?.name}</a>
+        <p class="mt-3 text-sm text-muted dark:text-slate-400 max-w-sm">
+          Indie Mac apps that simplify your workflow.
+        </p>
+        <nav class="mt-6 flex flex-wrap gap-x-4 gap-y-1 text-sm" aria-label="Footer navigation">
           {
-            secondaryLinks.map(({ text, href }, index) => (
-              <>
-                {index !== 0 ? ' · ' : ''}
-                <a
-                  class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-                  href={href}
-                  set:html={text}
-                />
-              </>
+            secondaryLinks.map(({ text, href }) => (
+              <a
+                class="text-muted hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:underline transition-colors"
+                href={href}
+                set:html={text}
+              />
             ))
           }
-        </div>
+        </nav>
       </div>
-      {
-        links.map(({ title, links }) => (
-          <div class="col-span-6 md:col-span-3 lg:col-span-2">
-            <div class="dark:text-gray-300 font-medium mb-2">{title}</div>
-            {links && Array.isArray(links) && links.length > 0 && (
-              <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
-                  <li class="mb-2">
+
+      <!-- Connect & Follow (aligned rows) -->
+      {(connectLinks?.length > 0 || socialLinks?.length > 0) && (
+        <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-0 lg:gap-x-12">
+          {connectLinks?.length > 0 && (
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-4">Connect & Support</h3>
+              <ul class="space-y-3">
+                {connectLinks.map(({ text, href, icon, ariaLabel }) => (
+                  <li class="h-8 flex items-center">
                     <a
-                      class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
+                      class="inline-flex items-center gap-2 text-sm text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
                       href={href}
                       aria-label={ariaLabel}
                     >
-                      <Fragment set:html={text} />
+                      {icon && <Icon name={icon} class="w-5 h-5 text-primary shrink-0" />}
+                      <span class="break-all">{text}</span>
                     </a>
                   </li>
                 ))}
               </ul>
-            )}
-          </div>
-        ))
-      }
+            </div>
+          )}
+          {socialLinks?.length > 0 && (
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-4">Follow</h3>
+              <ul class="space-y-3">
+                {socialLinks.map(({ ariaLabel, href, icon, text }) => (
+                  <li class="h-8 flex items-center">
+                    <a
+                      class="inline-flex items-center gap-2 text-sm text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                      aria-label={ariaLabel}
+                      href={href}
+                    >
+                      <Icon name={icon} class="w-5 h-5 shrink-0" />
+                      {text || ariaLabel}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
     </div>
-    <div class="md:flex md:items-center md:justify-between py-6 md:py-8">
-      {
-        socialLinks?.length ? (
-          <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
-            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
-              <li>
-                <a
-                  class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-                  aria-label={ariaLabel}
-                  href={href}
-                >
-                  {icon && <Icon name={icon} class="w-5 h-5" />}
-                  <Fragment set:html={text} />
-                </a>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          ''
-        )
-      }
 
-      <div class="text-sm mr-4 dark:text-muted">
+    <div class="mt-12 pt-8 border-t border-gray-200/80 dark:border-slate-700/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div class="text-sm text-muted dark:text-slate-400 flex items-center">
         <Fragment set:html={footNote} />
       </div>
     </div>
