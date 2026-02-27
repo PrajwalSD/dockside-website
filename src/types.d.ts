@@ -236,7 +236,9 @@ export interface Testimonials extends Omit<Headline, 'classes'>, Widget {
 	testimonials?: Array<Testimonial>;
 	callToAction?: CallToAction;
 	/** enables auto-scrolling marquee */
-	isRolling?: boolean; // <— add this
+	isRolling?: boolean;
+	/** 'reddit' = vertical grid; 'carousel' = horizontal scroll; 'infinite' = endless marquee; else grid */
+	layout?: 'grid' | 'carousel' | 'reddit' | 'infinite';
   }
 
 export interface Brands extends Omit<Headline, 'classes'>, Widget {

@@ -16,16 +16,79 @@ const {
   classes = {},
   bg = await Astro.slots.render('bg'),
   isRolling = false,
+  layout,
 } = Astro.props as Props;
 
-// duplicate for seamless marquee when rolling
-const rollingList = isRolling ? [...testimonials, ...testimonials] : testimonials;
+const useCarousel = isRolling || layout === 'carousel';
+const useRedditStyle = layout === 'reddit';
+const useInfinite = layout === 'infinite';
+
+/** For infinite marquee: repeat testimonials 3x so the loop feels endless */
+const infiniteTrack = useInfinite && testimonials?.length ? [...testimonials, ...testimonials, ...testimonials] : [];
+
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper id={id} isDark={isDark} containerClass={useInfinite ? 'max-w-none' : `max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
 
-  { !isRolling ? (
+  { useInfinite ? (
+    /* Infinite canvas: single-row endless marquee — full-bleed */
+    <div class="testimonials-infinite-outer relative overflow-hidden -mx-4 sm:-mx-6 md:-mx-8 mt-6 md:mt-8">
+      <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 md:w-32 testimonials-infinite-fade testimonials-infinite-fade--left" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 md:w-32 testimonials-infinite-fade testimonials-infinite-fade--right" aria-hidden="true"></div>
+      <div class="testimonials-infinite-track testimonials-infinite-track--left flex gap-4 py-6 md:py-8" aria-hidden="true">
+        {infiniteTrack.map(({ title: cardTitle, testimonial, name, rating = 5 }) => (
+          <article class="testimonial-infinite-card flex-shrink-0 w-[300px] md:w-[340px] rounded-2xl border border-white/30 dark:border-slate-500/40 bg-white/90 dark:bg-slate-800/80 backdrop-blur-md p-5 md:p-6 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+            <div class="flex gap-0.5 mb-3">
+              {[...Array(5)].map((_, j) => (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class={`w-4 h-4 shrink-0 ${j < rating ? 'text-amber-400' : 'text-slate-300/50 dark:text-slate-500'}`}>
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.378 2.455a1 1 0 00-.364 1.118l1.287 3.966c.299.921-.755 1.688-1.54 1.118l-3.378-2.455a1 1 0 00-1.176 0l-3.378 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.05 9.393c-.783-.57-.38-1.81.588-1.81h4.174a1 1 0 00.95-.69l1.287-3.966z" />
+                </svg>
+              ))}
+            </div>
+            {cardTitle && <h2 class="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-2 line-clamp-1">{cardTitle}</h2>}
+            {testimonial && (
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-4">{testimonial}</p>
+            )}
+            {name && <p class="mt-3 text-xs font-medium text-slate-500 dark:text-slate-400">— {name}</p>}
+          </article>
+        ))}
+      </div>
+    </div>
+  ) : useRedditStyle ? (
+    /* Reddit-style: top-to-bottom flow, comment-style cards (like Clop) */
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+      {
+        testimonials && testimonials.map(({ title: cardTitle, testimonial, name, rating = 5 }) => (
+          <article class="testimonial-reddit-card rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800/80 p-4 md:p-5 text-left shadow-sm hover:shadow-md transition-shadow">
+            <header class="flex items-center gap-2 mb-3">
+              <span class="testimonial-reddit-icon flex-shrink-0" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 text-[#FF4500]" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.25-1.249z"/></svg>
+              </span>
+              <span class="text-sm font-semibold text-slate-700 dark:text-slate-200">
+                /u/{name && name.replace(/\s+/g, '') || 'Anonymous'}
+              </span>
+            </header>
+            {cardTitle && (
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-2">{cardTitle}</p>
+            )}
+            {testimonial && (
+              <blockquote class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                "{testimonial}"
+              </blockquote>
+            )}
+            <div class="flex gap-0.5 mt-3" aria-hidden="true">
+              {[...Array(5)].map((_, i) => (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class={`w-4 h-4 shrink-0 ${i < rating ? 'text-amber-400' : 'text-slate-300 dark:text-slate-600'}`}>
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.378 2.455a1 1 0 00-.364 1.118l1.287 3.966c.299.921-.755 1.688-1.54 1.118l-3.378-2.455a1 1 0 00-1.176 0l-3.378 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.05 9.393c-.783-.57-.38-1.81.588-1.81h4.174a1 1 0 00.95-.69l1.287-3.966z" />
+                </svg>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  ) : !useCarousel ? (
     /* Normal grid */
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {
@@ -83,63 +146,78 @@ const rollingList = isRolling ? [...testimonials, ...testimonials] : testimonial
       }
     </div>
   ) : (
-    /* Rolling marquee */
-    <div class="relative overflow-hidden py-2">
-      <!-- gradient fades that match the page background in both themes -->
-      <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white dark:from-slate-950 to-transparent"></div>
-      <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white dark:from-slate-950 to-transparent"></div>
+    /* Modern flow: scroll-snap carousel with nav */
+    <div class="relative -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0">
+      <!-- edge fades — match page/section background so gradient blends -->
+      <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 md:w-20 testimonials-edge-fade testimonials-edge-fade--left" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 md:w-20 testimonials-edge-fade testimonials-edge-fade--right" aria-hidden="true"></div>
 
-      <div class="flex gap-4 whitespace-nowrap will-change-transform animate-[marquee_28s_linear_infinite] hover:[animation-play-state:paused]">
+      <!-- scroll container -->
+      <div
+        id="testimonials-carousel"
+        class="flex gap-4 overflow-x-auto overflow-y-hidden py-4 pb-6 scroll-smooth scrollbar-thin snap-x snap-mandatory md:gap-6"
+        style="scrollbar-width: none; -ms-overflow-style: none;"
+        role="region"
+        aria-label="Testimonials carousel"
+      >
         {
-          rollingList.map(({ title, testimonial, name, job, image, rating = 5 }, i) => (
-            <figure class="inline-flex w-[400px] shrink-0 rounded-2xl border border-slate-200 dark:border-slate-600 bg-white/70 dark:bg-slate-800/60 backdrop-blur-sm dark:backdrop-blur-0 overflow-hidden p-4 shadow-sm dark:shadow-none">
-              <div class="flex flex-col">
-                {title && <h2 class="text-sm font-medium leading-6 pb-2">{title}</h2>}
+          testimonials && testimonials.map(({ title, testimonial, name, job, image, rating = 5 }) => (
+            <figure
+              class="flex w-[85vw] min-w-[280px] max-w-[380px] shrink-0 snap-center rounded-2xl border border-slate-200/80 dark:border-slate-600/80 bg-white dark:bg-slate-800/80 p-5 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-slate-300 dark:hover:border-slate-500 md:p-6"
+            >
+              <div class="flex flex-col h-full min-h-0">
+                {title && <h2 class="text-base font-semibold leading-snug text-slate-900 dark:text-white pb-2">{title}</h2>}
                 {testimonial && (
-                  <blockquote class="text-xs italic text-slate-600 dark:text-slate-300 whitespace-normal break-words leading-relaxed">
-                    “{testimonial}”
+                  <blockquote class="flex-1 min-h-0">
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-h-[7.5rem] md:max-h-[9rem] overflow-hidden">"{testimonial}"</p>
                   </blockquote>
                 )}
 
-                <!-- ⭐ rating -->
-                <div class="flex mt-2">
+                <div class="flex gap-0.5 mt-3" aria-hidden="true">
                   {[...Array(5)].map((_, i) => (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      class={`w-4 h-4 ${i < rating ? 'text-yellow-400' : 'text-slate-300 dark:text-slate-600'}`}
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class={`w-4 h-4 shrink-0 ${i < rating ? 'text-amber-400' : 'text-slate-300 dark:text-slate-600'}`}>
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.378 2.455a1 1 0 00-.364 1.118l1.287 3.966c.299.921-.755 1.688-1.54 1.118l-3.378-2.455a1 1 0 00-1.176 0l-3.378 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.05 9.393c-.783-.57-.38-1.81.588-1.81h4.174a1 1 0 00.95-.69l1.287-3.966z" />
                     </svg>
                   ))}
                 </div>
 
-                <div class="mt-3 flex items-center">
+                <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-600 flex items-center gap-3">
                   {image && (
-                    <div class="h-8 w-8 rounded-full border border-slate-200 dark:border-slate-600">
+                    <div class="h-9 w-9 rounded-full overflow-hidden border border-slate-200 dark:border-slate-600 shrink-0">
                       {typeof image === 'string' ? (
                         <Fragment set:html={image} />
                       ) : (
-                        <Image
-                          class="h-8 w-8 rounded-full min-w-full min-h-full"
-                          width={32}
-                          height={32}
-                          widths={[400, 768]}
-                          layout="fixed"
-                          {...image}
-                        />
+                        <Image class="h-9 w-9 min-h-full object-cover" width={36} height={36} widths={[72]} layout="fixed" {...image} />
                       )}
                     </div>
                   )}
-                  <figcaption class="ml-2 text-xs text-slate-500 dark:text-slate-400">
-                    {name && <span class="font-medium text-slate-900 dark:text-slate-100">{name}</span>}{job && <span class="mx-1">·</span>}{job}
+                  <figcaption class="min-w-0 text-sm text-slate-600 dark:text-slate-400">
+                    {name && <span class="font-medium text-slate-900 dark:text-slate-100">{name}</span>}
+                    {job && <span class="text-slate-500 dark:text-slate-500"> · {job}</span>}
                   </figcaption>
                 </div>
               </div>
             </figure>
           ))
         }
+      </div>
+
+      <!-- prev/next (desktop) -->
+      <div class="hidden md:flex justify-center gap-3 mt-4">
+        <button
+          type="button"
+          class="testimonials-carousel-prev rounded-full p-2 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-40 disabled:pointer-events-none"
+          aria-label="Previous testimonial"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <button
+          type="button"
+          class="testimonials-carousel-next rounded-full p-2 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-40 disabled:pointer-events-none"
+          aria-label="Next testimonial"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </button>
       </div>
     </div>
   )}
@@ -154,8 +232,117 @@ const rollingList = isRolling ? [...testimonials, ...testimonials] : testimonial
 </WidgetWrapper>
 
 <style is:global>
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* list rendered twice */
-}
+  #testimonials-carousel::-webkit-scrollbar {
+    display: none;
+  }
+  .testimonials-edge-fade {
+    background: linear-gradient(to right, var(--aw-color-bg-page), transparent);
+  }
+  .testimonials-edge-fade--right {
+    background: linear-gradient(to left, var(--aw-color-bg-page), transparent);
+  }
+  .dark .testimonials-edge-fade {
+    background: linear-gradient(to right, var(--aw-color-bg-page), transparent);
+  }
+  .dark .testimonials-edge-fade--right {
+    background: linear-gradient(to left, var(--aw-color-bg-page), transparent);
+  }
+
+  /* Infinite canvas marquee */
+  .testimonials-infinite-fade {
+    background: linear-gradient(to right, var(--aw-color-bg-page), transparent);
+  }
+  .testimonials-infinite-fade--right {
+    background: linear-gradient(to left, var(--aw-color-bg-page), transparent);
+  }
+  .dark .testimonials-infinite-fade {
+    background: linear-gradient(to right, var(--aw-color-bg-page), transparent);
+  }
+  .dark .testimonials-infinite-fade--right {
+    background: linear-gradient(to left, var(--aw-color-bg-page), transparent);
+  }
+  .testimonials-infinite-track {
+    width: max-content;
+  }
+  .testimonials-infinite-track--left {
+    animation: testimonials-infinite-scroll-left 50s linear infinite;
+  }
+  .testimonials-infinite-outer:hover .testimonials-infinite-track {
+    animation-play-state: paused;
+  }
+  @keyframes testimonials-infinite-scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .testimonials-infinite-track--left {
+      animation: none;
+    }
+  }
 </style>
+
+<script>
+  (function carouselNav() {
+    const carousel = document.getElementById('testimonials-carousel') as HTMLElement | null;
+    const prev = document.querySelector('.testimonials-carousel-prev') as HTMLButtonElement | null;
+    const next = document.querySelector('.testimonials-carousel-next') as HTMLButtonElement | null;
+    if (!carousel || !prev || !next) return;
+
+    const cardWidth = () => {
+      const first = carousel.querySelector('figure') as HTMLElement | null;
+      return first ? first.offsetWidth + 24 : 400;
+    };
+
+    function updateButtons() {
+      if (!carousel || !prev || !next) return;
+      const scrollLeft = carousel.scrollLeft;
+      const scrollWidth = carousel.scrollWidth;
+      const clientWidth = carousel.clientWidth;
+      prev.disabled = scrollLeft <= 0;
+      next.disabled = scrollLeft >= scrollWidth - clientWidth - 2;
+    }
+
+    // Flow right-to-left: next = scroll left, prev = scroll right
+    prev.addEventListener('click', () => {
+      carousel.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+    });
+    next.addEventListener('click', () => {
+      carousel.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+    });
+    carousel.addEventListener('scroll', updateButtons);
+    window.addEventListener('resize', updateButtons);
+    updateButtons();
+
+    // Auto-flow right-to-left: scroll left every 4s; at start, loop to end
+    const AUTO_INTERVAL_MS = 4000;
+    let autoTimer: ReturnType<typeof setInterval> | null = null;
+
+    function autoAdvance() {
+      if (!carousel) return;
+      const { scrollLeft, scrollWidth, clientWidth } = carousel;
+      const nearStart = scrollLeft <= 2;
+      if (nearStart) {
+        carousel.scrollTo({ left: scrollWidth - clientWidth, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+      }
+    }
+
+    function startAuto() {
+      if (autoTimer) return;
+      autoTimer = setInterval(autoAdvance, AUTO_INTERVAL_MS);
+    }
+    function stopAuto() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+    carousel.addEventListener('touchstart', stopAuto, { passive: true });
+    carousel.addEventListener('touchend', () => setTimeout(startAuto, 3000), { passive: true });
+    startAuto();
+  })();
+</script>

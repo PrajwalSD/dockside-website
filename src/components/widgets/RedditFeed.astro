@@ -1,0 +1,257 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import Button from '~/components/ui/Button.astro';
+import { fetchRedditSearch, fetchRedditComments, type RedditPost, type RedditComment } from '~/lib/reddit';
+
+export interface RedditFeedItem {
+  author: string;
+  title: string;
+  body: string;
+  permalink: string;
+  score: number;
+  subreddit: string;
+  isComment?: boolean;
+}
+
+const EXCLUDED_COMMENT_AUTHORS = ['prajwalsd', '[deleted]'];
+
+export interface Props {
+  id?: string;
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  searchQuery?: string;
+  callToAction?: { href: string; text: string; target?: string };
+  isDark?: boolean;
+}
+
+const {
+  id = 'reddit',
+  title = 'From r/macapps',
+  subtitle = 'Top posts & comments mentioning Dockside',
+  tagline = 'Community',
+  searchQuery = 'dockside',
+  callToAction = { href: 'https://reddit.com/r/macapps', text: 'Join the conversation', target: '_blank' },
+  isDark = false,
+} = Astro.props;
+
+let posts: RedditPost[] = [];
+let comments: RedditComment[] = [];
+try {
+  const [postsRes, commentsRes] = await Promise.all([
+    fetchRedditSearch('macapps', searchQuery, 25),
+    fetchRedditComments('macapps', searchQuery, 50),
+  ]);
+  posts = postsRes.posts || [];
+  comments = commentsRes.comments || [];
+} catch {
+  posts = [];
+  comments = [];
+}
+
+const postItems: RedditFeedItem[] = posts
+  .map((p) => ({
+    author: p.author,
+    title: p.title,
+    body: p.selftext || p.title,
+    permalink: p.permalink,
+    score: p.score,
+    subreddit: p.subreddit,
+    isComment: false,
+  }))
+  .filter((x) => x.body && x.body.length > 10 && x.author !== '[deleted]')
+  .filter((x) => (x.score ?? 0) > 0);
+
+const commentItems: RedditFeedItem[] = comments
+  .map((c) => ({
+    author: c.author,
+    title: c.link_title,
+    body: c.body,
+    permalink: c.permalink,
+    score: c.score,
+    subreddit: c.subreddit,
+    isComment: true,
+  }))
+  .filter((x) => x.body && x.body.length > 10)
+  .filter((x) => !EXCLUDED_COMMENT_AUTHORS.includes((x.author || '').toLowerCase()))
+  .filter((x) => (x.score ?? 0) > 0);
+
+const apiItems: RedditFeedItem[] = [...postItems, ...commentItems]
+  .sort((a, b) => (b.score || 0) - (a.score || 0));
+
+const displayItems = apiItems.slice(0, 50);
+const infiniteTrack = [...displayItems, ...displayItems, ...displayItems];
+const hasItems = infiniteTrack.length > 0;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass="max-w-none">
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+
+  <div id="reddit-feed-mount">
+  {hasItems ? (
+    <div class="reddit-infinite-outer relative overflow-hidden -mx-4 sm:-mx-6 md:-mx-8 mt-6 md:mt-8">
+      <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 md:w-32 reddit-infinite-fade reddit-infinite-fade--left" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 md:w-32 reddit-infinite-fade reddit-infinite-fade--right" aria-hidden="true"></div>
+      <div class="reddit-infinite-track flex gap-4 py-6 md:py-8" aria-hidden="true">
+        {infiniteTrack.map((item) => (
+          <a
+            href={item.permalink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="reddit-infinite-card group flex-shrink-0 w-[300px] md:w-[340px] block rounded-2xl border border-white/30 dark:border-slate-500/40 bg-white/90 dark:bg-slate-800/80 backdrop-blur-md p-5 md:p-6 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
+          >
+            <header class="flex items-center gap-2 mb-3">
+              <span class="flex-shrink-0 text-[#FF4500]">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
+                  <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.25-1.249z"/>
+                </svg>
+              </span>
+              <span class="text-sm font-semibold text-slate-700 dark:text-slate-200 group-hover:text-[#FF4500] transition-colors">
+                /u/{item.author}
+              </span>
+              {item.score > 0 && (
+                <span class="ml-auto text-xs text-slate-500 dark:text-slate-400">{item.score} ↑</span>
+              )}
+            </header>
+            {item.isComment && item.title && (
+              <p class="text-xs font-medium text-slate-500 dark:text-slate-400 mb-2 line-clamp-1">Re: {item.title}</p>
+            )}
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-4">{item.body}</p>
+            <span class="mt-3 inline-flex items-center text-xs text-slate-500 dark:text-slate-400">
+              r/{item.subreddit}
+              <span class="ml-1 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  ) : (
+    <div class="text-center py-12 px-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-600 bg-slate-50/50 dark:bg-slate-800/30" data-reveal="up">
+      <div class="text-[#FF4500] mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-16 h-16 mx-auto" fill="currentColor">
+          <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.25-1.249z"/>
+        </svg>
+      </div>
+      <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-2">No posts or comments yet for "Dockside" on r/macapps</h3>
+      <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-md mx-auto">
+        Be the first to share! r/macapps is where Mac users discuss great apps.
+      </p>
+    </div>
+  )}
+  </div>
+
+  {callToAction?.href && (
+    <div class="mt-10 text-center">
+      <Button href={callToAction.href} variant="secondary" target={callToAction.target ?? '_blank'}>
+        {callToAction.text}
+      </Button>
+    </div>
+  )}
+</WidgetWrapper>
+
+<style is:global>
+  .reddit-infinite-fade {
+    background: linear-gradient(to right, var(--aw-color-bg-page), transparent);
+  }
+  .reddit-infinite-fade--right {
+    background: linear-gradient(to left, var(--aw-color-bg-page), transparent);
+  }
+  .dark .reddit-infinite-fade {
+    background: linear-gradient(to right, var(--aw-color-bg-page), transparent);
+  }
+  .dark .reddit-infinite-fade--right {
+    background: linear-gradient(to left, var(--aw-color-bg-page), transparent);
+  }
+  .reddit-infinite-track {
+    animation: reddit-infinite-scroll 55s linear infinite;
+    width: max-content;
+  }
+  .reddit-infinite-outer:hover .reddit-infinite-track {
+    animation-play-state: paused;
+  }
+  @keyframes reddit-infinite-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reddit-infinite-track {
+      animation: none;
+    }
+  }
+</style>
+
+<script define:vars={{ searchQuery }}>
+  const EXCLUDED_COMMENT_AUTHORS = ['prajwalsd', '[deleted]'];
+  const mount = document.getElementById('reddit-feed-mount');
+  if (!mount || mount.querySelector('.reddit-infinite-track')) return;
+
+  const q = encodeURIComponent(searchQuery || 'dockside');
+  const opts = { headers: { 'User-Agent': 'DocksideWebsite/1.0 (by /u/hachipoo)' } };
+
+  Promise.all([
+    fetch(`https://www.reddit.com/r/macapps/search.json?q=${q}&restrict_sr=on&type=link&limit=25&sort=top`, opts).then((r) => r.json()),
+    fetch(`https://www.reddit.com/r/macapps/search.json?q=${q}&restrict_sr=on&type=comment&limit=50&sort=top`, opts).then((r) => r.json()),
+  ]).then(([postsJson, commentsJson]) => {
+    const postItems = (postsJson?.data?.children ?? [])
+      .filter((c) => c.kind === 't3')
+      .map((c) => {
+        const d = c.data;
+        return {
+          author: String(d?.author ?? ''),
+          title: String(d?.title ?? ''),
+          body: (d?.selftext || d?.title || '').toString(),
+          permalink: `https://reddit.com${String(d?.permalink ?? '')}`,
+          score: Number(d?.score ?? 0),
+          subreddit: String(d?.subreddit ?? 'macapps'),
+          isComment: false,
+        };
+      })
+      .filter((x) => x.body && x.body.length > 10 && x.author !== '[deleted]')
+      .filter((x) => x.score > 0);
+
+    const commentItems = (commentsJson?.data?.children ?? [])
+      .filter((c) => c.kind === 't1')
+      .map((c) => {
+        const d = c.data;
+        return {
+          author: String(d?.author ?? ''),
+          title: String(d?.link_title ?? ''),
+          body: String(d?.body ?? ''),
+          permalink: `https://reddit.com${String(d?.permalink ?? '')}`,
+          score: Number(d?.score ?? 0),
+          subreddit: String(d?.subreddit ?? 'macapps'),
+          isComment: true,
+        };
+      })
+      .filter((x) => x.body && x.body.length > 10)
+      .filter((x) => !EXCLUDED_COMMENT_AUTHORS.includes((x.author || '').toLowerCase()))
+      .filter((x) => x.score > 0);
+
+    const items = [...postItems, ...commentItems].sort((a, b) => b.score - a.score);
+    if (items.length === 0) return;
+
+    const track = [...items.slice(0, 50), ...items.slice(0, 50), ...items.slice(0, 50)];
+    const html = track.map((item) => `
+        <a href="${item.permalink}" target="_blank" rel="noopener noreferrer" class="reddit-infinite-card group flex-shrink-0 w-[300px] md:w-[340px] block rounded-2xl border border-white/30 dark:border-slate-500/40 bg-white/90 dark:bg-slate-800/80 backdrop-blur-md p-5 md:p-6 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+          <header class="flex items-center gap-2 mb-3">
+            <span class="flex-shrink-0 text-[#FF4500]"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.25-1.249z"/></svg></span>
+            <span class="text-sm font-semibold text-slate-700 dark:text-slate-200 group-hover:text-[#FF4500] transition-colors">/u/${item.author}</span>
+            ${item.score > 0 ? `<span class="ml-auto text-xs text-slate-500 dark:text-slate-400">${item.score} ↑</span>` : ''}
+          </header>
+          ${item.isComment && item.title ? `<p class="text-xs font-medium text-slate-500 dark:text-slate-400 mb-2 line-clamp-1">Re: ${item.title.replace(/</g, '&lt;')}</p>` : ''}
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-4">${item.body.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
+          <span class="mt-3 inline-flex items-center text-xs text-slate-500 dark:text-slate-400">r/${item.subreddit}<span class="ml-1 opacity-0 group-hover:opacity-100 transition-opacity">→</span></span>
+        </a>
+      `).join('');
+
+      mount.innerHTML = `
+        <div class="reddit-infinite-outer relative overflow-hidden -mx-4 sm:-mx-6 md:-mx-8 mt-6 md:mt-8">
+          <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 md:w-32 reddit-infinite-fade reddit-infinite-fade--left" aria-hidden="true"></div>
+          <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 md:w-32 reddit-infinite-fade reddit-infinite-fade--right" aria-hidden="true"></div>
+          <div class="reddit-infinite-track flex gap-4 py-6 md:py-8" aria-hidden="true">${html}</div>
+        </div>
+      `;
+    })
+    .catch(() => {});
+</script>

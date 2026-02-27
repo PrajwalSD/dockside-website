@@ -1,0 +1,48 @@
+---
+/**
+ * Embeds a single Reddit post using Reddit's official oEmbed.
+ * Use when you have a specific Reddit post URL to showcase.
+ *
+ * Usage: <RedditEmbed url="https://reddit.com/r/macapps/comments/xxx/dockside" />
+ */
+export interface Props {
+  url: string;
+  class?: string;
+}
+
+const { url, class: className = '' } = Astro.props;
+
+if (!url || !url.includes('reddit.com')) {
+  console.warn('RedditEmbed: Invalid Reddit URL', url);
+}
+
+const oembedUrl = `https://www.reddit.com/oembed?url=${encodeURIComponent(url)}`;
+let embedHtml: string | null = null;
+let embedHeight = 500;
+
+try {
+  const res = await fetch(oembedUrl, { headers: { 'User-Agent': 'DocksideWebsite/1.0' } });
+  if (res.ok) {
+    const data = await res.json();
+    embedHtml = data?.html ?? null;
+    embedHeight = data?.height ?? 500;
+  }
+} catch {
+  embedHtml = null;
+}
+---
+
+{embedHtml ? (
+  <div class:list={['reddit-embed-wrapper rounded-xl overflow-hidden border border-slate-200 dark:border-slate-600', className]} set:html={embedHtml} />
+) : (
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class:list={['block rounded-xl border border-slate-200 dark:border-slate-600 p-4 hover:border-[#FF4500]/50 transition-colors', className]}
+  >
+    <span class="text-sm text-slate-600 dark:text-slate-400">View post on Reddit →</span>
+  </a>
+)}
+
+<script async src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>

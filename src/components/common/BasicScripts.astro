@@ -40,9 +40,26 @@ import { UI } from 'astrowind:config';
     }
   }
 
+  function initRevealAnimations() {
+    const revealEls = document.querySelectorAll('[data-reveal], [data-reveal-stagger]');
+    if (!revealEls.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.1 }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  }
+
   const onLoad = function () {
     let lastKnownScrollPosition = window.scrollY;
     let ticking = true;
+    initRevealAnimations();
 
     attachEvent('#header nav', 'click', function () {
       document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
@@ -158,5 +175,6 @@ import { UI } from 'astrowind:config';
     initTheme();
     onLoad();
     onPageShow();
+    initRevealAnimations();
   });
 </script>
