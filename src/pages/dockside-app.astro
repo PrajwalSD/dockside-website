@@ -22,8 +22,6 @@ import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
 import SectionImage from '~/components/common/SectionImage.astro';
 
-import { Vimeo } from 'astro-embed';
-
 import CrispWidget from "../components/CrispWidget.astro";
 
 const appStoreImg = '~/assets/images/app-store.png';
@@ -287,47 +285,31 @@ const metadata = {
 
   <!-- Wherever your Dock goes -->
   <section id="dock-flexibility" class="relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default bg-slate-50/50 dark:bg-slate-800/30" data-reveal="section">
-    <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
-      <p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase" data-reveal="blur">Flexibility</p>
-      <h2 class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl mt-2" data-reveal="blur">
+    <div class="mb-8 md:mb-12 text-center max-w-3xl mx-auto px-0 sm:px-2">
+      <p class="text-sm sm:text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase" data-reveal="blur">Flexibility</p>
+      <h2
+        class="font-bold leading-tight sm:leading-tighter tracking-tighter font-heading text-heading text-2xl sm:text-3xl md:text-4xl mt-2 text-balance px-1"
+        data-reveal="blur"
+      >
         Wherever your Dock goes, Dockside follows
       </h2>
-      <p class="mt-4 text-muted text-xl" data-reveal="blur">
+      <p class="mt-3 sm:mt-4 text-muted text-base sm:text-lg md:text-xl leading-relaxed text-pretty px-0.5" data-reveal="blur">
         <span class="text-accent dark:text-blue-600 font-semibold">Works with the Dock in any mode</span>—bottom, left, or right. Pin to any screen, pin to any edge. Your setup, your rules.
       </p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6 max-w-4xl mx-auto items-center">
-      <div class="flex flex-col items-center gap-2">
-        <SectionImage
-          src="/dockside-dock-left.png"
-          alt="Dockside on left edge – vertical dock mode"
-          class="w-full rounded-xl shadow-lg object-contain"
-          width={300}
-          height={400}
-          />
-        <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Works on any edge</span>
-      </div>
-      <div class="flex flex-col gap-6">
-        <div class="flex flex-col items-center gap-2">
-          <SectionImage
-            src="/dockside-screen-pin.png"
-            alt="Pin Dockside to any screen"
-            class="w-full rounded-xl shadow-lg object-contain"
-            width={300}
-            height={320}
-          />
-          <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Pin to any screen</span>
-        </div>
-        <div class="flex flex-col items-center gap-2">
-          <SectionImage
-            src="/dockside-position-menu.png"
-            alt="Position on screen – Left, Bottom, Right"
-            class="w-full rounded-xl shadow-lg object-contain"
-            width={300}
-            height={320}
-          />
-          <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Pin to any edge</span>
-        </div>
+
+    <!-- Vimeo: same pattern as hero (simple 16:9 iframe) -->
+    <div class="w-full max-w-4xl mx-auto min-w-0 px-0" data-reveal="section">
+      <div
+        class="relative w-full overflow-hidden rounded-xl sm:rounded-2xl shadow-xl ring-1 ring-slate-200/90 dark:ring-slate-600/50 bg-black aspect-video"
+      >
+        <iframe
+          class="absolute inset-0 h-full w-full rounded-none sm:rounded-md border-0"
+          src="https://player.vimeo.com/video/1176401534?autoplay=1&muted=1&loop=1&background=0&controls=1&title=0&byline=0&portrait=0&pip=0"
+          title="Dockside App Features"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+        />
       </div>
     </div>
   </section>
