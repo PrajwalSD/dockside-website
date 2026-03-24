@@ -16,7 +16,7 @@ interface Links {
 }
 
 export interface Props {
-  links: Array<Links>;
+  links?: Array<Links>;
   secondaryLinks: Array<Link>;
   connectLinks?: Array<Link>;
   socialLinks: Array<Link>;
@@ -24,7 +24,7 @@ export interface Props {
   theme?: string;
 }
 
-const { socialLinks = [], secondaryLinks = [], connectLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+const { socialLinks = [], secondaryLinks = [], connectLinks = [], footNote = '', theme = 'light' } = Astro.props;
 ---
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-700/80 not-prose bg-slate-50/50 dark:bg-slate-900/50']}>

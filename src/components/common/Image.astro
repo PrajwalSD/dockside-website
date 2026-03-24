@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'astro/types';
 import { findImage } from '~/utils/images';
 import {
   getImagesOptimized,
-  astroAsseetsOptimizer,
+  astroAssetsOptimizer,
   unpicOptimizer,
   isUnpicCompatible,
   type ImageProps,
@@ -51,7 +51,7 @@ if (typeof _image === 'string') {
     };
   }
 } else if (_image) {
-  image = await getImagesOptimized(_image, props, astroAsseetsOptimizer);
+  image = await getImagesOptimized(_image, props, astroAssetsOptimizer);
 }
 ---
 

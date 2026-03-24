@@ -12,8 +12,8 @@ import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
-// Comment the line below to disable View Transitions
-import { ViewTransitions } from 'astro:transitions';
+// Comment the line below to disable View Transitions (Astro 6: ClientRouter)
+import { ClientRouter } from 'astro:transitions';
 
 import type { MetaData as MetaDataType } from '~/types';
 
@@ -38,7 +38,7 @@ const { language, textDirection } = I18N;
     <Analytics />
 
     <!-- Comment the line below to disable View Transitions -->
-    <ViewTransitions fallback="swap" />
+    <ClientRouter fallback="swap" />
 	<script>
 		// Ensure the Crisp widget is initialized only in the browser
 		if (typeof window !== "undefined") {

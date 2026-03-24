@@ -18,8 +18,11 @@ const {
   video = await Astro.slots.render('video'), // New video prop or slot for videos
 } = Astro.props;
 
+const videoProp = video as string | { src?: string } | undefined;
+const videoUrl = typeof videoProp === 'string' ? videoProp : videoProp?.src ?? '';
+
 // Function to check if video URL is a Vimeo link
-const isVimeo = (url) => typeof url === 'string' && url.includes('vimeo.com');
+const isVimeo = (url: string) => url.includes('vimeo.com');
 ---
 
 <section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
@@ -65,13 +68,13 @@ const isVimeo = (url) => typeof url === 'string' && url.includes('vimeo.com');
         {content && <Fragment set:html={content} />}
       </div>
       <div class="basis-1/2">
-        {video ? (
+        {videoUrl ? (
           <div class="relative m-auto max-w-5xl">
-            {isVimeo(video) ? (
+            {isVimeo(videoUrl) ? (
               // Embed Vimeo video using a responsive iframe with autoplay enabled
               <iframe
                 class="mx-auto rounded-md w-full h-full aspect-video"
-                src={`${video.replace('vimeo.com', 'player.vimeo.com/video')}?autoplay=1&muted=1&loop=1`}
+                src={`${videoUrl.replace('vimeo.com', 'player.vimeo.com/video')}?autoplay=1&muted=1&loop=1`}
                 frameborder="0"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowfullscreen
@@ -81,7 +84,7 @@ const isVimeo = (url) => typeof url === 'string' && url.includes('vimeo.com');
               // Standard video element for non-Vimeo links
               <video
                 class="mx-auto rounded-md w-full"
-                src={typeof video === 'string' ? video : video.src}
+                src={videoUrl}
                 autoplay
                 muted
                 loop
