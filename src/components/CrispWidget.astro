@@ -1,20 +1,17 @@
 ---
-import { Crisp } from "crisp-sdk-web";
-
-const loadCrisp = () => {
-  if (typeof window !== "undefined" && typeof document !== "undefined") {
-    Crisp.configure("535090dc-a6a2-46a9-a9d2-8ad08c18482f");
-  }
-};
+/* Crisp loads only in the browser via the script below. */
 ---
 
 <script>
-  // Ensure the Crisp widget is initialized only in the browser
-  if (typeof window !== "undefined") {
-    import("crisp-sdk-web").then(({ Crisp }) => {
-      Crisp.configure("535090dc-a6a2-46a9-a9d2-8ad08c18482f");
+  const CRISP_ID = '535090dc-a6a2-46a9-a9d2-8ad08c18482f';
+
+  function initCrisp() {
+    if (typeof window === 'undefined') return;
+    import('crisp-sdk-web').then(({ Crisp }) => {
+      Crisp.configure(CRISP_ID);
     });
   }
-</script>
 
-<!-- This component doesn't render any UI elements -->
+  initCrisp();
+  document.addEventListener('astro:page-load', initCrisp);
+</script>

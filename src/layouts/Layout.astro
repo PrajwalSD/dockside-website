@@ -11,6 +11,7 @@ import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
+import CrispWidget from '~/components/CrispWidget.astro';
 
 // Comment the line below to disable View Transitions (Astro 6: ClientRouter)
 import { ClientRouter } from 'astro:transitions';
@@ -39,19 +40,12 @@ const { language, textDirection } = I18N;
 
     <!-- Comment the line below to disable View Transitions -->
     <ClientRouter fallback="swap" />
-	<script>
-		// Ensure the Crisp widget is initialized only in the browser
-		if (typeof window !== "undefined") {
-		  import("crisp-sdk-web").then(({ Crisp }) => {
-			Crisp.configure("535090dc-a6a2-46a9-a9d2-8ad08c18482f");
-		  });
-		}
-	  </script>
   </head>
 
   <body class="antialiased text-default bg-page tracking-tight">
     <slot />
 
+    <CrispWidget />
     <BasicScripts />
   </body>
 </html>

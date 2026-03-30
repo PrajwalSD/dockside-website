@@ -1,4 +1,6 @@
 ---
+import Layout from '~/layouts/Layout.astro';
+
 const apps = [
   {
     name: "Clop",
@@ -15,6 +17,7 @@ const apps = [
 ];
 ---
 
+<Layout metadata={{ title: 'Dockside integrations' }}>
 <section style="padding: 2rem 1rem; text-align: center;">
   <h2 style="font-size: 2.0rem; font-weight: bold; margin-bottom: 1.5rem;">Dockside integrates with these amazing apps for utilities</h2>
   <ul style="list-style: none; padding: 0; max-width: 600px; margin: 0 auto;">
@@ -39,3 +42,4 @@ const apps = [
     ))}
   </ul>
 </section>
+</Layout>

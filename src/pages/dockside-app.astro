@@ -22,8 +22,6 @@ import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
 import SectionImage from '~/components/common/SectionImage.astro';
 
-import CrispWidget from "../components/CrispWidget.astro";
-
 const appStoreImg = '~/assets/images/app-store.png';
 const appStoreDownloadLink = 'https://github.com/onwidget/astrowind';
 
@@ -34,11 +32,16 @@ const metadata = {
   title: 'Dockside App for Mac: Your friendly file shelf that lives next to your macOS Dock',
   ignoreTitleTemplate: true,
 };
+
+const featuredReviewTsiu = `THE app I've been searching for since forever! I've tried all similar ones (Yoink, Dropover, Dropshelf, etc.), but none have this standout feature: quick access to the latest screenshots and downloaded files, complete with previews and all possible shortcuts right on top. Everything is visible at a glance and accessible with just one click, plus it's all in an unused part of the screen. Brilliant, just brilliant. Combined with CleanShotX, Dropover, and Clop, it's the perfect setup for me. And the pricing—$6 for a lifetime license? So affordable and rare these days... I bought the app after only an hour of trial! 🤣 Thank you so much.`;
+
+const featuredReviewHerman = 'The ghost of Steve Jobs approves of this.';
+
+const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.';
+
 ---
 
 <Layout metadata={metadata}>
-
-	<CrispWidget />
 
   <Fragment slot="header">
     <Header
@@ -172,7 +175,7 @@ const metadata = {
 	loadGitHubStats();
 	document.addEventListener('astro:page-load', loadGitHubStats);
   </script>
-  
+
   <Testimonials
 	id="reviews"
 	title="Loved by Dockside Users"
@@ -186,12 +189,6 @@ const metadata = {
 		rel: 'noopener'
 	}}
 	testimonials={[
-		{
-		title: "THE app I’ve been searching for",
-		testimonial: `THE app I've been searching for since forever! I've tried all similar ones (Yoink, Dropover, Dropshelf, etc.), but none have this standout feature: quick access to the latest screenshots and downloaded files, complete with previews and all possible shortcuts right on top. Everything is visible at a glance and accessible with just one click, plus it's all in an unused part of the screen. Brilliant, just brilliant. Combined with CleanShotX, Dropover, and Clop, it's the perfect setup for me. And the pricing—$6 for a lifetime license? So affordable and rare these days... I bought the app after only an hour of trial! 🤣 Thank you so much.`,
-		name: 'IDEM CLUB INC',
-		rating: 5,
-		},
 		{
 		title: 'Very helpful app',
 		testimonial: 'Very helpfull app. you should try it first!',
@@ -211,21 +208,9 @@ const metadata = {
 		rating: 5,
 		},
 		{
-		title: 'Absolutely wonderful',
-		testimonial: `An absolutely wonderful addition to my Mac!! I had been looking at dock replacements for a while, but they seemed to be offering too many options/customizability. I really wanted quick access to my downloads/screenshots/documents for the apps I had open in my dock. And Dockside just hit all the right notes. I love utilizing the space on the left and right of my dock for file management and just having further quick access to apps/docs/folders/files, etc. The developer is top-notch and his support is second to none. I'm very excited to see where he takes this app, but I am so happy I made this purchase. Check it out!`,
-		name: 'Anonymous',
-		rating: 5,
-		},
-		{
 		title: 'Immediate buy',
 		testimonial: `This is gonna be great. I didn't know that this thing makes some workflow thingies sooo much better for me. Well designed, no subscription. Immediate buy. Thank you!`,
 		name: 'Carsten Pohlink',
-		rating: 5,
-		},
-		{
-		title: 'Fun one 🙂',
-		testimonial: 'The ghost of Steve Jobs approves of this.',
-		name: 'Herman White',
 		rating: 5,
 		},
 		{
@@ -234,14 +219,65 @@ const metadata = {
 		name: 'TOMOHIKO KANEKO',
 		rating: 5,
 		},
-		{
-		title: 'Just what I wanted',
-		testimonial: 'Just what I wanted :-) I hope you bring more file level options.',
-		name: 'Anonymous',
-		rating: 5,
-		},
 	]}
-	/>
+	>
+    <Fragment slot="featured">
+      <div class="space-y-6 md:space-y-8">
+        <div class="relative overflow-hidden rounded-2xl border border-slate-200/90 bg-gradient-to-br from-slate-50 via-white to-blue-50/40 p-8 shadow-[0_24px_80px_-24px_rgba(15,23,42,0.2)] dark:border-slate-600/50 dark:from-slate-900 dark:via-slate-900/95 dark:to-blue-950/30 dark:shadow-[0_28px_90px_-28px_rgba(0,0,0,0.55)] md:p-10 md:pl-12">
+          <Icon name="tabler:quote" class="pointer-events-none absolute -right-1 -top-1 h-20 w-20 text-blue-200/80 dark:text-blue-500/20 md:h-28 md:w-28" aria-hidden="true" />
+          <div class="mb-5 flex gap-0.5" aria-label="5 out of 5 stars">
+            {[...Array(5)].map((_, i) => (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 shrink-0 text-amber-400" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.378 2.455a1 1 0 00-.364 1.118l1.287 3.966c.299.921-.755 1.688-1.54 1.118l-3.378-2.455a1 1 0 00-1.176 0l-3.378 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.05 9.393c-.783-.57-.38-1.81.588-1.81h4.174a1 1 0 00.95-.69l1.287-3.966z" />
+              </svg>
+            ))}
+          </div>
+          <blockquote class="-ml-0.5 border-l-4 border-blue-500/80 pl-5 dark:border-blue-400/80 md:pl-6">
+            <p class="text-pretty text-lg font-medium leading-relaxed text-slate-800 dark:text-slate-100 md:text-xl">{featuredReviewTsiu}</p>
+          </blockquote>
+          <footer class="mt-8 flex flex-wrap items-center gap-2">
+            <span class="text-sm font-semibold text-slate-900 dark:text-slate-100">tsiu</span>
+            <span class="text-slate-400 dark:text-slate-500" aria-hidden="true">·</span>
+            <span class="text-sm text-slate-500 dark:text-slate-400">Gumroad customer</span>
+          </footer>
+        </div>
+
+        <div class="relative overflow-hidden rounded-2xl border border-slate-200/90 bg-gradient-to-br from-slate-50 via-white to-violet-50/35 p-8 shadow-[0_24px_80px_-24px_rgba(15,23,42,0.2)] dark:border-slate-600/50 dark:from-slate-900 dark:via-slate-900/95 dark:to-violet-950/25 dark:shadow-[0_28px_90px_-28px_rgba(0,0,0,0.55)] md:p-10 md:pl-12">
+          <Icon name="tabler:quote" class="pointer-events-none absolute -right-1 -top-1 h-16 w-16 text-violet-200/80 dark:text-violet-500/20 md:h-24 md:w-24" aria-hidden="true" />
+          <div class="mb-5 flex gap-0.5" aria-label="5 out of 5 stars">
+            {[...Array(5)].map((_, i) => (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 shrink-0 text-amber-400" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.378 2.455a1 1 0 00-.364 1.118l1.287 3.966c.299.921-.755 1.688-1.54 1.118l-3.378-2.455a1 1 0 00-1.176 0l-3.378 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.05 9.393c-.783-.57-.38-1.81.588-1.81h4.174a1 1 0 00.95-.69l1.287-3.966z" />
+              </svg>
+            ))}
+          </div>
+          <blockquote class="-ml-0.5 border-l-4 border-violet-500/80 pl-5 dark:border-violet-400/70 md:pl-6">
+            <p class="text-pretty text-xl font-semibold leading-snug text-slate-800 dark:text-slate-100 md:text-2xl">{featuredReviewHerman}</p>
+          </blockquote>
+          <footer class="mt-6">
+            <span class="text-sm font-semibold text-slate-900 dark:text-slate-100">Herman White</span>
+          </footer>
+        </div>
+
+        <div class="relative overflow-hidden rounded-2xl border border-slate-200/90 bg-gradient-to-br from-slate-50 via-white to-emerald-50/35 p-8 shadow-[0_24px_80px_-24px_rgba(15,23,42,0.2)] dark:border-slate-600/50 dark:from-slate-900 dark:via-slate-900/95 dark:to-emerald-950/25 dark:shadow-[0_28px_90px_-28px_rgba(0,0,0,0.55)] md:p-10 md:pl-12">
+          <Icon name="tabler:quote" class="pointer-events-none absolute -right-1 -top-1 h-16 w-16 text-emerald-200/80 dark:text-emerald-500/20 md:h-24 md:w-24" aria-hidden="true" />
+          <div class="mb-5 flex gap-0.5" aria-label="5 out of 5 stars">
+            {[...Array(5)].map((_, i) => (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 shrink-0 text-amber-400" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.378 2.455a1 1 0 00-.364 1.118l1.287 3.966c.299.921-.755 1.688-1.54 1.118l-3.378-2.455a1 1 0 00-1.176 0l-3.378 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.05 9.393c-.783-.57-.38-1.81.588-1.81h4.174a1 1 0 00.95-.69l1.287-3.966z" />
+              </svg>
+            ))}
+          </div>
+          <blockquote class="-ml-0.5 border-l-4 border-emerald-600/75 pl-5 dark:border-emerald-400/70 md:pl-6">
+            <p class="text-pretty text-xl font-semibold leading-snug text-slate-800 dark:text-slate-100 md:text-2xl">{featuredReviewAndrew}</p>
+          </blockquote>
+          <footer class="mt-6">
+            <span class="text-sm font-semibold text-slate-900 dark:text-slate-100">Andrew</span>
+          </footer>
+        </div>
+      </div>
+    </Fragment>
+  </Testimonials>
 
   <RedditFeed
 	id="reddit"

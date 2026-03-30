@@ -1,8 +1,37 @@
 ---
 import { SITE } from 'astrowind:config';
+import { trimSlash, getHomePermalink } from '~/utils/permalinks';
+
+const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+const homePath = getHomePermalink();
+const normalize = (p: string) => (p.endsWith('/') && p.length > 1 ? p.slice(0, -1) : p) || '/';
+const isHomePage = normalize(currentPath) === normalize(homePath);
 ---
 
-<span class="flex items-center gap-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
-  <img src="/logo.png" alt="" class="h-7 md:h-6 w-auto object-contain" width="28" height="28" aria-hidden="true" />
-  <span class="ml-2 rtl:ml-0 rtl:mr-2">{SITE?.name}</span>
-</span>
+{
+  isHomePage ? (
+    <span class="flex items-center gap-2 text-2xl font-bold text-gray-900 whitespace-nowrap dark:text-white md:text-xl">
+      <img
+        src="/logo.png"
+        alt=""
+        class="h-7 w-auto object-contain md:h-6"
+        width="28"
+        height="28"
+        aria-hidden="true"
+      />
+      <span class="ml-2 rtl:ml-0 rtl:mr-2">{SITE?.name}</span>
+    </span>
+  ) : (
+    <span class="flex items-center gap-2 text-2xl font-bold tracking-tight text-gray-900 whitespace-nowrap dark:text-white md:text-xl">
+      <img
+        src="/appIcon1024px.png"
+        alt=""
+        class="h-9 w-9 shrink-0 object-contain md:h-8 md:w-8"
+        width="36"
+        height="36"
+        aria-hidden="true"
+      />
+      <span class="ml-0.5 rtl:mr-0.5">Dockside</span>
+    </span>
+  )
+}
