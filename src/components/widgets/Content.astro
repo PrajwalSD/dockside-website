@@ -17,12 +17,20 @@ const {
   image = await Astro.slots.render('image'),
   isReversed = false,
   isAfterContent = false,
+  splitAlign = 'center',
+  imageClass,
+  contentSpacing = 'mb-12',
 
   id,
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
+
+const splitRowClass = splitAlign === 'start' ? 'md:items-start' : 'md:items-center';
+const textColClass = splitAlign === 'start' ? 'md:basis-1/2' : 'md:basis-1/2 self-center';
+const imageColClass = splitAlign === 'start' ? 'md:basis-1/2 md:self-start' : 'md:basis-1/2';
+const defaultImageClass = 'mx-auto w-full rounded-lg shadow-lg object-cover';
 ---
 
 <WidgetWrapper
@@ -42,9 +50,17 @@ const {
     }}
   />
   <div class="mx-auto max-w-7xl p-4 md:px-8">
-    <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
-      <div class="md:basis-1/2 self-center">
-        {content && <div class="mb-12 text-left text-lg dark:text-slate-400" data-reveal="blur" set:html={content} />}
+    <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-12 lg:gap-16 ${splitRowClass}`}>
+      <div class={textColClass}>
+        {
+          content && (
+            <div
+              class={`${contentSpacing} text-left text-lg dark:text-slate-400`}
+              data-reveal="blur"
+              set:html={content}
+            />
+          )
+        }
 
         {
           callToAction && (
@@ -68,19 +84,19 @@ const {
           }}
         />
       </div>
-      <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2" data-reveal="up">
+      <div aria-hidden="true" class:list={['mt-10 md:mt-0', imageColClass]} data-reveal="up">
         {
           image && (
-            <div class="relative m-auto max-w-4xl">
+            <div class="relative m-auto w-full max-w-4xl lg:max-w-none">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
                 <SectionImage
                   src={typeof (image as { src?: string })?.src === 'string' ? (image as { src: string }).src : ''}
                   alt={(image as { alt?: string })?.alt ?? ''}
-                  class="mx-auto w-full rounded-lg shadow-lg object-cover"
-                  width={500}
-                  height={500}
+                  class={imageClass ?? defaultImageClass}
+                  width={(image as { width?: number })?.width ?? 960}
+                  height={(image as { height?: number })?.height ?? 540}
                   loading="lazy"
                 />
               )}

@@ -91,6 +91,8 @@ export interface MetaDataTwitter {
 export interface Image {
   src: string;
   alt?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface Video {
@@ -288,6 +290,12 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
   isReversed?: boolean;
   isAfterContent?: boolean;
   callToAction?: CallToAction;
+  /** Top-align text + image columns (better for tall screenshots/GIFs). Default: center. */
+  splitAlign?: 'start' | 'center';
+  /** Extra classes for the image (e.g. object-contain for GIFs). */
+  imageClass?: string;
+  /** Margin below the intro slot (Tailwind class). Default: mb-12 */
+  contentSpacing?: string;
 }
 
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}

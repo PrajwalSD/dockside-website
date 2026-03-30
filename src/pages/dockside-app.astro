@@ -368,6 +368,8 @@ const metadata = {
 
   <Content
     isAfterContent
+    contentSpacing="mb-6"
+    imageClass="w-full rounded-xl shadow-lg object-contain"
     items={[
       {
         title: 'Downloads and Screenshots',
@@ -375,10 +377,11 @@ const metadata = {
         icon: 'tabler:download',
       },
       {
-        title: 'Customisable Shelves',
+        title: 'Recents, Folders, Clipboard History, Media, System Monitor',
         description:
-          'Tailor your Dockside experience by configuring these shelves to monitor your favorite folders or the “Recents” shelf. Quickly access what you need most, all from within Dockside.',
+          'Configure shelves for more than files: keep favorite folders or Recents as usual, add a media shelf to control Spotify or Apple Music from the shelf, monitor your Mac with live system readouts, or build a widget shelf for the panels you rely on—all in one place.',
         icon: 'tabler:adjustments',
+        classes: { panel: 'max-w-none', title: 'text-base sm:text-lg font-bold leading-snug' },
       },
       {
         title: 'Super Quick Previews',
@@ -394,8 +397,10 @@ const metadata = {
       },
     ]}
     image={{
-      src: '/Screenshots2.png', // Replace with the relevant image
-      alt: 'Dockside App Overview - Features Part 2',
+      src: '/media-shelf.gif',
+      alt: 'Dockside media shelf, widgets, and system monitoring on the shelf',
+      width: 960,
+      height: 600,
     }}
   >
     <Fragment slot="content">

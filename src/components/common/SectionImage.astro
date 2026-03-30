@@ -28,7 +28,7 @@ const { src, alt, class: className, width, height, loading = 'lazy', fetchPriori
     loading={loading}
     decoding="async"
     fetchpriority={fetchPriority}
-    class={`section-image-img block w-full h-auto object-cover opacity-0 transition-opacity duration-500 ${className ?? ''}`}
+    class={`section-image-img block w-full h-auto opacity-0 transition-opacity duration-500 ${className?.trim() ? className : 'object-cover'}`}
     data-section-img
     {...rest}
   />
