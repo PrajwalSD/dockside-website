@@ -8,7 +8,11 @@ export const headerData = {
         {
           text: 'Dockside for Mac',
           href: '/dockside-app',
-        }
+        },
+        {
+          text: 'Resellers',
+          href: '/resellers',
+        },
       ],
     },
     {
@@ -30,6 +34,7 @@ export const footerData = {
   secondaryLinks: [
     { text: 'Terms', href: getPermalink('/terms') },
     { text: 'Privacy', href: getPermalink('/privacy') },
+    { text: 'Resellers', href: getPermalink('/resellers') },
     { text: 'Integrations', href: getPermalink('/integrations') },
     { text: 'About', href: '/about' },
     { text: 'Contact', href: '/contact' },

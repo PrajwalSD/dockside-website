@@ -373,7 +373,8 @@ const metadata = {
     items={[
       {
         title: 'Downloads and Screenshots',
-        description: 'Your most recent downloads and screenshots are always available in Dockside, ready to share.',
+        description:
+          'By default, your most recent downloads and screenshots live in Dockside, ready to share—you can customise that shelf to be whatever you want.',
         icon: 'tabler:download',
       },
       {
@@ -390,10 +391,10 @@ const metadata = {
         icon: 'tabler:eye',
       },
       {
-        title: 'Keyboard Shortcuts',
+        title: 'Keyboard shortcuts & gestures',
         description:
-          'Use familiar macOS shortcuts like copy, paste, select all, and delete—Dockside functions just like Finder for a seamless experience.',
-        icon: 'tabler:keyboard',
+          'Use familiar macOS shortcuts—copy, paste, select all, and delete—just like Finder. On trackpad or mouse, swipe up or down on the shelf to expand and paginate through everything; swipe left or right to expand and reveal more rows or panels.',
+        icon: 'tabler:swipe',
       },
     ]}
     image={{
@@ -606,7 +607,22 @@ const metadata = {
         ribbonTitle: 'Lifetime',
       },
     ]}
-  />	
+  />
+
+  <section class="not-prose border-t border-slate-200/80 bg-slate-50/80 dark:border-slate-700/60 dark:bg-slate-900/40" data-reveal="section">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6 text-center text-sm text-muted dark:text-slate-400 md:py-8 md:text-base">
+      <p class="leading-relaxed" data-reveal="blur">
+        <span class="font-semibold text-heading dark:text-slate-200">Buying in Greater China?</span>{' '}
+        Dockside is also sold by our authorised partner{' '}
+        <span class="whitespace-nowrap">DIGITALYCHEE (数码荔枝)</span> — see official stores and download the authorisation
+        certificate on our{' '}
+        <a href="/resellers" class="text-accent underline decoration-dotted underline-offset-2 hover:opacity-90 dark:text-blue-400"
+          >Resellers</a
+        >{' '}
+        page. Gumroad (above) remains our global store; use only authorised sellers so your license stays eligible for support and updates.
+      </p>
+    </div>
+  </section>
 
   <!-- Integrations marquee (icons + names, no duplicates) -->
   <IntegrationsMarquee />
