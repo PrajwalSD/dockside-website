@@ -37,20 +37,26 @@ const metadata = {
   {/* Add image above the title */}
   
     <Fragment slot="title">
-		<img 
-	class="shadow-sm"
-	src="/appIcon1024px.png" 
-	alt="Dockside Hero Image"
-	style={{
-		display: 'block',  // Makes the image a block element
-		margin: '0 auto',  // Centers the image horizontally
-		width: '20%',      // Adjusts the width of the image (change as necessary)
-		height: '20%',    // Maintains the aspect ratio
-		objectFit: 'cover',  // Ensures the image fits well within its container
-		marginTop: '-3rem',  // Adds some space below the image
-		marginBottom: '+1rem'  // Adds some space below the image
-	}}
-/>
+      <a
+        href="/dockside-app"
+        class="mb-4 block w-full rounded-2xl shadow-sm ring-offset-2 ring-offset-[var(--aw-color-bg-page)] transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:ring-offset-slate-900"
+        aria-label="Dockside for Mac — open app page"
+      >
+        <img
+          class="shadow-sm"
+          src="/appIcon1024px.png"
+          alt=""
+          style={{
+            display: 'block',
+            margin: '0 auto',
+            width: '20%',
+            height: '20%',
+            objectFit: 'cover',
+            marginTop: '-3rem',
+            marginBottom: '1rem',
+          }}
+        />
+      </a>
       <span class="text-accent dark:text-white highlight no-margin">Dockside for Mac</span>
 	   <span class="hidden xl:inline"></span>
     </Fragment>
