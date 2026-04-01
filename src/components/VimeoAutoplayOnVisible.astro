@@ -1,0 +1,82 @@
+---
+/**
+ * Plays Vimeo iframes with data-vimeo-autoplay-on-visible when they enter the viewport
+ * (muted, for autoplay policy); pauses when scrolled away.
+ */
+---
+
+<script is:inline>
+  (function () {
+    const wired = new WeakSet();
+    let loadPromise = null;
+
+    function ensureVimeoPlayerApi() {
+      if (typeof window.Vimeo !== 'undefined' && window.Vimeo.Player) {
+        return Promise.resolve();
+      }
+      if (loadPromise) return loadPromise;
+      loadPromise = new Promise(function (resolve, reject) {
+        var s = document.createElement('script');
+        s.src = 'https://player.vimeo.com/api/player.js';
+        s.async = true;
+        s.onload = function () {
+          resolve();
+        };
+        s.onerror = function () {
+          loadPromise = null;
+          reject();
+        };
+        document.head.appendChild(s);
+      });
+      return loadPromise;
+    }
+
+    function setupVimeoAutoplayOnVisible() {
+      var iframes = document.querySelectorAll('iframe[data-vimeo-autoplay-on-visible]');
+      if (!iframes.length) return;
+
+      ensureVimeoPlayerApi()
+        .then(function () {
+          if (!window.Vimeo || !window.Vimeo.Player) return;
+
+          iframes.forEach(function (iframe) {
+            if (wired.has(iframe)) return;
+            wired.add(iframe);
+
+            var player;
+            try {
+              player = new window.Vimeo.Player(iframe);
+            } catch (e) {
+              return;
+            }
+
+            var observer = new IntersectionObserver(
+              function (entries) {
+                entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                    player
+                      .setMuted(true)
+                      .then(function () {
+                        return player.play();
+                      })
+                      .catch(function () {});
+                  } else {
+                    player.pause().catch(function () {});
+                  }
+                });
+              },
+              { threshold: 0.32, rootMargin: '0px 0px -8% 0px' }
+            );
+
+            var root = iframe.closest('.aspect-video');
+            observer.observe(root || iframe);
+          });
+        })
+        .catch(function () {});
+    }
+
+    document.addEventListener('DOMContentLoaded', setupVimeoAutoplayOnVisible);
+    document.addEventListener('astro:page-load', setupVimeoAutoplayOnVisible);
+    document.addEventListener('astro:after-swap', setupVimeoAutoplayOnVisible);
+  })();
+</script>

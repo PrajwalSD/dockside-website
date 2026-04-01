@@ -8,6 +8,7 @@ import Favicons from '~/components/Favicons.astro';
 import CustomStyles from '~/components/CustomStyles.astro';
 import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
 import Metadata from '~/components/common/Metadata.astro';
+import GlobalJsonLd from '~/components/seo/GlobalJsonLd.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
@@ -35,6 +36,7 @@ const { language, textDirection } = I18N;
     <CustomStyles />
     <ApplyColorMode />
     <Metadata {...metadata} />
+    <GlobalJsonLd />
     <SiteVerification />
     <Analytics />
 

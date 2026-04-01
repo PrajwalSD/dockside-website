@@ -1,0 +1,73 @@
+---
+/**
+ * Product + FAQ JSON-LD for /dockside-app (SoftwareApplication, FAQPage).
+ */
+import { SITE } from 'astrowind:config';
+
+export interface FaqItem {
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  faqItems: FaqItem[];
+}
+
+const { faqItems } = Astro.props;
+
+const base = String(SITE.site || '').replace(/\/$/, '');
+const pageUrl = `${base}/dockside-app`;
+
+function toPlainText(html: string): string {
+  return html
+    .replace(/<a\s[^>]*href="([^"]*)"[^>]*>([^<]*)<\/a>/gi, '$2 ($1)')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+const faqMainEntity = faqItems.map((item) => ({
+  '@type': 'Question',
+  name: item.title,
+  acceptedAnswer: {
+    '@type': 'Answer',
+    text: toPlainText(item.description),
+  },
+}));
+
+const graph = [
+  {
+    '@type': 'SoftwareApplication',
+    '@id': `${pageUrl}#software`,
+    name: 'Dockside',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'macOS 13.0 or later',
+    offers: {
+      '@type': 'Offer',
+      price: '5.99',
+      priceCurrency: 'USD',
+      description: 'Lifetime license; 14-day free trial available',
+      url: 'https://hachipoo.gumroad.com/l/dockside',
+    },
+    downloadUrl: 'https://github.com/PrajwalSD/Dockside/releases/latest/download/Dockside.dmg',
+    url: pageUrl,
+    description:
+      'Dockside is a native Mac file shelf that lives next to the Dock. Drag and drop files, folders, links, apps, and text for quick access to screenshots, downloads, and monitored folders—without getting in your way. Apple Notarized; works offline.',
+    author: { '@id': `${base}/#organization` },
+    publisher: { '@id': `${base}/#organization` },
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': `${pageUrl}#faq`,
+    url: pageUrl,
+    mainEntity: faqMainEntity,
+  },
+];
+
+const json = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': graph,
+});
+---
+
+<script type="application/ld+json" set:html={json} />

@@ -183,6 +183,27 @@
   transform: translateY(0);
 }
 
+/* Video blocks: zoom + blur → sharp when scrolled into view (shared transition timing) */
+[data-reveal="focus"] {
+  opacity: 0;
+  filter: blur(22px) saturate(0.82) brightness(0.86);
+  transform: translateY(42px) scale(0.72);
+  transform-origin: center center;
+  transition:
+    opacity 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.25s cubic-bezier(0.17, 0.88, 0.32, 1.04);
+}
+[data-reveal="focus"].is-visible {
+  opacity: 1;
+  filter: blur(0) saturate(1) brightness(1);
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.25s cubic-bezier(0.17, 0.88, 0.32, 1.04);
+}
+
 [data-reveal-stagger] > * {
   opacity: 0;
   filter: blur(6px);
@@ -209,7 +230,8 @@
 @media (prefers-reduced-motion: reduce) {
   [data-reveal="blur"],
   [data-reveal="up"],
-  [data-reveal="section"] {
+  [data-reveal="section"],
+  [data-reveal="focus"] {
     opacity: 1;
     filter: none;
     transform: none;
@@ -217,7 +239,8 @@
   }
   [data-reveal="blur"].is-visible,
   [data-reveal="up"].is-visible,
-  [data-reveal="section"].is-visible {
+  [data-reveal="section"].is-visible,
+  [data-reveal="focus"].is-visible {
     opacity: 1;
     filter: none;
     transform: none;

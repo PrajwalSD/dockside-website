@@ -5,8 +5,7 @@ import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import Button from '~/components/ui/Button.astro';
 
-import { getHomePermalink } from '~/utils/permalinks';
-import { trimSlash, getAsset } from '~/utils/permalinks';
+import { getHomePermalink, getPermalink, trimSlash, getAsset } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
 
 interface Link {
@@ -45,6 +44,12 @@ const {
 } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+const homePath = getHomePermalink();
+const normalizePath = (p: string) => (p.endsWith('/') && p.length > 1 ? p.slice(0, -1) : p) || '/';
+const isHomePage = normalizePath(currentPath) === normalizePath(homePath);
+/** Home: Hachipoo mark → site root. Else: Dockside mark → app page (matches Logo.astro). */
+const logoHref = isHomePage ? getHomePermalink() : getPermalink('/dockside-app');
+const logoAriaLabel = isHomePage ? 'Hachipoo Apps — home' : 'Dockside for Mac — app home';
 ---
 
 <header
@@ -71,7 +76,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     ]}
   >
     <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
-      <a class="flex items-center" href={getHomePermalink()}>
+      <a class="flex items-center" href={logoHref} aria-label={logoAriaLabel}>
         <Logo />
       </a>
       <div class="flex items-center md:hidden">

@@ -1,0 +1,39 @@
+---
+/**
+ * Site-wide JSON-LD for Google + AI systems (Organization + WebSite).
+ * @see https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
+ */
+import { SITE, METADATA, I18N } from 'astrowind:config';
+
+const base = String(SITE.site || '').replace(/\/$/, '');
+const desc =
+  typeof METADATA?.description === 'string'
+    ? METADATA.description.replace(/\s+/g, ' ').trim()
+    : '';
+
+const graph = [
+  {
+    '@type': 'Organization',
+    '@id': `${base}/#organization`,
+    name: SITE.name,
+    url: base,
+    ...(desc ? { description: desc } : {}),
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${base}/#website`,
+    url: base,
+    name: SITE.name,
+    ...(desc ? { description: desc } : {}),
+    inLanguage: I18N?.language || 'en',
+    publisher: { '@id': `${base}/#organization` },
+  },
+];
+
+const json = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': graph,
+});
+---
+
+<script type="application/ld+json" set:html={json} />

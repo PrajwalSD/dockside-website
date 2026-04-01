@@ -1,0 +1,106 @@
+---
+/** Press / discovery links — site favicons via s2 (domain + size) */
+const outlets = [
+  {
+    href: 'https://www.reddit.com/r/macapps/comments/1raup7v/dockside_v1959_major_feedbackdriven_update/',
+    label: 'Reddit',
+    domain: 'reddit.com',
+  },
+  {
+    href: 'https://www.producthunt.com/products/dockside-app-for-mac',
+    label: 'Product Hunt',
+    domain: 'producthunt.com',
+  },
+  {
+    href: 'https://appaddict.app/post/dockside-a-new-shelf-utility',
+    label: 'AppAddict',
+    domain: 'appaddict.app',
+  },
+  {
+    href: 'https://mac.softpedia.com/get/Utilities/Dockside.shtml',
+    label: 'Softpedia',
+    domain: 'softpedia.com',
+  },
+  {
+    href: 'https://medium.com/macoclock/11-coolest-new-mac-apps-you-have-never-tried-before-74e491774d91',
+    label: 'Medium',
+    domain: 'medium.com',
+  },
+] as const;
+
+export interface Props {
+  /** Inside another section: lighter divider + more vertical rhythm (no full-width grey band) */
+  embedded?: boolean;
+}
+
+const { embedded = false } = Astro.props;
+
+function faviconUrl(domain: string) {
+  const q = new URLSearchParams({ domain, sz: '128' });
+  return `https://www.google.com/s2/favicons?${q}`;
+}
+
+/** Bare favicons (no chip); Softpedia favicon is dark — white mono in dark mode */
+function outletIconClass(domain: string) {
+  const base =
+    'h-8 w-8 shrink-0 object-contain opacity-[0.82] transition-[filter,opacity] duration-300 ease-out group-hover:opacity-100 md:h-7 md:w-7';
+  const subtleColor = 'grayscale group-hover:grayscale-0';
+  if (domain === 'softpedia.com') {
+    return `${base} ${subtleColor} dark:grayscale-0 dark:brightness-0 dark:invert dark:opacity-90 dark:group-hover:opacity-100`;
+  }
+  return `${base} ${subtleColor}`;
+}
+---
+
+<section
+  class:list={[
+    'not-prose',
+    embedded
+      ? 'border-t border-slate-200/70 pt-10 dark:border-slate-600/50 md:pt-14'
+      : 'border-y border-slate-200/90 bg-slate-50/90 dark:border-slate-700/60 dark:bg-slate-900/35',
+  ]}
+  aria-label="As featured in"
+>
+  <div class:list={['mx-auto max-w-6xl px-4 md:px-6', embedded ? 'pb-2 md:pb-4' : 'py-5 md:py-6']}>
+    <p
+      class:list={[
+        'text-center text-[11px] font-bold uppercase tracking-[0.28em] text-slate-400 dark:text-slate-500',
+        embedded ? 'mb-6 md:mb-8' : 'mb-4 md:mb-5',
+      ]}
+    >
+      As featured in
+    </p>
+    <ul
+      class:list={[
+        'flex flex-wrap items-center justify-center',
+        embedded ? 'gap-x-10 gap-y-6 md:gap-x-14 md:gap-y-7' : 'gap-x-8 gap-y-5 md:gap-x-12 md:gap-y-6',
+      ]}
+    >
+      {
+        outlets.map(({ href, label, domain }) => (
+          <li>
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center gap-2.5 text-slate-500 no-underline transition-colors duration-300 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100"
+            >
+              <img
+                src={faviconUrl(domain)}
+                alt=""
+                width="32"
+                height="32"
+                class:list={[outletIconClass(domain)]}
+                loading="lazy"
+                decoding="async"
+                referrerpolicy="no-referrer"
+                aria-hidden="true"
+              />
+              <span class="text-sm font-semibold tracking-tight">{label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

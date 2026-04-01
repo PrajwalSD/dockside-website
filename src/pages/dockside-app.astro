@@ -12,8 +12,9 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Content from '~/components/widgets/Content.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
-import RedditFeed from '~/components/widgets/RedditFeed.astro';
+// import RedditFeed from '~/components/widgets/RedditFeed.astro';
 import IntegrationsMarquee from '~/components/widgets/IntegrationsMarquee.astro';
+import FeaturedInStrip from '~/components/widgets/FeaturedInStrip.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
@@ -21,6 +22,10 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
 import SectionImage from '~/components/common/SectionImage.astro';
+import VimeoAutoplayOnVisible from '~/components/VimeoAutoplayOnVisible.astro';
+import DocksideJsonLd from '~/components/seo/DocksideJsonLd.astro';
+
+import { docksideFaqItems } from '~/data/docksideFaqItems';
 
 const appStoreImg = '~/assets/images/app-store.png';
 const appStoreDownloadLink = 'https://github.com/onwidget/astrowind';
@@ -28,9 +33,18 @@ const appStoreDownloadLink = 'https://github.com/onwidget/astrowind';
 const googlePlayImg = '~/assets/images/google-play.png';
 const googlePlayDownloadLink = 'https://github.com/onwidget/astrowind';
 
+const docksideMetaDescription =
+  'Dockside for Mac: native file shelf beside your Dock. Drag & drop files, folders, links, apps, and text; screenshots, downloads, and folder watch. Apple Notarized, offline, macOS 13+. 14-day trial, $5.99 lifetime.';
+
 const metadata = {
   title: 'Dockside App for Mac: Your friendly file shelf that lives next to your macOS Dock',
   ignoreTitleTemplate: true,
+  description: docksideMetaDescription,
+  openGraph: {
+    title: 'Dockside for Mac — file shelf next to your Dock',
+    description: docksideMetaDescription,
+    type: 'website',
+  },
 };
 
 const featuredReviewTsiu = `THE app I've been searching for since forever! I've tried all similar ones (Yoink, Dropover, Dropshelf, etc.), but none have this standout feature: quick access to the latest screenshots and downloaded files, complete with previews and all possible shortcuts right on top. Everything is visible at a glance and accessible with just one click, plus it's all in an unused part of the screen. Brilliant, just brilliant. Combined with CleanShotX, Dropover, and Clop, it's the perfect setup for me. And the pricing—$6 for a lifetime license? So affordable and rare these days... I bought the app after only an hour of trial! 🤣 Thank you so much.`;
@@ -279,6 +293,7 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
     </Fragment>
   </Testimonials>
 
+  <!-- Reddit feed section (disabled)
   <RedditFeed
 	id="reddit"
 	title="From r/macapps"
@@ -287,8 +302,7 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
 	searchQuery="dockside"
 	callToAction={{ href: 'https://reddit.com/r/macapps', text: 'Join the conversation on r/macapps', target: '_blank' }}
 	/>
-
-
+  -->
 
   
   
@@ -305,9 +319,12 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
 	  <span class="text-accent dark:text-blue-600 font-semibold">Dockside speaks your language</span>—supporting Chinese, Spanish, German, Korean, and Japanese.
       </p>
     </div>
+
+    <FeaturedInStrip embedded />
+
     <div
       aria-hidden="true"
-      class="aspect-w-16 aspect-h-7"
+      class="aspect-w-16 aspect-h-7 mt-10 md:mt-14"
     >
       <SectionImage
         src="/Themes5.gif"
@@ -320,7 +337,11 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
   </div>
 
   <!-- Wherever your Dock goes -->
-  <section id="dock-flexibility" class="relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default bg-slate-50/50 dark:bg-slate-800/30" data-reveal="section">
+  <section
+    id="dock-flexibility"
+    class="relative mx-auto max-w-7xl scroll-mt-24 px-4 py-12 text-default bg-slate-50/50 dark:bg-slate-800/30 md:px-6 md:py-16 lg:py-20 md:scroll-mt-28"
+    data-reveal="section"
+  >
     <div class="mb-8 md:mb-12 text-center max-w-3xl mx-auto px-0 sm:px-2">
       <p class="text-sm sm:text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase" data-reveal="blur">Flexibility</p>
       <h2
@@ -334,17 +355,18 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
       </p>
     </div>
 
-    <!-- Vimeo: same pattern as hero (simple 16:9 iframe) -->
-    <div class="w-full max-w-4xl mx-auto min-w-0 px-0" data-reveal="section">
+    <!-- Vimeo: stacks demo (part 1) -->
+    <div class="mx-auto w-full max-w-4xl min-w-0 px-0" data-reveal="focus">
       <div
-        class="relative w-full overflow-hidden rounded-xl sm:rounded-2xl shadow-xl ring-1 ring-slate-200/90 dark:ring-slate-600/50 bg-black aspect-video"
+        class="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-xl ring-1 ring-slate-200/90 sm:rounded-2xl dark:ring-slate-600/50"
       >
         <iframe
-          class="absolute inset-0 h-full w-full rounded-none sm:rounded-md border-0"
-          src="https://player.vimeo.com/video/1176401534?autoplay=1&muted=1&loop=1&background=0&controls=1&title=0&byline=0&portrait=0&pip=0"
-          title="Dockside App Features"
+          class="absolute inset-0 h-full w-full rounded-none border-0 sm:rounded-md"
+          src="https://player.vimeo.com/video/1179381932?autoplay=0&muted=1&loop=1&background=0&controls=1&title=0&byline=0&portrait=0&pip=0"
+          title="Dockside stacks (1)"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen
+          data-vimeo-autoplay-on-visible
         />
       </div>
     </div>
@@ -360,6 +382,22 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
 	  Dockside offers extensive customisation with fine-grained controls, allowing you to tailor its behavior, appearance, and functionality to suit your workflow. Set up drop zones to run workflows and automation—Shortcuts, AppleScript, CLI commands, utilities, and more—right from the shelf.
 	  Explore the features below.
 	</p>
+    </div>
+
+    <!-- Vimeo: stacks demo (part 2) -->
+    <div class="mx-auto mt-8 w-full max-w-4xl min-w-0 px-0 md:mt-10" data-reveal="focus">
+      <div
+        class="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-xl ring-1 ring-slate-200/90 sm:rounded-2xl dark:ring-slate-600/50"
+      >
+        <iframe
+          class="absolute inset-0 h-full w-full rounded-none border-0 sm:rounded-md"
+          src="https://player.vimeo.com/video/1179382783?autoplay=0&muted=1&loop=0&background=0&controls=1&title=0&byline=0&portrait=0&pip=0"
+          title="Dockside stacks (2)"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          data-vimeo-autoplay-on-visible
+        />
+      </div>
     </div>
 </div>
   <!-- Content Widget **************** -->
@@ -723,60 +761,11 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
     subtitle="Get answers to common questions about Dockside"
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Is Dockside safe to use?',
-        description:
-          'Yes! Dockside is Apple Notarized, which means it has passed Apple’s security checks and is free from malware. It also operates entirely offline, uses native APIs, ensuring your files and data stay on your device.',
-      },
-      {
-        title: 'Can I try Dockside before buying it?',
-        description:
-          'Absolutely! Dockside offers a 14-day free trial so you can explore all of its features before deciding to purchase a lifetime license for $5.99.',
-      },
-      {
-        title: 'Does Dockside store my files or data in the cloud?',
-        description:
-          'No, Dockside does not use any external servers. All your files, actions, and data remain entirely on your device, ensuring your privacy and security.',
-      },
-      {
-        title: 'What happens after my free trial ends?',
-        description:
-          'After the 14-day trial period, Dockside will prompt you to purchase a lifetime license for $5.99. Once purchased, all features will remain unlocked permanently—no subscriptions, just a one-time fee.',
-      },
-      {
-        title: "What's the future roadmap for Dockside?",
-        description:
-          'With enough support, Dockside aims to add more workflow-enhancing features. See the product <a href="https://dockside.featurebase.app/roadmap" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">roadmap</a> and feel free to drop in your feature requests.',
-      },
-      {
-        title: 'How can I customise Dockside to suit my workflow?',
-        description:
-          'Dockside offers various customisation options. You can switch between themes, adjust space allocation for recent screenshots and downloads, and even choose how items behave when dragged—whether to copy, move, or take another action that fits your workflow needs.',
-      },
-      {
-        title: 'Does it support multiple monitors and multiple Desktops?',
-        description:
-          'Dockside fully supports multiple monitors including multiple Desktops. Just like the Dock, it stays on the primary monitor next to the Dock. Simply put, wherever the Dock goes, Dockside follows. You can also manually pin the Dockside to a specific screen/display if you need to.',
-      },
-      {
-        title: 'Does it support hidden Dock or full screen apps?',
-        description:
-          'Yes, Dockside will remain hidden whenever the Dock is hidden, whether in hidden mode or during full-screen apps. When you need to access Dockside, simply move your mouse to the bottom of the screen, and it will appear right where you would expect it, just like the Dock.',
-      },
-      {
-        title: 'Does Dockside integrate with other apps OR others app integrate with Dockside?',
-        description:
-          'Yes, apps can integrate with Dockside to send plain text or files/folders to the shelf. See <a href="/integrations" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Third-party App Integrations</a> for more info.',
-      },
-      {
-        title: 'Is this a Dock replacement app?',
-        description:
-          'No, Dockside is more like a Dock companion app. See <a href="/dockside-usage-tips" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Dockside Usage Tips</a>',
-      },
-    ]}
-
+    items={[...docksideFaqItems]}
   />
 
+  <DocksideJsonLd faqItems={[...docksideFaqItems]} />
+
+  <VimeoAutoplayOnVisible />
 </Layout>
 

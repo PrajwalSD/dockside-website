@@ -1,0 +1,38 @@
+# Hachipoo Apps
+
+> Machine-readable site summary for AI assistants and search tools. See also: sitemap at /sitemap-index.xml
+
+## Site
+
+- **Name:** Hachipoo Apps
+- **URL:** https://hachipoo.com
+- **Focus:** Native macOS utilities; primary product is Dockside.
+
+## Dockside (macOS app)
+
+Dockside is a **native Mac file shelf** that sits beside the **Dock**. Users drag and drop files, folders, links, apps, and plain text for immediate or later use. It surfaces **recent screenshots and downloads**, supports **folder monitoring**, themes, and workflows (e.g. Shortcuts, AppleScript). It is **Apple Notarized**, runs **offline** (no cloud storage of user files), and targets **macOS 13 (Ventura) and later**.
+
+- **Product page:** https://hachipoo.com/dockside-app
+- **Trial:** 14-day free trial
+- **License:** One-time lifetime purchase (USD 5.99) via Gumroad (`https://hachipoo.gumroad.com/l/dockside`)
+- **Download (DMG):** Latest release on GitHub (`https://github.com/PrajwalSD/Dockside/releases`)
+- **Roadmap / feedback:** https://dockside.featurebase.app/roadmap
+- **Integrations (third-party):** https://hachipoo.com/integrations
+- **Usage tips:** https://hachipoo.com/dockside-usage-tips
+
+Dockside is a **Dock companion**, not a Dock replacement. It follows the Dock across displays and supports multiple monitors and Spaces.
+
+## Other key URLs
+
+- Blog: https://hachipoo.com/blog
+- Contact / support: https://hachipoo.com/contact
+- Privacy: https://hachipoo.com/privacy
+- Terms: https://hachipoo.com/terms
+
+## Press / discovery (examples)
+
+Dockside has been discussed on r/macapps, Product Hunt, AppAddict, Softpedia, and similar outlets; links appear on the Dockside product page.
+
+## Contact
+
+Use the contact form on https://hachipoo.com/contact for support or partnership questions.
