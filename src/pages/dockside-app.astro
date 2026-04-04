@@ -592,7 +592,7 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
   <Content
     isAfterContent
     contentSpacing="mb-6"
-    imageClass="w-full rounded-xl shadow-lg object-contain"
+    splitAlign="start"
     items={[
       {
         title: 'Downloads and Screenshots',
@@ -608,6 +608,12 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
         classes: { panel: 'max-w-none', title: 'text-base sm:text-lg font-bold leading-snug' },
       },
       {
+        title: 'Drop into subfolders',
+        description:
+          'Copy or move files and folders to your shelf folders and their sub-folders.',
+        icon: 'tabler:folders',
+      },
+      {
         title: 'Super Quick Previews',
         description:
           'Quick Look previews for commonly used files and a custom scrollable text previews for easy viewing of longer code files and documents.',
@@ -620,16 +626,29 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
         icon: 'tabler:swipe',
       },
     ]}
-    image={{
-      src: '/media-shelf.gif',
-      alt: 'Dockside media shelf, widgets, and system monitoring on the shelf',
-      width: 960,
-      height: 600,
-    }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">More than just a shelf:</h3>
     </Fragment>
+    <div
+      slot="image"
+      class="flex w-full flex-col gap-3 pt-4 md:items-stretch md:gap-3 md:pt-0 md:pl-2 lg:pl-4"
+    >
+      <SectionImage
+        src="/media-shelf.gif"
+        alt="Dockside media shelf, widgets, and system monitoring on the shelf"
+        class="mx-auto w-full max-w-2xl rounded-xl shadow-lg object-contain"
+        width={960}
+        height={600}
+      />
+      <SectionImage
+        src="/nested-folders.gif"
+        alt="Dockside — drop files into shelf folders and nested subfolders"
+        class="mx-auto w-full max-w-2xl rounded-xl shadow-lg object-contain"
+        width={960}
+        height={600}
+      />
+    </div>
   </Content>
 
   <!-- Drop zones -->
