@@ -27,7 +27,14 @@ export const headerData = {
       text: 'About Us',
 	  href: '/about'
     }
-  ]
+  ],
+  actions: [
+    {
+      variant: 'primary' as const,
+      text: 'Download',
+      href: 'https://hachipoo.com/distributions/Dockside.dmg',
+    },
+  ],
 };
 
 export const footerData = {

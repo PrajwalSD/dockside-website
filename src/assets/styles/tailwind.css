@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  /* Avoid layout shift when modals/menus set body overflow-hidden (scrollbar width). */
+  html {
+    scrollbar-gutter: stable;
+  }
+}
+
 @layer utilities {
   .bg-page {
     background-color: var(--aw-color-bg-page);

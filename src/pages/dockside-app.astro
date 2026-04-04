@@ -73,7 +73,6 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
           variant: 'primary',
           text: 'Download',
           href: 'https://hachipoo.com/distributions/Dockside.dmg',
-          icon: 'tabler:download',
         },
       ]}
       isSticky
@@ -87,15 +86,23 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
     tagline=""
     actions={[
       {
-		variant: 'primary',
-        text: 'Download 14-day Free Trial	',
+        variant: 'primary',
+        text: 'Download',
         href: 'https://hachipoo.com/distributions/Dockside.dmg',
-		icon: 'tabler:download'
+        icon: 'tabler:brand-apple-filled',
+        iconPosition: 'start',
       },
       {
-        target: '_blank',
-        text: `Buy Lifetime License<span class="font-light from-neutral-50	"> &#xA0;($5.99)</span>`,
+        variant: 'secondary',
+        type: 'button',
+        text: 'Homebrew',
+        id: 'dockside-open-homebrew-modal',
+      },
+      {
+        variant: 'secondary',
+        text: 'Buy License',
         href: 'https://hachipoo.gumroad.com/l/dockside',
+        target: '_blank',
       },
     ]}
     video="https://vimeo.com/1057500088?autoplay=1&background=0&controls=1&title=0&byline=0&portrait=0&pip=0"
@@ -112,54 +119,134 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
 
     <Fragment slot="subtitle">
       <span class="sm:inline">
-		Dockside is your friendly file shelf app for Mac, living next to your Dock and making the most of the unused space around it for quick access to your frequently used items on your Mac—without ever getting in your way.
-		Drag and drop files, folders, links, apps, and even text snippets for immediate or later use on the left. 
-		Quickly access your recent screenshots and downloads, or even monitor your favorite folders on the right.
+		Dockside is your friendly file shelf app for Mac, designed to keep your essentials close in a way that feels simple, flexible, and out of the way. It can live beside your Dock or anywhere on your screen, making the most of unused space with remarkable customizability. With flexible drag zones, workflow automations, quick access to recent screenshots and downloads, and folder monitoring, Dockside creates a shelf that beautifully adapts to how you work.
         <br /><br />
-        Dockside is Apple notarized, ensuring it meets Apple's high security standards. Explore the full app
+        Explore the full app
         with a <a style="text-decoration: underline; text-decoration-style: dotted;">free 14-day trial</a>, or purchase
         a <a style="text-decoration: underline; text-decoration-style: dotted;">lifetime license for $5.99</a>, no
         subscriptions.
-        <br /><br />
-        <a style="text-decoration: underline; text-decoration-style: dotted;">Native Swift app—fast and responsive</a>. Supports macOS 13.0+ (Ventura+). Download below or Install via <a href="https://formulae.brew.sh/cask/dockside" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline; text-decoration-style: dotted;">Homebrew</a>.
+        <br />
       </span>
+    </Fragment>
+
+    <Fragment slot="content">
+      <div
+        class="not-prose mx-auto mt-4 max-w-3xl lg:mx-0"
+        role="region"
+        aria-label="Download assurances and releases"
+      >
+        <p
+          class="m-0 flex flex-wrap items-center justify-center gap-y-2 text-xs font-normal leading-relaxed text-muted lg:justify-start"
+        >
+          <span class="inline-flex items-center gap-1.5 [&_svg]:opacity-80">
+            <Icon
+              name="tabler:circle-check"
+              class="h-[0.95rem] w-[0.95rem] shrink-0"
+              aria-hidden="true"
+            />
+            <span>Apple-notarised</span>
+          </span>
+          <span
+            class="select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35"
+            aria-hidden="true"
+            >•</span>
+          <span class="inline-flex items-center gap-1.5 [&_svg]:opacity-80">
+            <Icon name="tabler:brand-apple" class="h-[0.95rem] w-[0.95rem] shrink-0" aria-hidden="true" />
+            <span>macOS 13+</span>
+          </span>
+          <span
+            class="select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35"
+            aria-hidden="true"
+            >•</span>
+          <span class="inline-flex items-center gap-1.5 [&_svg]:opacity-80">
+            <Icon name="tabler:clock" class="h-[0.95rem] w-[0.95rem] shrink-0" aria-hidden="true" />
+            <span>14-day trial</span>
+          </span>
+          <span
+            class="select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35"
+            aria-hidden="true"
+            >•</span>
+          <span class="inline-flex min-w-0 max-w-full items-center">
+            <a
+              href="https://github.com/PrajwalSD/Dockside/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex min-w-0 max-w-full items-center gap-1.5 rounded-md px-1 py-0.5 text-inherit transition-colors hover:text-accent hover:underline decoration-slate-400/50 underline-offset-2 dark:hover:text-blue-400 dark:decoration-slate-500/50 [&_svg]:opacity-80"
+            >
+              <Icon name="tabler:brand-github" class="h-[0.95rem] w-[0.95rem] shrink-0" aria-hidden="true" />
+              <span
+                id="github-stats"
+                class="inline-flex min-w-0 flex-wrap items-center gap-x-0 text-xs tabular-nums"
+              >
+                <span class="github-stats-loading">Loading…</span>
+              </span>
+            </a>
+          </span>
+        </p>
+      </div>
     </Fragment>
   </Hero2>
 
-  <section class="not-prose">
-	<div class="max-w-4xl mx-auto px-4 sm:px-6 py-3">
-	  <div class="flex flex-wrap md:flex-nowrap items-stretch justify-center gap-3 md:gap-4">
-		<!-- Homebrew install -->
-		<div class="flex flex-nowrap items-center gap-2 rounded-xl bg-slate-200/80 dark:bg-slate-700/50 px-3 py-2 shadow-sm ring-1 ring-slate-300/50 dark:ring-slate-600/50 shrink-0">
-		  <Icon name="tabler:download" class="w-4 h-4 shrink-0 text-slate-600 dark:text-slate-300" aria-hidden="true" />
-		  <span class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 whitespace-nowrap">Homebrew</span>
-		  <code id="brew-command" class="rounded-md bg-slate-900 dark:bg-slate-950 px-2 py-1.5 text-xs font-mono text-slate-100 ring-1 ring-slate-700 dark:ring-slate-600 select-all whitespace-nowrap">brew install --cask dockside</code>
-		  <button
-			type="button"
-			onclick="navigator.clipboard.writeText(document.getElementById('brew-command').innerText); const btn=this; btn.querySelector('.copy-icon').classList.add('hidden'); btn.querySelector('.copied-icon').classList.remove('hidden'); setTimeout(() => { btn.querySelector('.copy-icon').classList.remove('hidden'); btn.querySelector('.copied-icon').classList.add('hidden'); }, 1500);"
-			class="shrink-0 rounded-md p-1.5 bg-slate-600 hover:bg-slate-500 text-white transition-colors"
-			aria-label="Copy command"
-		  >
-			<span class="copy-icon"><Icon name="tabler:copy" class="w-4 h-4" /></span>
-			<span class="copied-icon hidden"><Icon name="tabler:check" class="w-4 h-4" /></span>
-		  </button>
-		</div>
-		<!-- GitHub Stats -->
-		<a
-		  href="https://github.com/PrajwalSD/Dockside/releases"
-		  target="_blank"
-		  rel="noopener noreferrer"
-		  class="group flex flex-nowrap items-center gap-2 rounded-xl bg-slate-200/80 dark:bg-slate-700/50 px-3 py-2 shadow-sm ring-1 ring-slate-300/50 dark:ring-slate-600/50 hover:ring-slate-400 dark:hover:ring-slate-500 transition-all shrink-0"
-		>
-		  <Icon name="tabler:brand-github" class="w-4 h-4 shrink-0 text-slate-600 dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-slate-100" aria-hidden="true" />
-		  <div id="github-stats" class="flex flex-nowrap items-center gap-x-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200 whitespace-nowrap">
-			<span class="github-stats-loading">Loading…</span>
-		  </div>
-		  <Icon name="tabler:external-link" class="w-4 h-4 shrink-0 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
-		</a>
-	  </div>
-	</div>
-  </section>
+  <!-- Homebrew install modal (opened from hero secondary button) -->
+  <div
+    id="dockside-homebrew-modal"
+    class="fixed inset-0 z-[200] hidden items-center justify-center p-4 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="dockside-homebrew-modal-title"
+  >
+    <div
+      class="absolute inset-0 bg-black/55 backdrop-blur-[2px]"
+      data-homebrew-modal-close
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="relative z-10 w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-black/5 dark:bg-slate-900 dark:ring-white/10 sm:p-8"
+    >
+      <h2
+        id="dockside-homebrew-modal-title"
+        class="text-center text-lg font-bold tracking-tight text-slate-900 dark:text-white sm:text-xl"
+      >
+        Install Dockside via Homebrew
+      </h2>
+      <div class="mt-6 overflow-hidden rounded-xl border border-slate-700/90 bg-[#1a1b1e] shadow-lg">
+        <div
+          class="relative flex h-9 shrink-0 items-center justify-center border-b border-slate-600/60 bg-[#323232]"
+        >
+          <div class="absolute left-3 flex gap-1.5" aria-hidden="true">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f57] ring-1 ring-black/20"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#febc2e] ring-1 ring-black/20"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#28c840] ring-1 ring-black/20"></span>
+          </div>
+          <span class="text-[11px] font-medium text-slate-400">Terminal</span>
+        </div>
+        <div class="flex items-center gap-2 px-3 py-4 sm:px-4">
+          <span class="shrink-0 font-mono text-sm font-medium text-emerald-400" aria-hidden="true">$</span>
+          <span
+            id="dockside-brew-command-text"
+            class="min-w-0 flex-1 break-all font-mono text-sm leading-relaxed text-white"
+          >brew install --cask dockside</span>
+          <button
+            type="button"
+            id="dockside-brew-copy"
+            class="inline-flex shrink-0 rounded-md bg-slate-700/90 p-2 text-slate-200 ring-1 ring-slate-600/80 transition-colors hover:bg-slate-600 hover:text-white"
+            aria-label="Copy command"
+          >
+            <span class="dockside-brew-copy-icon"><Icon name="tabler:copy" class="h-4 w-4" /></span>
+            <span class="dockside-brew-copied-icon hidden"><Icon name="tabler:check" class="h-4 w-4 text-emerald-400" /></span>
+          </button>
+        </div>
+      </div>
+      <button
+        type="button"
+        data-homebrew-modal-close
+        class="mx-auto mt-6 block rounded-full border border-slate-300 bg-white px-8 py-2.5 text-sm font-medium text-slate-800 shadow-sm transition-colors hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
+      >
+        Close
+      </button>
+    </div>
+  </div>
 
   <script>
 	function loadGitHubStats() {
@@ -171,7 +258,7 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
 		.then((r) => r.json())
 		.then((releases) => {
 		  if (!Array.isArray(releases) || releases.length === 0) {
-			el.innerHTML = '<span class="text-slate-500">View releases</span>';
+			el.innerHTML = '<span class="text-muted opacity-80">View releases</span>';
 			return;
 		  }
 		  const latest = releases[0];
@@ -180,14 +267,77 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
 		  const dateStr = pub ? pub.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
 		  const count = releases.length;
 		  const countStr = count >= 100 ? '100+' : count;
-		  el.innerHTML = `<span class="font-semibold">${tag}</span><span>Latest release: ${dateStr}</span><span>${countStr} releases</span>`;
+		  const dot =
+			'<span class="mx-1.5 text-slate-400/35 dark:text-slate-500/40 select-none" aria-hidden="true">•</span>';
+		  el.innerHTML = `<span class="font-medium text-page opacity-90 dark:opacity-95">${tag}</span>${dot}<span>${dateStr}</span>${dot}<span>${countStr} releases</span>`;
 		})
 		.catch(() => {
-		  el.innerHTML = '<span class="text-slate-500">View releases →</span>';
+		  el.innerHTML = '<span class="text-muted opacity-80">View releases →</span>';
 		});
 	}
 	loadGitHubStats();
 	document.addEventListener('astro:page-load', loadGitHubStats);
+
+	function closeDocksideHomebrewModal() {
+	  const modal = document.getElementById('dockside-homebrew-modal');
+	  if (!modal) return;
+	  modal.classList.add('hidden');
+	  modal.classList.remove('flex');
+	  document.body.classList.remove('overflow-hidden');
+	}
+
+	function initDocksideHomebrewModal() {
+	  const modal = document.getElementById('dockside-homebrew-modal');
+	  const openBtn = document.getElementById('dockside-open-homebrew-modal');
+	  const cmdEl = document.getElementById('dockside-brew-command-text');
+	  const copyBtn = document.getElementById('dockside-brew-copy');
+	  if (!modal || !openBtn) return;
+
+	  const open = () => {
+		modal.classList.remove('hidden');
+		modal.classList.add('flex');
+		document.body.classList.add('overflow-hidden');
+	  };
+
+	  openBtn.onclick = (e) => {
+		e.preventDefault();
+		open();
+	  };
+	  modal.querySelectorAll('[data-homebrew-modal-close]').forEach((el) => {
+		el.onclick = () => closeDocksideHomebrewModal();
+	  });
+
+	  if (copyBtn && cmdEl) {
+		copyBtn.onclick = async () => {
+		  const text = (cmdEl.textContent || '').trim() || 'brew install --cask dockside';
+		  try {
+			await navigator.clipboard.writeText(text);
+		  } catch {
+			return;
+		  }
+		  const ic = copyBtn.querySelector('.dockside-brew-copy-icon');
+		  const ok = copyBtn.querySelector('.dockside-brew-copied-icon');
+		  ic?.classList.add('hidden');
+		  ok?.classList.remove('hidden');
+		  setTimeout(() => {
+			ic?.classList.remove('hidden');
+			ok?.classList.add('hidden');
+		  }, 1600);
+		};
+	  }
+	}
+
+	if (!document.documentElement.dataset.docksideBrewEsc) {
+	  document.documentElement.dataset.docksideBrewEsc = '1';
+	  document.addEventListener('keydown', (e) => {
+		if (e.key !== 'Escape') return;
+		const modal = document.getElementById('dockside-homebrew-modal');
+		if (modal && modal.classList.contains('flex')) closeDocksideHomebrewModal();
+	  });
+	}
+
+	initDocksideHomebrewModal();
+	document.addEventListener('astro:page-load', initDocksideHomebrewModal);
   </script>
 
   <Testimonials
@@ -251,7 +401,7 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
           </blockquote>
           <footer class="mt-8 flex flex-wrap items-center gap-2">
             <span class="text-sm font-semibold text-slate-900 dark:text-slate-100">tsiu</span>
-            <span class="text-slate-400 dark:text-slate-500" aria-hidden="true">·</span>
+            <span class="text-slate-400 dark:text-slate-500" aria-hidden="true">•</span>
             <span class="text-sm text-slate-500 dark:text-slate-400">Gumroad customer</span>
           </footer>
         </div>

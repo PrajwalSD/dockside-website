@@ -33,8 +33,8 @@ const isVimeo = (url: string) => url.includes('vimeo.com');
   </div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
-    <div class="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:h-screen lg:gap-8">
-      <div class="basis-1/2 flex flex-col items-center lg:items-start text-center lg:text-left pb-10 md:pb-16 mx-auto w-full">
+    <div class="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:h-screen lg:gap-8 lg:min-w-0">
+      <div class="flex w-full min-w-0 flex-col items-center pb-10 text-center md:pb-16 lg:flex-1 lg:items-start lg:text-left mx-auto">
         {tagline && (
           <p
             class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase"
@@ -67,19 +67,20 @@ const isVimeo = (url: string) => url.includes('vimeo.com');
         </div>
         {content && <Fragment set:html={content} />}
       </div>
-      <div class="basis-1/2">
+      <div class="w-full min-w-0 lg:flex-1">
         {videoUrl ? (
-          <div class="relative m-auto max-w-5xl">
+          <div class="relative m-auto max-w-full min-w-0 lg:max-w-5xl">
             {isVimeo(videoUrl) ? (
-              // Embed Vimeo video using a responsive iframe with autoplay enabled
-              <iframe
-                class="mx-auto rounded-md w-full h-full aspect-video"
-                src={`${videoUrl.replace('vimeo.com', 'player.vimeo.com/video')}?autoplay=1&muted=1&loop=1`}
-                frameborder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen
-                title="Embedded Vimeo Video"
-              ></iframe>
+              <div class="relative w-full overflow-hidden rounded-md aspect-video">
+                <iframe
+                  class="absolute inset-0 h-full w-full max-w-full rounded-md"
+                  src={`${videoUrl.replace('vimeo.com', 'player.vimeo.com/video')}?autoplay=1&muted=1&loop=1`}
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowfullscreen
+                  title="Embedded Vimeo Video"
+                ></iframe>
+              </div>
             ) : (
               // Standard video element for non-Vimeo links
               <video
@@ -99,7 +100,7 @@ const isVimeo = (url: string) => url.includes('vimeo.com');
           </div>
         ) : (
           image && (
-            <div class="relative m-auto max-w-5xl [&_img]:shadow-sm">
+            <div class="relative m-auto min-w-0 max-w-full lg:max-w-5xl [&_img]:max-w-full [&_img]:shadow-sm">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (

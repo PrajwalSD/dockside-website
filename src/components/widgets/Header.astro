@@ -7,6 +7,7 @@ import Button from '~/components/ui/Button.astro';
 
 import { getHomePermalink, getPermalink, trimSlash, getAsset } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
+import { twMerge } from 'tailwind-merge';
 
 interface Link {
   text?: string;
@@ -159,7 +160,14 @@ const logoAriaLabel = isHomePage ? 'Hachipoo Apps — home' : 'Dockside for Mac 
           actions?.length ? (
             <span class="ml-4 rtl:ml-0 rtl:mr-4">
               {actions.map((btnProps) => (
-                <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto" />
+                <Button
+                  {...btnProps}
+                  class={twMerge(
+                    'ml-2 inline-flex items-center py-2.5 px-5.5 font-semibold shadow-none text-sm w-auto md:px-6',
+                    btnProps.variant === 'primary' &&
+                      '[&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:text-current'
+                  )}
+                />
               ))}
             </span>
           ) : (
