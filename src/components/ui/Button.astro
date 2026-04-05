@@ -14,10 +14,8 @@ const {
   ...rest
 } = Astro.props;
 
-const iconClass =
-  iconPosition === 'start'
-    ? 'w-5 h-5 shrink-0 -ml-0.5 mr-2 rtl:mr-0 rtl:ml-2'
-    : 'w-5 h-5 shrink-0 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5';
+const iconHostClass = 'inline-flex shrink-0 items-center justify-center';
+const iconSvgClass = 'block h-5 w-5 shrink-0';
 
 const variants = {
   primary: 'btn-primary',
@@ -26,15 +24,23 @@ const variants = {
   link: 'cursor-pointer hover:text-primary',
 };
 
-const withIconGap = icon ? 'gap-2' : '';
+const withIconGap = icon ? 'gap-1.5 flex-nowrap' : '';
 ---
 
 {
   type === 'button' || type === 'submit' || type === 'reset' ? (
     <button type={type} class={twMerge(variants[variant] || '', withIconGap, className)} {...rest}>
-      {icon && iconPosition === 'start' && <Icon name={icon} class={iconClass} />}
-      <Fragment set:html={text} />
-      {icon && iconPosition !== 'start' && <Icon name={icon} class={iconClass} />}
+      {icon && iconPosition === 'start' && (
+        <span class={iconHostClass} aria-hidden="true">
+          <Icon name={icon} class={iconSvgClass} />
+        </span>
+      )}
+      <span class={icon ? 'min-w-0 shrink leading-snug' : undefined} set:html={text} />
+      {icon && iconPosition !== 'start' && (
+        <span class={iconHostClass} aria-hidden="true">
+          <Icon name={icon} class={iconSvgClass} />
+        </span>
+      )}
     </button>
   ) : (
     <a
@@ -42,9 +48,17 @@ const withIconGap = icon ? 'gap-2' : '';
       {...(target ? { target: target, rel: 'noopener noreferrer' } : {})}
       {...rest}
     >
-      {icon && iconPosition === 'start' && <Icon name={icon} class={iconClass} />}
-      <Fragment set:html={text} />
-      {icon && iconPosition !== 'start' && <Icon name={icon} class={iconClass} />}
+      {icon && iconPosition === 'start' && (
+        <span class={iconHostClass} aria-hidden="true">
+          <Icon name={icon} class={iconSvgClass} />
+        </span>
+      )}
+      <span class={icon ? 'min-w-0 shrink leading-snug' : undefined} set:html={text} />
+      {icon && iconPosition !== 'start' && (
+        <span class={iconHostClass} aria-hidden="true">
+          <Icon name={icon} class={iconSvgClass} />
+        </span>
+      )}
     </a>
   )
 }

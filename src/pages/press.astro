@@ -1,0 +1,203 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { SITE } from 'astrowind:config';
+import { getPermalink } from '~/utils/permalinks';
+
+const siteUrl = (SITE?.site as string | undefined)?.replace(/\/$/, '') || 'https://hachipoo.com';
+
+const metadata = {
+  title: 'Press kit',
+  description:
+    'Logos, app icon, product facts, and links for Dockside and Hachipoo Apps — for press, reviewers, and partners.',
+  openGraph: {
+    title: 'Press kit — Dockside & Hachipoo Apps',
+    description: 'Brand assets, feature list, and official links.',
+    type: 'website',
+  },
+};
+
+const boilerplate = `Dockside is a native macOS app that adds a customizable file shelf beside the Dock—so you can drag, drop, and organize files, folders, notes, screenshots, downloads, clipboard history, and more without cluttering your workspace. Built by indie developer Hachipoo Apps; one-time license, Apple-notarized, macOS 13+.`;
+
+const assets = [
+  {
+    title: 'Hachipoo Apps wordmark',
+    file: '/logo.png',
+    downloadName: 'hachipoo-apps-logo.png',
+    description: 'Horizontal logo used in the site header and footer.',
+  },
+  {
+    title: 'Dockside app icon',
+    file: '/appIcon1024px.png',
+    downloadName: 'dockside-app-icon-1024.png',
+    description: 'High-resolution Mac app icon (1024×1024). Use for articles, app roundups, and social posts.',
+  },
+  {
+    title: 'Hachipoo hero mark',
+    file: '/HachipooLogoVer2.png',
+    downloadName: 'hachipoo-logo-mark.png',
+    description: 'Alternate Hachipoo graphic used on the About page—suitable for larger hero or feature art.',
+  },
+] as const;
+---
+
+<Layout metadata={metadata}>
+  <section
+    class="not-prose border-b border-slate-200/80 bg-slate-50/80 px-4 py-14 dark:border-slate-800/80 dark:bg-slate-900/40 sm:px-6 md:py-18"
+    data-reveal="section"
+  >
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">Media</p>
+      <h1 class="mt-3 font-heading text-3xl font-bold tracking-tight text-heading dark:text-white md:text-4xl">
+        Press kit
+      </h1>
+      <p class="mx-auto mt-4 max-w-2xl text-muted dark:text-slate-400 md:text-lg">
+        Official assets and facts for coverage of <strong class="text-heading dark:text-slate-200">Dockside</strong> and{' '}
+        <strong class="text-heading dark:text-slate-200">Hachipoo Apps</strong>. Everything here is offered for editorial
+        use; please don’t alter logos except to scale proportionally.
+      </p>
+    </div>
+  </section>
+
+  <section class="not-prose mx-auto max-w-4xl px-4 py-12 sm:px-6 md:py-16" data-reveal="section">
+    <h2 class="font-heading text-xl font-bold text-heading dark:text-white md:text-2xl">Boilerplate</h2>
+    <p class="mt-4 leading-relaxed text-muted dark:text-slate-400">
+      {boilerplate}
+    </p>
+    <p class="mt-4 text-sm text-muted dark:text-slate-500">
+      <span class="font-medium text-heading dark:text-slate-300">Site:</span>{' '}
+      <a
+        href={siteUrl}
+        class="text-blue-600 underline decoration-dotted underline-offset-2 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+        >{siteUrl}</a
+      >
+    </p>
+  </section>
+
+  <section class="not-prose mx-auto max-w-4xl border-t border-slate-200/80 px-4 py-12 dark:border-slate-800/80 sm:px-6 md:py-16" data-reveal="section">
+    <h2 class="font-heading text-xl font-bold text-heading dark:text-white md:text-2xl">Facts & links</h2>
+    <ul class="mt-6 space-y-3 text-muted dark:text-slate-400">
+      <li class="flex gap-2">
+        <Icon name="tabler:list-details" class="mt-0.5 h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+        <span>
+          <strong class="text-heading dark:text-slate-200">Full feature list</strong> — exhaustive, collapsible spec for
+          reviewers:{' '}
+          <a
+            href={getPermalink('/features')}
+            class="font-medium text-blue-600 underline decoration-dotted underline-offset-2 hover:text-blue-700 dark:text-blue-400"
+            >{siteUrl}{getPermalink('/features')}</a
+          >
+        </span>
+      </li>
+      <li class="flex gap-2">
+        <Icon name="tabler:apps" class="mt-0.5 h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+        <span>
+          <strong class="text-heading dark:text-slate-200">Product page</strong> — screenshots, pricing, testimonials:{' '}
+          <a
+            href={getPermalink('/dockside-app')}
+            class="font-medium text-blue-600 underline decoration-dotted underline-offset-2 hover:text-blue-700 dark:text-blue-400"
+            >{siteUrl}{getPermalink('/dockside-app')}</a
+          >
+        </span>
+      </li>
+      <li class="flex gap-2">
+        <Icon name="tabler:download" class="mt-0.5 h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+        <span>
+          <strong class="text-heading dark:text-slate-200">Direct download (DMG)</strong>:{' '}
+          <a
+            href="https://hachipoo.com/distributions/Dockside.dmg"
+            class="font-medium text-blue-600 underline decoration-dotted underline-offset-2 hover:text-blue-700 dark:text-blue-400 break-all"
+            >https://hachipoo.com/distributions/Dockside.dmg</a
+          >
+        </span>
+      </li>
+      <li class="flex gap-2">
+        <Icon name="tabler:shopping-cart" class="mt-0.5 h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+        <span>
+          <strong class="text-heading dark:text-slate-200">Store / license</strong>:{' '}
+          <a
+            href="https://hachipoo.gumroad.com/l/dockside"
+            class="font-medium text-blue-600 underline decoration-dotted underline-offset-2 hover:text-blue-700 dark:text-blue-400 break-all"
+            >Gumroad — Dockside</a
+          >
+          <span class="text-slate-500 dark:text-slate-500"> · One-time purchase (currently US $5.99).</span>
+        </span>
+      </li>
+      <li class="flex gap-2">
+        <Icon name="tabler:brand-x" class="mt-0.5 h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+        <span>
+          <strong class="text-heading dark:text-slate-200">X (Twitter)</strong>:{' '}
+          <a
+            href="https://x.com/HachipooApps"
+            class="font-medium text-blue-600 underline decoration-dotted underline-offset-2 hover:text-blue-700 dark:text-blue-400"
+            >@HachipooApps</a
+          >
+        </span>
+      </li>
+      <li class="flex gap-2">
+        <Icon name="tabler:mail" class="mt-0.5 h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+        <span>
+          <strong class="text-heading dark:text-slate-200">Press &amp; partnership contact</strong>:{' '}
+          <a
+            href="mailto:hachipoo.apps@gmail.com"
+            class="font-medium text-blue-600 underline decoration-dotted underline-offset-2 hover:text-blue-700 dark:text-blue-400"
+            >hachipoo.apps@gmail.com</a
+          >
+        </span>
+      </li>
+      <li class="flex gap-2">
+        <Icon name="tabler:info-circle" class="mt-0.5 h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+        <span>
+          <strong class="text-heading dark:text-slate-200">Developer / company</strong>:{' '}
+          <a
+            href={getPermalink('/about')}
+            class="font-medium text-blue-600 underline decoration-dotted underline-offset-2 hover:text-blue-700 dark:text-blue-400"
+            >About Hachipoo Apps</a
+          >
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="not-prose mx-auto max-w-4xl border-t border-slate-200/80 px-4 py-12 dark:border-slate-800/80 sm:px-6 md:py-16" data-reveal="section">
+    <h2 class="font-heading text-xl font-bold text-heading dark:text-white md:text-2xl">Brand assets</h2>
+    <p class="mt-3 text-sm text-muted dark:text-slate-400">
+      Right-click or use the download link to save. Files are served from this site; hotlinking for editorial embeds is
+      fine.
+    </p>
+    <div class="mt-8 grid gap-8 sm:grid-cols-1 md:grid-cols-2">
+      {
+        assets.map((asset) => (
+          <article class="overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-sm dark:border-slate-700/80 dark:bg-slate-900/40">
+            <div class="flex items-center justify-center bg-slate-100/90 px-6 py-10 dark:bg-slate-800/60">
+              <img
+                src={asset.file}
+                alt=""
+                class="max-h-40 w-auto max-w-full object-contain"
+                width="256"
+                height="256"
+                loading="lazy"
+              />
+            </div>
+            <div class="border-t border-slate-100 p-5 dark:border-slate-800/80">
+              <h3 class="font-semibold text-heading dark:text-white">{asset.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted dark:text-slate-400">{asset.description}</p>
+              <a
+                href={asset.file}
+                download={asset.downloadName}
+                class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+              >
+                <Icon name="tabler:download" class="h-4 w-4" aria-hidden="true" />
+                Download PNG
+              </a>
+              <p class="mt-2 break-all font-mono text-xs text-slate-500 dark:text-slate-500">
+                {siteUrl}
+                {asset.file}
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

@@ -43,7 +43,9 @@ export const footerData = {
     { text: 'Privacy', href: getPermalink('/privacy') },
     { text: 'Resellers', href: getPermalink('/resellers') },
     { text: 'Integrations', href: getPermalink('/integrations') },
+    { text: 'All Features', href: getPermalink('/features') },
     { text: 'About', href: '/about' },
+    { text: 'Press kit', href: getPermalink('/press') },
     { text: 'Contact', href: '/contact' },
     { text: 'Blog', href: '/blog' },
     { text: 'Roadmap', href: '/roadmap' },
@@ -56,8 +58,5 @@ export const footerData = {
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/HachipooApps' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
   ],
-  footNote: `
-    <img class="w-5 h-4 float-left rounded-sm mr-1.5" src="/logo.png" alt="Hachipoo Apps" loading="lazy">
-    Hachipoo Apps and Dockside · All rights reserved.
-  `,
+  footNote: `Hachipoo Apps and Dockside App · © ${new Date().getFullYear()} · All rights reserved.`,
 };

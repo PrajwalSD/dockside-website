@@ -751,17 +751,31 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
-
-  <section class="bg-blue-50 dark:bg-slate-800 not-prose" data-reveal="section">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium" data-reveal="blur">
-      <span class="font-bold">
-        <Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /> Want to know more, check our detailed
-        usage guide:
+  <div class="not-prose mx-auto max-w-4xl px-4 py-12 text-center md:py-16 lg:py-20" data-reveal="section">
+    <a
+      href="/features"
+      class="btn-primary mx-auto inline-flex max-w-full items-center justify-center rounded-full px-8 py-5 text-lg font-bold shadow-lg transition duration-200 hover:brightness-105 hover:shadow-xl sm:px-12 sm:py-6 sm:text-xl"
+    >
+      <span class="inline-flex max-w-full flex-nowrap items-center justify-center gap-3 sm:gap-4">
+        <span class="min-w-0 text-center leading-snug">All Features - explore full feature list</span>
+        <Icon
+          name="tabler:arrow-right"
+          class="block h-6 w-6 shrink-0 self-center sm:h-7 sm:w-7"
+          aria-hidden="true"
+        />
       </span>
-      <a href="/dockside-usage-tips" class="text-blue-600 dark:text-blue-400 underline">Dockside Usage Tips</a>
-    </div>
-  </section>
+    </a>
+    <p
+      class="not-prose mx-auto mt-6 max-w-2xl px-2 text-center text-sm font-medium leading-relaxed text-slate-600 dark:text-slate-400 md:text-base"
+    >
+      <span class="text-slate-700 dark:text-slate-300">Also checkout usage tips here: </span>
+      <a
+        href="/dockside-usage-tips"
+        class="text-blue-600 underline decoration-dotted underline-offset-2 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+        >Dockside Usage Tips</a
+      >
+    </p>
+  </div>
 
   <!-- Content Widget **************** -->
 

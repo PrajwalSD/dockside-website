@@ -1,0 +1,230 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import { Icon } from 'astro-icon/components';
+import { docksideFeatureSections } from '~/data/docksideFeaturesInventory';
+
+const metadata = {
+  title: 'Dockside features — full list',
+  ignoreTitleTemplate: true,
+  description:
+    'Every Dockside for Mac feature explained: shelf, files, notes, drop zones, screenshots, clipboard, Dock layout, previews, shortcuts, license, and privacy.',
+  openGraph: {
+    title: 'Dockside for Mac — every feature',
+    description:
+      'See what Dockside can do: drag-and-drop shelf, multiple file areas, automation, clipboard history, Dock-aware layout, previews, and more.',
+    type: 'website',
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header
+      position="right"
+      links={[
+        { text: 'App home', href: '/dockside-app' },
+        { text: 'Pricing', href: '/dockside-app#pricing' },
+        { text: 'Integrations', href: '/integrations' },
+        { text: 'Support', href: '/contact' },
+      ]}
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Download',
+          href: 'https://hachipoo.com/distributions/Dockside.dmg',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+  <section
+    id="feature-spec"
+    class="not-prose w-full scroll-mt-[72px] border-b border-slate-200/70 dark:border-slate-800/70"
+    data-reveal="section"
+    aria-labelledby="feature-spec-heading"
+  >
+    <div class="w-full px-3 py-6 sm:px-4 md:px-6 md:py-8 lg:px-8">
+      <h1 id="feature-spec-heading" class="sr-only">Dockside for Mac — full feature list</h1>
+      <div
+        class="overflow-x-auto rounded-xl border border-slate-200/90 bg-white shadow-sm dark:border-slate-700/80 dark:bg-slate-900/60 dark:shadow-none"
+      >
+        <table class="w-full min-w-[76rem] table-fixed border-collapse text-left text-sm">
+          <caption class="sr-only">
+            Dockside features by section; sections start collapsed; each header expands or collapses its rows
+          </caption>
+          <colgroup>
+            <col class="w-[3px] min-w-[3px] max-w-[3px]" />
+            <col class="w-[20%]" />
+            <col class="w-[34%]" />
+            <col class="w-[30%]" />
+          </colgroup>
+          <thead>
+            <tr class="border-b border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/80">
+              <th
+                scope="col"
+                aria-hidden="true"
+                class="w-0 min-w-0 border-0 p-0"
+              >
+              </th>
+              <th
+                scope="col"
+                class="px-3 py-3.5 text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-300 sm:px-4"
+              >
+                Feature
+              </th>
+              <th
+                scope="col"
+                class="px-3 py-3.5 text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-300 sm:px-4"
+              >
+                What it does
+              </th>
+              <th
+                scope="col"
+                class="px-3 py-3.5 text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-300 sm:px-4"
+              >
+                Good to know
+              </th>
+            </tr>
+          </thead>
+          {
+            docksideFeatureSections.map((section, sectionIndex) => (
+              <tbody
+                id={section.id}
+                class:list={[
+                  'scroll-mt-[80px]',
+                  sectionIndex > 0 && 'border-t-2 border-slate-200 dark:border-slate-600',
+                ]}
+              >
+                <tr class="border-b border-slate-200 bg-slate-100/90 dark:border-slate-700 dark:bg-slate-800/95">
+                  <th scope="colgroup" colspan="4" class="p-0 font-normal">
+                    <button
+                      type="button"
+                      class="flex w-full items-start gap-3 px-3 py-3.5 text-left transition-colors hover:bg-slate-200/60 dark:hover:bg-slate-700/50 sm:gap-4 sm:px-4 sm:py-4"
+                      data-features-group-toggle="true"
+                      aria-expanded="false"
+                      aria-controls={section.id}
+                    >
+                      <span
+                        data-features-chevron="true"
+                        class="mt-0.5 inline-flex shrink-0 text-slate-500 transition-transform duration-200 dark:text-slate-400"
+                        style="transform: rotate(-90deg)"
+                        aria-hidden="true"
+                      >
+                        <Icon name="tabler:chevron-down" class="h-5 w-5" />
+                      </span>
+                      <Icon
+                        name={section.sectionIcon}
+                        class="mt-0.5 h-6 w-6 shrink-0 text-blue-600 dark:text-blue-400"
+                        aria-hidden="true"
+                      />
+                      <span class="min-w-0 flex-1">
+                        <span class="block text-sm font-bold leading-snug text-slate-900 dark:text-white">
+                          {section.title}
+                        </span>
+                        {section.intro && (
+                          <span class="mt-1.5 block text-xs font-normal leading-relaxed text-slate-600 dark:text-slate-400">
+                            {section.intro}
+                          </span>
+                        )}
+                        <span class="mt-2 block text-[11px] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-500">
+                          {section.items.length}{' '}
+                          {section.items.length === 1 ? 'feature' : 'features'} ·{' '}
+                          <span data-features-hint>click to expand</span>
+                        </span>
+                      </span>
+                    </button>
+                  </th>
+                </tr>
+                {section.items.map((item, i) => (
+                  <tr
+                    data-features-group-item="true"
+                    hidden
+                    class:list={[
+                      'border-b border-slate-100 dark:border-slate-800/90',
+                      i % 2 === 0
+                        ? 'bg-slate-50/60 dark:bg-slate-900/35'
+                        : 'bg-white dark:bg-slate-900/20',
+                    ]}
+                  >
+                    <td
+                      aria-hidden="true"
+                      class="border-l-[3px] border-blue-500/45 bg-blue-500/[0.04] p-0 dark:border-blue-400/40 dark:bg-blue-400/[0.06]"
+                    >
+                    </td>
+                    <th scope="row" class="px-3 py-3 font-semibold text-slate-900 dark:text-slate-100 sm:px-4">
+                      <div class="flex items-start gap-2.5">
+                        <Icon
+                          name={item.icon}
+                          class="mt-0.5 h-4 w-4 shrink-0 text-slate-500 dark:text-slate-400"
+                          aria-hidden="true"
+                        />
+                        <span class="min-w-0 break-words leading-snug">{item.name}</span>
+                      </div>
+                    </th>
+                    <td class="break-words px-3 py-3 leading-relaxed text-slate-600 dark:text-slate-400 sm:px-4">
+                      {item.description}
+                    </td>
+                    <td class="break-words px-3 py-3 leading-relaxed text-slate-600 dark:text-slate-400 sm:px-4">
+                      {item.highlight ? (
+                        <p class="relative m-0 pl-4 leading-relaxed">
+                          <span
+                            class="absolute left-0 top-[0.55em] h-1.5 w-1.5 rounded-full bg-blue-500/80 dark:bg-blue-400/85"
+                            aria-hidden="true"
+                          />
+                          {item.highlight}
+                        </p>
+                      ) : (
+                        <span class="text-slate-400 dark:text-slate-600">—</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            ))
+          }
+        </table>
+      </div>
+      <p class="mt-3 text-center text-xs text-muted dark:text-slate-500">
+        Sections start collapsed—click a header to expand or collapse its rows. On narrow screens, scroll the table horizontally.
+      </p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      function setExpanded(btn, expanded) {
+        btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        var tbody = btn.closest('tbody');
+        if (!tbody) return;
+        tbody.querySelectorAll('tr[data-features-group-item]').forEach(function (tr) {
+          if (expanded) tr.removeAttribute('hidden');
+          else tr.setAttribute('hidden', '');
+        });
+        var chev = btn.querySelector('[data-features-chevron]');
+        if (chev) chev.style.transform = expanded ? '' : 'rotate(-90deg)';
+        var hint = btn.querySelector('[data-features-hint]');
+        if (hint) hint.textContent = expanded ? 'click to collapse' : 'click to expand';
+      }
+
+      function onDocClick(e) {
+        var btn = e.target.closest('[data-features-group-toggle]');
+        if (!btn) return;
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        setExpanded(btn, !expanded);
+      }
+
+      function syncFromDom() {
+        document.querySelectorAll('[data-features-group-toggle]').forEach(function (btn) {
+          setExpanded(btn, btn.getAttribute('aria-expanded') !== 'false');
+        });
+      }
+
+      document.addEventListener('click', onDocClick);
+      document.addEventListener('DOMContentLoaded', syncFromDom);
+      document.addEventListener('astro:page-load', syncFromDom);
+    })();
+  </script>
+</Layout>
