@@ -11,7 +11,7 @@ metadata:
   title:
     default: 'Hachipoo Apps'
     template: '%s — Hachipoo Apps'
-  description: "Hachipoo Apps builds native Mac utilities. Dockside is a file shelf next to your Dock: drag & drop files, folders, links, apps, and text; quick access to screenshots, downloads, and folder monitoring. Apple Notarized, offline-first, macOS 13+. 14-day trial, lifetime license $5.99."
+  description: "Hachipoo Apps builds native Mac utilities. Dockside is a macOS file shelf and Dock-side companion—not a Dock replacement—built for staging files, folders, links, apps, and text beside the Dock. Compare shelf apps for Mac by workflow: Dockside adds smart drag zones, multiple file areas, recent screenshots & downloads, folder watch, and clipboard-aware flows. Apple Notarized, offline-first, macOS 13+. 14-day trial, lifetime license $5.99."
   robots:
     index: true
     follow: true

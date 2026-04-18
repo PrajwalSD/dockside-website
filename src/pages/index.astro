@@ -13,8 +13,16 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Hachipoo Apps',
+  title: 'Dockside — Mac file shelf & Dock companion | Hachipoo Apps',
   ignoreTitleTemplate: true,
+  description:
+    'Dockside: a native macOS file shelf next to your Dock for drag-and-drop staging—files, folders, apps, media, and text—with screenshots, downloads, and folder watch. Offline, Apple Notarized, macOS 13+. 14-day trial; $5.99 lifetime.',
+  openGraph: {
+    title: 'Dockside — Mac file shelf & Dock companion',
+    description:
+      'Native macOS shelf app beside the Dock: staging, screenshots & downloads strip, folder watch, drop zones. Try free for 14 days.',
+    type: 'website',
+  },
 };
 ---
 <Layout metadata={metadata}>
@@ -59,10 +67,14 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="sm:inline">
-        <span class="font-semibold">Dockside</span> 
-        is your friendly file shelf next to the macOS Dock, where you can drag and drop files, folders, apps, images, videos, and text for quick access or later use, without interrupting your workflow. 
-		Explore all of Dockside’s features with a free 14-day trial, or purchase a one-time license for just $5.99, no subscriptions. 
-		Supports macOS 13.0+ (Ventura and above)
+        <span class="font-semibold">Dockside</span>{' '}
+        is a native Mac file shelf and Dock companion: a staging strip beside the macOS Dock where you drag and drop files, folders, apps, images, videos, and text for quick access or later hand-off—without floating windows in the middle of your work. If you are comparing{' '}
+        <span class="font-semibold">shelf apps for macOS</span> or a Dock-adjacent extension for file flow, Dockside is purpose-built for that strip-next-to-Dock workflow (see the{' '}
+        <a href="/features" class="text-link underline decoration-slate-400/60 underline-offset-2 hover:decoration-current">
+          full feature list
+        </a>
+        ). Explore everything with a free 14-day trial, or a one-time license for $5.99—no subscriptions. Supports macOS 13.0+ (Ventura and above).
+      </span>
     </Fragment>
   </Hero>
 

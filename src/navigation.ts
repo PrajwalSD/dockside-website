@@ -3,17 +3,8 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Apps',
-      links: [
-        {
-          text: 'Dockside for Mac',
-          href: '/dockside-app',
-        },
-        {
-          text: 'Resellers',
-          href: '/resellers',
-        },
-      ],
+      text: 'Home',
+      href: '/dockside-app',
     },
     {
       text: 'Contact',

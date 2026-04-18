@@ -6,7 +6,15 @@ import Features2 from '~/components/widgets/Features2.astro';
 import AppList from './components/AppList.astro';
 import AppList2 from './components/AppList2.astro';
 const metadata = {
-  title: 'Integrations',
+  title: 'Dockside integrations — send files to your Mac shelf from other apps',
+  ignoreTitleTemplate: true,
+  description:
+    'Send files, folders, or plain text into Dockside’s macOS file shelf from other apps: custom dockside:// URL actions, Shortcuts, and third-party hooks. Built for Dock-side staging workflows.',
+  openGraph: {
+    title: 'Dockside integrations',
+    description: 'Add items to Dockside’s shelf from outside the app using URL actions and supported integrations.',
+    type: 'website',
+  },
 };
 ---
 

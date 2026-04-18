@@ -35,13 +35,29 @@ const faqMainEntity = faqItems.map((item) => ({
   },
 }));
 
+/** Curated for search + AI summaries; mirrors /features highlights without listing every row. */
+const featureList = [
+    'Native macOS file shelf beside the Dock (Dock companion, not a Dock replacement)',
+    'Drag-and-drop staging for files, folders, Finder tags, apps, URLs, and plain text',
+    'Smart drag activation and tunable drop zones',
+    'Multiple Files shelf areas (columns) with names, icons, and per-area folder watch',
+    'Recent screenshots and Downloads strip with previews and shortcuts',
+    'Search and paging on the Files shelf',
+    'Clipboard history and pasteboard-aware flows where supported',
+    'Works with hidden Dock and full-screen apps; multi-monitor and Spaces aware',
+    'Third-party integrations via dockside:// URL actions',
+    'Apple Notarized; offline-first; lifetime license with 14-day trial',
+  ];
+
 const graph = [
   {
     '@type': 'SoftwareApplication',
     '@id': `${pageUrl}#software`,
     name: 'Dockside',
     applicationCategory: 'UtilitiesApplication',
+    additionalType: 'https://schema.org/DesktopApplication',
     operatingSystem: 'macOS 13.0 or later',
+    featureList,
     offers: {
       '@type': 'Offer',
       price: '5.99',
@@ -52,7 +68,7 @@ const graph = [
     downloadUrl: 'https://hachipoo.com/distributions/Dockside.dmg',
     url: pageUrl,
     description:
-      'Dockside is a native Mac file shelf that lives next to the Dock. Drag and drop files, folders, links, apps, and text for quick access to screenshots, downloads, and monitored folders—without getting in your way. Apple Notarized; works offline.',
+      'Dockside is a native Mac file shelf and Dock-side companion for staging files before you open or move them. Drag and drop files, folders, links, apps, and text; quick access to recent screenshots, downloads, and monitored folders—built for shelf workflows next to the macOS Dock. Apple Notarized; works offline.',
     author: { '@id': `${base}/#organization` },
     publisher: { '@id': `${base}/#organization` },
   },

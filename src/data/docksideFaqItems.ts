@@ -1,6 +1,16 @@
 /** Shared FAQ copy for Dockside page UI + FAQPage JSON-LD */
 export const docksideFaqItems = [
   {
+    title: 'Is Dockside a Mac shelf app or a Dock extension?',
+    description:
+      'Dockside is a <strong>native macOS file shelf</strong> that sits beside the Dock—think drag-and-drop staging, recent screenshots and downloads, and optional folder watch—so it behaves like a <strong>Dock companion</strong> for file flow. It is <strong>not</strong> a system Dock replacement; it is purpose-built for shelf-style workflows next to the Dock.',
+  },
+  {
+    title: 'How should I compare Dockside to other shelf apps for macOS?',
+    description:
+      'When comparing <strong>shelf apps for Mac</strong>, look at where the shelf lives (edge of screen vs next to the Dock), how drag activation works, whether you get <strong>multiple staging areas</strong>, and how screenshots, downloads, and clipboard fit your workflow. Dockside emphasizes a <strong>Dock-adjacent strip</strong>, offline privacy, Apple Notarization, and a simple <strong>$5.99 lifetime</strong> license—see the <a href="/features" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline; text-decoration-style: dotted;">full feature list</a> for specifics.',
+  },
+  {
     title: 'Is Dockside safe to use?',
     description:
       'Yes! Dockside is Apple Notarized, which means it has passed Apple’s security checks and is free from malware. It also operates entirely offline, uses native APIs, ensuring your files and data stay on your device.',
