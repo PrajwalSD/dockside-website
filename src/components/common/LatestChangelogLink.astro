@@ -1,0 +1,63 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  statsId?: string;
+  class?: string;
+}
+
+const { statsId = 'github-stats-inline', class: className = '' } = Astro.props;
+const releasesUrl = 'https://github.com/PrajwalSD/Dockside/releases';
+const apiUrl = 'https://api.github.com/repos/PrajwalSD/Dockside/releases?per_page=100';
+---
+
+<a
+  href={releasesUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    'inline-flex min-w-0 max-w-full items-center gap-1.5 rounded-md px-1 py-0.5 text-inherit transition-colors hover:text-accent hover:underline decoration-slate-400/50 underline-offset-2 dark:hover:text-blue-400 dark:decoration-slate-500/50 [&_svg]:opacity-80',
+    className,
+  ]}
+>
+  <Icon name="tabler:brand-github" class="h-[0.95rem] w-[0.95rem] shrink-0" aria-hidden="true" />
+  <span id={statsId} class="inline-flex min-w-0 flex-wrap items-center gap-x-0 text-xs tabular-nums">
+    <span class="github-stats-loading">Loading...</span>
+  </span>
+</a>
+
+<script define:vars={{ statsId, apiUrl }}>
+  function loadGitHubStats() {
+    const el = document.getElementById(statsId);
+    if (!el) return;
+
+    fetch(apiUrl, {
+      headers: { Accept: 'application/vnd.github.v3+json' },
+    })
+      .then((r) => r.json())
+      .then((releases) => {
+        if (!Array.isArray(releases) || releases.length === 0) {
+          el.innerHTML = '<span class="text-muted opacity-80">View releases</span>';
+          return;
+        }
+
+        const latest = releases[0];
+        const tag = latest.tag_name || '';
+        const pub = latest.published_at ? new Date(latest.published_at) : null;
+        const dateStr = pub ? pub.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+        const count = releases.length;
+        const countStr = count >= 100 ? '100+' : count;
+        const dot =
+          '<span class="mx-1.5 text-slate-400/35 dark:text-slate-500/40 select-none" aria-hidden="true">•</span>';
+
+        el.innerHTML =
+          `<span class="font-medium text-page opacity-90 dark:opacity-95">${tag}</span>${dot}<span>${dateStr}</span>${dot}<span>${countStr} releases</span>`;
+      })
+      .catch(() => {
+        el.innerHTML = '<span class="text-muted opacity-80">View releases →</span>';
+      });
+  }
+
+  loadGitHubStats();
+  document.addEventListener('astro:page-load', loadGitHubStats);
+</script>
