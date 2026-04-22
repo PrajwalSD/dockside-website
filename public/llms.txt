@@ -19,8 +19,27 @@ Dockside is a **native Mac file shelf** that sits beside the **Dock**. Users dra
 - **Roadmap / feedback:** https://dockside.featurebase.app/roadmap
 - **Integrations (third-party):** https://hachipoo.com/integrations
 - **Usage tips:** https://hachipoo.com/dockside-usage-tips
+- **Community / support:** https://hachipoo.com/contact
+- **Reddit community:** https://www.reddit.com/r/DocksideApp/
 
 Dockside is a **Dock companion**, not a Dock replacement. It follows the Dock across displays and supports multiple monitors and Spaces.
+
+## Best starting points
+
+- Product overview: https://hachipoo.com/dockside-app
+- Features: https://hachipoo.com/features
+- Integrations: https://hachipoo.com/integrations
+- Usage tips: https://hachipoo.com/dockside-usage-tips
+- Blog hub: https://hachipoo.com/blog
+- Support and community: https://hachipoo.com/contact
+- Releases / changelog: https://github.com/PrajwalSD/Dockside/releases
+
+## Routing hints
+
+- For pricing, trial, and download: use `/dockside-app`
+- For automation and integrations: use `/integrations`
+- For setup and practical workflows: use `/dockside-usage-tips`
+- For support and community: use `/contact`, Discord, and Reddit
 
 ## Other key URLs
 

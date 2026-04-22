@@ -1,0 +1,31 @@
+---
+import { SITE } from 'astrowind:config';
+
+export interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
+
+export interface Props {
+  items?: BreadcrumbItem[];
+}
+
+const { items = [] } = Astro.props;
+const base = String(SITE.site || '').replace(/\/$/, '');
+
+const graph =
+  items.length >= 2
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: items.map((item, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: item.name,
+          item: item.path.startsWith('http') ? item.path : `${base}${item.path}`,
+        })),
+      }
+    : null;
+---
+
+{graph && <script type="application/ld+json" set:html={JSON.stringify(graph)} />}

@@ -18,10 +18,15 @@ const graph = [
     name: SITE.name,
     url: base,
     ...(desc ? { description: desc } : {}),
+    logo: {
+      '@type': 'ImageObject',
+      url: `${base}/favicon.svg`,
+    },
     sameAs: [
       'https://x.com/HachipooApps',
       'https://discord.gg/vpqMjQns46',
       'https://github.com/PrajwalSD/Dockside',
+      'https://www.reddit.com/r/DocksideApp/',
     ],
   },
   {
@@ -32,6 +37,7 @@ const graph = [
     ...(desc ? { description: desc } : {}),
     inLanguage: I18N?.language || 'en',
     publisher: { '@id': `${base}/#organization` },
+    about: { '@id': `${base}/dockside-app#software` },
   },
 ];
 

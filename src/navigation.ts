@@ -38,11 +38,13 @@ export const footerData = {
     { text: 'About', href: '/about' },
     { text: 'Press kit', href: getPermalink('/press') },
     { text: 'Contact', href: '/contact' },
-    { text: 'Blog', href: '/blog' },
+    { text: 'Blog', href: getBlogPermalink() },
     { text: 'Roadmap', href: '/roadmap' },
+    { text: 'Changelog', href: 'https://github.com/PrajwalSD/Dockside/releases' },
   ],
   connectLinks: [
     { text: 'Discord', href: 'https://discord.gg/vpqMjQns46', icon: 'tabler:brand-discord', ariaLabel: 'Join our Discord' },
+    { text: 'Reddit', href: 'https://www.reddit.com/r/DocksideApp/', icon: 'tabler:brand-reddit', ariaLabel: 'Join our Reddit community' },
     { text: 'hachipoo.apps@gmail.com', href: 'mailto:hachipoo.apps@gmail.com', icon: 'tabler:mail', ariaLabel: 'Email support' },
   ],
   socialLinks: [

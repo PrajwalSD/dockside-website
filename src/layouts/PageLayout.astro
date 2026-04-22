@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/Layout.astro';
+import BreadcrumbJsonLd from '~/components/seo/BreadcrumbJsonLd.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
@@ -10,12 +11,14 @@ import type { MetaData } from '~/types';
 
 export interface Props {
   metadata?: MetaData;
+  breadcrumbs?: Array<{ name: string; path: string }>;
 }
 
-const { metadata } = Astro.props;
+const { metadata, breadcrumbs = [] } = Astro.props;
 ---
 
 <Layout metadata={metadata}>
+  {breadcrumbs.length ? <BreadcrumbJsonLd items={breadcrumbs} /> : null}
   <slot name="header">
     <Header {...headerData} position="right" isSticky showRssFeed showToggleTheme />
   </slot>

@@ -47,10 +47,16 @@ const blogPostingLd = {
   author: post.author
     ? { '@type': 'Person', name: post.author }
     : { '@type': 'Organization', name: SITE.name },
+  ...(post.category ? { articleSection: post.category.title } : {}),
+  ...(post.tags?.length ? { keywords: post.tags.join(', ') } : {}),
   publisher: {
     '@type': 'Organization',
     name: SITE.name,
     url: base,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${base}/favicon.svg`,
+    },
   },
   mainEntityOfPage: {
     '@type': 'WebPage',

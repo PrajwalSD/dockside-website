@@ -25,6 +25,11 @@ const { post } = Astro.props as Props;
 
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
+const breadcrumbs = [
+  { name: 'Home', path: '/dockside-app' },
+  { name: 'Blog', path: '/blog' },
+  { name: post.title, path: Astro.url.pathname },
+];
 
 const metadata = merge(
   {
@@ -45,7 +50,7 @@ const metadata = merge(
 ) as MetaData;
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} breadcrumbs={breadcrumbs}>
   <SinglePost post={{ ...post, image: image }} url={url}>
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>
