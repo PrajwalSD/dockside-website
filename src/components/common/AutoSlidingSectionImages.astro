@@ -1,0 +1,139 @@
+---
+export interface SlideItem {
+  src: string;
+  alt: string;
+}
+
+export interface Props {
+  slides: SlideItem[];
+  class?: string;
+  imageClass?: string;
+  width?: number | string;
+  height?: number | string;
+  intervalMs?: number;
+}
+
+const { slides = [], class: className, imageClass, width, height, intervalMs = 3200 } = Astro.props;
+---
+
+{
+  slides.length > 0 && (
+    <div
+      class={`auto-slide-gallery relative overflow-hidden rounded-lg ${className?.trim() ?? ''}`}
+      data-auto-slide-gallery
+      data-auto-slide-interval={String(intervalMs)}
+    >
+      <div class="auto-slide-gallery-skeleton absolute inset-0 bg-slate-200 dark:bg-slate-700" aria-hidden="true"></div>
+      {slides.map((slide, index) => (
+        <img
+          src={slide.src}
+          alt={slide.alt}
+          width={typeof width === 'number' ? width : undefined}
+          height={typeof height === 'number' ? height : undefined}
+          loading={index === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+          class:list={[
+            'auto-slide-gallery-image absolute inset-0 block h-full w-full object-cover transition-opacity duration-700 ease-in-out',
+            imageClass?.trim() ?? '',
+            index === 0 ? 'is-active' : '',
+          ]}
+          data-auto-slide-image
+        />
+      ))}
+    </div>
+  )
+}
+
+<style>
+  .auto-slide-gallery {
+    min-height: 120px;
+  }
+
+  .auto-slide-gallery-image {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .auto-slide-gallery-image.is-active {
+    opacity: 1;
+  }
+
+  .auto-slide-gallery.is-ready .auto-slide-gallery-skeleton {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .auto-slide-gallery-image {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  function initAutoSlideGalleries() {
+    document.querySelectorAll('[data-auto-slide-gallery]').forEach((gallery) => {
+      if (gallery instanceof HTMLElement === false) return;
+      if (gallery.dataset.autoSlideInitialized === 'true') return;
+
+      const images = Array.from(gallery.querySelectorAll('[data-auto-slide-image]')).filter(
+        (image): image is HTMLImageElement => image instanceof HTMLImageElement
+      );
+
+      if (images.length === 0) return;
+
+      gallery.dataset.autoSlideInitialized = 'true';
+
+      let activeIndex = 0;
+      let loadedCount = 0;
+      let timerId: number | undefined;
+      const interval = Number(gallery.dataset.autoSlideInterval || '3200');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const markReady = () => {
+        gallery.classList.add('is-ready');
+      };
+
+      const handleImageResolved = () => {
+        loadedCount += 1;
+        if (loadedCount === 1) {
+          markReady();
+        }
+      };
+
+      images.forEach((image) => {
+        if (image.complete) {
+          handleImageResolved();
+        } else {
+          image.addEventListener('load', handleImageResolved, { once: true });
+          image.addEventListener('error', handleImageResolved, { once: true });
+        }
+      });
+
+      const showImage = (nextIndex: number) => {
+        images[activeIndex]?.classList.remove('is-active');
+        images[nextIndex]?.classList.add('is-active');
+        activeIndex = nextIndex;
+      };
+
+      if (!reduceMotion && images.length > 1) {
+        timerId = window.setInterval(() => {
+          const nextIndex = (activeIndex + 1) % images.length;
+          showImage(nextIndex);
+        }, interval);
+      }
+
+      document.addEventListener(
+        'astro:before-swap',
+        () => {
+          if (timerId) window.clearInterval(timerId);
+        },
+        { once: true }
+      );
+    });
+  }
+
+  initAutoSlideGalleries();
+  document.addEventListener('astro:page-load', initAutoSlideGalleries);
+</script>

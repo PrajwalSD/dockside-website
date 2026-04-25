@@ -21,6 +21,7 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
+import AutoSlidingSectionImages from '~/components/common/AutoSlidingSectionImages.astro';
 import SectionImage from '~/components/common/SectionImage.astro';
 import VimeoAutoplayOnVisible from '~/components/VimeoAutoplayOnVisible.astro';
 import DocksideJsonLd from '~/components/seo/DocksideJsonLd.astro';
@@ -137,7 +138,7 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
         aria-label="Download assurances and releases"
       >
         <p
-          class="m-0 flex flex-wrap items-center justify-center gap-y-2 text-xs font-normal leading-relaxed text-muted lg:justify-start"
+          class="m-0 flex flex-nowrap items-center justify-center overflow-x-auto whitespace-nowrap text-xs font-normal leading-relaxed text-muted lg:justify-start"
         >
           <span class="inline-flex items-center gap-1.5 [&_svg]:opacity-80">
             <Icon
@@ -167,6 +168,14 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
             class="select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35"
             aria-hidden="true"
             >•</span>
+          <span class="inline-flex items-center gap-1.5 [&_svg]:opacity-80">
+            <Icon name="tabler:brand-swift" class="h-[0.95rem] w-[0.95rem] shrink-0" aria-hidden="true" />
+            <span>Native App</span>
+          </span>
+          <span
+            class="select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35"
+            aria-hidden="true"
+            >•</span>
           <span class="inline-flex min-w-0 max-w-full items-center">
             <a
               href="https://github.com/PrajwalSD/Dockside/releases"
@@ -177,7 +186,7 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
               <Icon name="tabler:brand-github" class="h-[0.95rem] w-[0.95rem] shrink-0" aria-hidden="true" />
               <span
                 id="github-stats"
-                class="inline-flex min-w-0 flex-wrap items-center gap-x-0 text-xs tabular-nums"
+                class="inline-flex min-w-0 items-center whitespace-nowrap gap-x-0 text-xs tabular-nums"
               >
                 <span class="github-stats-loading">Loading…</span>
               </span>
@@ -473,17 +482,42 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
 
     <FeaturedInStrip embedded />
 
-    <div
-      aria-hidden="true"
-      class="aspect-w-16 aspect-h-7 mt-10 md:mt-14"
-    >
-      <SectionImage
-        src="/Themes5.gif"
-        alt="Dockside App for Mac Overview"
-        class="w-full h-80 object-cover rounded-xl mx-auto shadow-lg"
-        width={768}
-        height={320}
-      />
+    <div class="mt-10 md:mt-14">
+      <div class="mx-auto mb-5 max-w-6xl border-t border-slate-200/70 dark:border-slate-600/50 md:mb-6"></div>
+      <div class="mx-auto mb-5 max-w-3xl text-center md:mb-6">
+        <h3 class="text-2xl font-bold tracking-tight text-heading dark:text-white sm:text-3xl">
+          Two Shelves, Your Choice
+        </h3>
+        <p class="mt-3 text-base leading-relaxed text-muted md:text-lg">
+          Pin Dockside to any screen and switch between bottom or vertical modes, just like the Dock. Auto-hide with
+          the Dock or keep it independent, and place it next to the Dock or on its own anywhere that fits your setup.
+        </p>
+      </div>
+
+      <div aria-hidden="true" class="aspect-w-16 aspect-h-7">
+        <SectionImage
+          src="/Themes5.gif"
+          alt="Dockside App for Mac Overview"
+          class="w-full h-80 object-cover rounded-xl mx-auto shadow-lg"
+          width={768}
+          height={320}
+        />
+      </div>
+
+      <div class="mt-4 md:mt-6">
+        <AutoSlidingSectionImages
+          slides={[
+            { src: '/normal.png', alt: 'Dockside normal shelf view' },
+            { src: '/spotify.png', alt: 'Dockside Spotify shelf view' },
+            { src: '/stats.png', alt: 'Dockside stats shelf view' },
+            { src: '/apps2.png', alt: 'Dockside app drawer shelf view' },
+          ]}
+          class="mx-auto w-full aspect-[3840/668] rounded-xl bg-slate-100 shadow-lg dark:bg-slate-900"
+          imageClass="object-contain object-center"
+          width={3840}
+          height={668}
+        />
+      </div>
     </div>
   </div>
 
