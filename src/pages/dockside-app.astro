@@ -138,9 +138,9 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
         aria-label="Download assurances and releases"
       >
         <p
-          class="m-0 flex flex-nowrap items-center justify-center overflow-x-auto whitespace-nowrap text-xs font-normal leading-relaxed text-muted lg:justify-start"
+          class="m-0 flex flex-wrap items-center justify-center gap-y-1.5 text-center text-xs font-normal leading-relaxed text-muted sm:flex-nowrap sm:overflow-x-auto sm:whitespace-nowrap sm:text-left lg:justify-start"
         >
-          <span class="inline-flex items-center gap-1.5 [&_svg]:opacity-80">
+          <span class="inline-flex items-center gap-1.5 whitespace-nowrap [&_svg]:opacity-80">
             <Icon
               name="tabler:circle-check"
               class="h-[0.95rem] w-[0.95rem] shrink-0"
@@ -149,31 +149,31 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
             <span>Apple-notarised</span>
           </span>
           <span
-            class="select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35"
+            class="hidden select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35 sm:inline"
             aria-hidden="true"
             >•</span>
-          <span class="inline-flex items-center gap-1.5 [&_svg]:opacity-80">
+          <span class="inline-flex items-center gap-1.5 whitespace-nowrap [&_svg]:opacity-80">
             <Icon name="tabler:brand-apple" class="h-[0.95rem] w-[0.95rem] shrink-0" aria-hidden="true" />
             <span>macOS 13+</span>
           </span>
           <span
-            class="select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35"
+            class="hidden select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35 sm:inline"
             aria-hidden="true"
             >•</span>
-          <span class="inline-flex items-center gap-1.5 [&_svg]:opacity-80">
+          <span class="inline-flex items-center gap-1.5 whitespace-nowrap [&_svg]:opacity-80">
             <Icon name="tabler:clock" class="h-[0.95rem] w-[0.95rem] shrink-0" aria-hidden="true" />
             <span>14-day trial</span>
           </span>
           <span
-            class="select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35"
+            class="hidden select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35 sm:inline"
             aria-hidden="true"
             >•</span>
-          <span class="inline-flex items-center gap-1.5 [&_svg]:opacity-80">
+          <span class="inline-flex items-center gap-1.5 whitespace-nowrap [&_svg]:opacity-80">
             <Icon name="tabler:brand-swift" class="h-[0.95rem] w-[0.95rem] shrink-0" aria-hidden="true" />
             <span>Native App</span>
           </span>
           <span
-            class="select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35"
+            class="hidden select-none px-2 text-[11px] text-slate-400/30 dark:text-slate-500/35 sm:inline"
             aria-hidden="true"
             >•</span>
           <span class="inline-flex min-w-0 max-w-full items-center">
@@ -181,12 +181,12 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
               href="https://github.com/PrajwalSD/Dockside/releases"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex min-w-0 max-w-full items-center gap-1.5 rounded-md px-1 py-0.5 text-inherit transition-colors hover:text-accent hover:underline decoration-slate-400/50 underline-offset-2 dark:hover:text-blue-400 dark:decoration-slate-500/50 [&_svg]:opacity-80"
+              class="inline-flex min-w-0 max-w-full flex-wrap items-center justify-center gap-1.5 rounded-md px-1 py-0.5 text-inherit transition-colors hover:text-accent hover:underline decoration-slate-400/50 underline-offset-2 dark:hover:text-blue-400 dark:decoration-slate-500/50 sm:justify-start [&_svg]:opacity-80"
             >
               <Icon name="tabler:brand-github" class="h-[0.95rem] w-[0.95rem] shrink-0" aria-hidden="true" />
               <span
                 id="github-stats"
-                class="inline-flex min-w-0 items-center whitespace-nowrap gap-x-0 text-xs tabular-nums"
+                class="inline-flex min-w-0 flex-wrap items-center justify-center gap-x-0 text-xs tabular-nums sm:justify-start"
               >
                 <span class="github-stats-loading">Loading…</span>
               </span>
