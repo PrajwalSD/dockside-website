@@ -27,10 +27,10 @@
 </head>
 <body>
     <h1>Dockside Changelog</h1>
-    <p><strong>Version:</strong> 2.8.7</p>
+    <p><strong>Version:</strong> 2.8.8</p>
     <h2>New Features</h2>
-    <ul><li>Pagination expansion is now always enabled in list view mode.</li><li>You can add apps to ignore list for drop shelf, if they annoy your workflow.</li></ul>
+    <ul><li>Added two new Liquid Glass variants that match the Dock (check out Dock (Dark) and Dock (Light) variants).</li><li>Extended the email drop zone to include advanced options (experimental)</li><li>Added live tuning sliders for Apple Dock glass filter params in preferences</li><li>Override CAFilter params for Apple Dock variant to match real Dock.app glass appearance</li><li>Added Services integration</li></ul>
     <h2>Fixes</h2>
-    <ul><li>Fixed issues related to mouse gestures - open/closing of the shelf in list view mode.</li><li>When a new drop shelf is already shown, continued stale shake to drop gestures are ignored now.</li><li>General improvements and bug fixes</li><li>Copy/Move to a path pop up has fixed now.</li><li>Potential fix for file preview lifecycle - users have complained that at times the file previews don't show up, requires a refresh or restart to make it work again.</li></ul>
+    <ul><li>Fixed Apple Dock variant to use style=.clear which triggers the correct transparent blur glass internally (_variant=2), matching the actual Dock.app appearance.</li><li>Added "Apple Dock" Liquid Glass variant that matches Apple's Dock.app exactly using _subvariant="dock". [RN] Fixed NSGlassEffectView private property names (_scrimState, _subduedState) that were silently failing.</li><li>Fixed the issue where scrollbar was cutting off cards in the list view (page) mode.</li><li>The main shelves will show some visual cue instead of displaying an empty shelf in smaller width setting.</li></ul>
 </body>
 </html>
