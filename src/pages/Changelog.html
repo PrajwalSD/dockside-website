@@ -27,10 +27,10 @@
 </head>
 <body>
     <h1>Dockside Changelog</h1>
-    <p><strong>Version:</strong> 2.8.8</p>
+    <p><strong>Version:</strong> 2.9.0</p>
     <h2>New Features</h2>
-    <ul><li>Added two new Liquid Glass variants that match the Dock (check out Dock (Dark) and Dock (Light) variants).</li><li>Extended the email drop zone to include advanced options (experimental)</li><li>Added live tuning sliders for Apple Dock glass filter params in preferences</li><li>Override CAFilter params for Apple Dock variant to match real Dock.app glass appearance</li><li>Added Services integration</li></ul>
+    <ul><li>You can now set auto-dismiss timer for the drop shelf.</li><li>For better legibility on the hovered file, the neighbouring icons in the shelf now auto-dims, you can turn this off it's too jarring in the advanced settings.</li><li>You can now increase the font size for the filename labels in settings</li><li>You can now adjust space between icons in the shelf, for comfortable layouts.</li><li>Search in settings</li></ul>
     <h2>Fixes</h2>
-    <ul><li>Fixed Apple Dock variant to use style=.clear which triggers the correct transparent blur glass internally (_variant=2), matching the actual Dock.app appearance.</li><li>Added "Apple Dock" Liquid Glass variant that matches Apple's Dock.app exactly using _subvariant="dock". [RN] Fixed NSGlassEffectView private property names (_scrimState, _subduedState) that were silently failing.</li><li>Fixed the issue where scrollbar was cutting off cards in the list view (page) mode.</li><li>The main shelves will show some visual cue instead of displaying an empty shelf in smaller width setting.</li></ul>
+    <ul><li>Further refinements to the Liquid Glass implementation (obsessed with this!)</li><li>Fixed the folder monitoring issue with drop shelf</li></ul>
 </body>
 </html>
