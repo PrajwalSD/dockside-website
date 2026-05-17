@@ -511,6 +511,66 @@ const featuredReviewAndrew = 'This is the best file shelf app for macOS. Period.
     </div>
   </div>
 
+  <!-- Pixel Perfect — Materials & Themes -->
+  <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default" data-reveal="section">
+    <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+      <p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase" data-reveal="blur">Meticulously crafted</p>
+      <h2 class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl" data-reveal="blur">
+        Pixel Perfect
+      </h2>
+      <p class="mt-4 text-muted text-xl" data-reveal="blur">
+        Every material in Dockside is crafted with obsessive attention to detail. Choose from Transparent, Dock-like, and Opaque modes—each with full light and dark theme support. And with Liquid Glass on macOS Tahoe, Dockside feels truly native, blending seamlessly into your desktop.
+      </p>
+    </div>
+
+    <div class="mx-auto mt-8 w-full max-w-xl min-w-0 md:mt-10" data-reveal="focus">
+      <div class="pixel-compare relative w-full overflow-hidden rounded-2xl shadow-lg select-none" style="cursor: ew-resize;">
+        <!-- Dark (background, full) -->
+        <img src="/pixel2.png" alt="Dockside dark theme" class="block w-full" draggable="false" />
+        <!-- Light (foreground, clip-path based) -->
+        <img src="/pixel1.png" alt="Dockside light theme" class="pixel-compare-top absolute inset-0 block w-full h-full object-cover" draggable="false" style="clip-path: inset(0 50% 0 0);" />
+        <!-- Slider handle -->
+        <div class="pixel-compare-handle absolute top-0 bottom-0 flex items-center justify-center pointer-events-none" style="left: 50%; transform: translateX(-50%); width: 3px; z-index: 10;">
+          <div class="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+          <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md border border-slate-200">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4l4 6-4 6M7 4L3 10l4 6" stroke="#334155" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+    (function initCompareSliders() {
+      function setup(container) {
+        const topImg = container.querySelector('.pixel-compare-top');
+        const handle = container.querySelector('.pixel-compare-handle');
+        let dragging = false;
+
+        function setPosition(x) {
+          const rect = container.getBoundingClientRect();
+          let pct = ((x - rect.left) / rect.width) * 100;
+          pct = Math.max(0, Math.min(100, pct));
+          topImg.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+          handle.style.left = pct + '%';
+        }
+
+        container.addEventListener('mousedown', (e) => { dragging = true; setPosition(e.clientX); e.preventDefault(); });
+        window.addEventListener('mousemove', (e) => { if (dragging) setPosition(e.clientX); });
+        window.addEventListener('mouseup', () => { dragging = false; });
+
+        container.addEventListener('touchstart', (e) => { dragging = true; setPosition(e.touches[0].clientX); }, { passive: true });
+        window.addEventListener('touchmove', (e) => { if (dragging) setPosition(e.touches[0].clientX); });
+        window.addEventListener('touchend', () => { dragging = false; });
+      }
+
+      document.querySelectorAll('.pixel-compare').forEach(setup);
+      document.addEventListener('astro:after-swap', () => {
+        document.querySelectorAll('.pixel-compare').forEach(setup);
+      });
+    })();
+    </script>
+  </div>
+
   <!-- Wherever your Dock goes -->
   <section
     id="dock-flexibility"
