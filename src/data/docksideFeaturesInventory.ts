@@ -86,7 +86,10 @@ export const docksideFeatureSections: DocksideFeatureSection[] = [
       {
         icon: 'tabler:search',
         name: 'Search on the shelf',
-        description: 'Search and filter what’s on the shelf right from the shelf UI.',
+        description:
+          'Search and filter what’s on the shelf—files, clipboard, notes, and more—right from the shelf UI. If Cling is already installed, the same search fuzzy-finds files on your Mac (partial names, operators like .pdf, in:Documents, !draft, dm:7d), including Home, Applications, Documents, and iCloud Drive, with no extra setup.',
+        highlight:
+          'Cling’s own index, results in under 100ms. Free forever for Home and Applications. Dockside uses it automatically when it’s on your Mac.',
       },
     ],
   },
@@ -718,6 +721,13 @@ export const docksideFeatureSections: DocksideFeatureSection[] = [
         highlight: 'Third-party extension; install from PopClip’s extension directory.',
       },
       {
+        icon: 'tabler:search',
+        name: 'Cling → search your Mac from the shelf',
+        description:
+          'When Cling is installed, Dockside search uses Cling’s fuzzy index behind the scenes—partial or misspelled names, operators, and results in under 100ms. Open search on the shelf and switch to On This Mac. Results can be previewed, opened, revealed in Finder, copied, shared, or emailed from the same window. Indexed locations follow Cling, including Home, Applications, Documents, and iCloud Drive.',
+        highlight: 'Local only. No extra setup. Cling stays free forever for Home and Applications search.',
+      },
+      {
         icon: 'tabler:photo-circle',
         name: 'Clop ↔ Dockside (two-way)',
         description:
@@ -856,6 +866,11 @@ export const docksideFeatureAccuracyNotes: DocksideFeatureAccuracyNote[] = [
   {
     topic: 'PopClip',
     detail: 'Third-party PopClip extension; uses Add to Dockside Service per public integrations page—not first-party Dockside code.',
+  },
+  {
+    topic: 'Cling search',
+    detail:
+      'When Cling is installed, shelf search can query Cling’s index (On This Mac) with no extra setup. Market the free tier as Home and Applications. In-app copy also lists Documents and iCloud Drive among indexed locations. Do not claim System, Root, or Everything-index coverage.',
   },
   { topic: 'OCR / text extraction', detail: 'Not confirmed as a shipped feature in the current codebase.' },
   { topic: 'Reddit support', detail: 'Not confirmed among current in-app support links.' },

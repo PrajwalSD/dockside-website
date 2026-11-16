@@ -540,10 +540,10 @@ const featuredMacVinceUrl = 'https://www.youtube.com/watch?v=06Zn0NVoG2g';
     <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
       <p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase" data-reveal="blur">Meticulously crafted</p>
       <h2 class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl" data-reveal="blur">
-        Pixel Perfect
+        Pixel Perfect. Most customisable shelf app ever.
       </h2>
       <p class="mt-4 text-muted text-xl" data-reveal="blur">
-        Every material in Dockside is crafted with obsessive attention to detail. Choose from Transparent, Dock-like, and Opaque modes—each with full light and dark theme support. And with Liquid Glass on macOS Tahoe, Dockside feels truly native, blending seamlessly into your desktop.
+        Every material in Dockside is crafted with obsessive attention to detail. Choose from Transparent, Dock-like, and Opaque modes—each with full light and dark theme support. All of the materials, configurations, and more can be customised to your liking. And with Liquid Glass on macOS Tahoe, Dockside feels truly native, blending seamlessly into your desktop.
       </p>
     </div>
 
@@ -627,6 +627,240 @@ const featuredMacVinceUrl = 'https://www.youtube.com/watch?v=06Zn0NVoG2g';
           allowfullscreen
           data-vimeo-autoplay-on-visible
         />
+      </div>
+    </div>
+  </section>
+
+  <!-- Search + Cling -->
+  <section
+    id="search"
+    class="relative mx-auto max-w-7xl scroll-mt-24 px-4 py-12 text-default md:px-6 md:py-16 lg:py-20 md:scroll-mt-28"
+    data-reveal="section"
+  >
+    <div class="mx-auto mb-8 max-w-3xl text-center md:mb-10">
+      <p class="text-base font-bold uppercase tracking-wide text-secondary dark:text-blue-200" data-reveal="blur">
+        Search
+      </p>
+      <h2
+        class="font-heading text-3xl font-bold leading-tighter tracking-tighter text-heading md:text-4xl"
+        data-reveal="blur"
+      >
+        Search the shelf. Fuzzy-find your Mac.
+      </h2>
+      <p class="mt-4 text-xl text-muted" data-reveal="blur">
+        Dockside search filters what’s already on the shelf. Switch to On This Mac and, if you already have
+        <a
+          href="https://lowtechguys.com/cling/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue-600 underline decoration-dotted underline-offset-2 dark:text-blue-400"
+          >Cling</a
+        >
+        installed, that same window uses Cling’s fuzzy index—no extra setup. Cling stays free forever for Home and
+        Applications search.
+      </p>
+    </div>
+
+    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4" data-reveal="blur">
+      <div
+        class="rounded-2xl border border-slate-200/80 bg-white/80 p-5 text-left shadow-sm dark:border-slate-700/80 dark:bg-slate-900/50"
+      >
+        <Icon name="tabler:abc" class="mb-3 h-6 w-6 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+        <h3 class="text-base font-bold text-heading dark:text-white">Fuzzy, not exact</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          A few letters of the name are enough—even out of order, even a little misspelled. Cling finds the file
+          without the full filename.
+        </p>
+      </div>
+      <div
+        class="rounded-2xl border border-slate-200/80 bg-white/80 p-5 text-left shadow-sm dark:border-slate-700/80 dark:bg-slate-900/50"
+      >
+        <Icon name="tabler:bolt" class="mb-3 h-6 w-6 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+        <h3 class="text-base font-bold text-heading dark:text-white">Under 100ms</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          Cling keeps its own index and returns matches as you type, across millions of files.
+        </p>
+      </div>
+      <div
+        class="rounded-2xl border border-slate-200/80 bg-white/80 p-5 text-left shadow-sm dark:border-slate-700/80 dark:bg-slate-900/50"
+      >
+        <Icon name="tabler:filter" class="mb-3 h-6 w-6 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+        <h3 class="text-base font-bold text-heading dark:text-white">Narrow as you type</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          Filter by extension, folder, date, or size, or drop a word you don’t want. Same operators Cling uses on its
+          own.
+        </p>
+      </div>
+      <div
+        class="rounded-2xl border border-slate-200/80 bg-white/80 p-5 text-left shadow-sm dark:border-slate-700/80 dark:bg-slate-900/50"
+      >
+        <Icon name="tabler:click" class="mb-3 h-6 w-6 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+        <h3 class="text-base font-bold text-heading dark:text-white">Act from the shelf</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          Preview the file, then open it, reveal it in Finder, copy it, share it, or email it—without leaving search.
+        </p>
+      </div>
+    </div>
+
+    <div class="mx-auto mt-4 max-w-6xl" data-reveal="blur">
+      <p class="mb-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+        Cling search syntax, in the same window
+      </p>
+      <ul class="flex flex-wrap justify-center gap-2">
+        <li
+          class="rounded-full border border-slate-200/90 bg-slate-50 px-3 py-1.5 font-mono text-xs text-slate-700 dark:border-slate-600/80 dark:bg-slate-800/80 dark:text-slate-200"
+        >
+          <span class="text-blue-600 dark:text-blue-400">rpt</span> letters in order
+        </li>
+        <li
+          class="rounded-full border border-slate-200/90 bg-slate-50 px-3 py-1.5 font-mono text-xs text-slate-700 dark:border-slate-600/80 dark:bg-slate-800/80 dark:text-slate-200"
+        >
+          <span class="text-blue-600 dark:text-blue-400">.pdf .png</span> by extension
+        </li>
+        <li
+          class="rounded-full border border-slate-200/90 bg-slate-50 px-3 py-1.5 font-mono text-xs text-slate-700 dark:border-slate-600/80 dark:bg-slate-800/80 dark:text-slate-200"
+        >
+          <span class="text-blue-600 dark:text-blue-400">in:Documents</span> inside a folder
+        </li>
+        <li
+          class="rounded-full border border-slate-200/90 bg-slate-50 px-3 py-1.5 font-mono text-xs text-slate-700 dark:border-slate-600/80 dark:bg-slate-800/80 dark:text-slate-200"
+        >
+          <span class="text-blue-600 dark:text-blue-400">!draft</span> exclude a word
+        </li>
+        <li
+          class="rounded-full border border-slate-200/90 bg-slate-50 px-3 py-1.5 font-mono text-xs text-slate-700 dark:border-slate-600/80 dark:bg-slate-800/80 dark:text-slate-200"
+        >
+          <span class="text-blue-600 dark:text-blue-400">dm:7d</span> last 7 days
+        </li>
+        <li
+          class="rounded-full border border-slate-200/90 bg-slate-50 px-3 py-1.5 font-mono text-xs text-slate-700 dark:border-slate-600/80 dark:bg-slate-800/80 dark:text-slate-200"
+        >
+          <span class="text-blue-600 dark:text-blue-400">size:&gt;1mb</span> by file size
+        </li>
+      </ul>
+      <div class="mt-5 flex justify-center">
+        <a
+          href="https://lowtechguys.com/cling/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white/90 px-4 py-3 shadow-lg transition-all duration-300 hover:scale-[1.03] hover:border-slate-300 hover:shadow-xl dark:border-slate-600/50 dark:bg-slate-800/80 dark:hover:border-slate-500"
+        >
+          <img
+            src="https://lowtechguys.com/static/img/cling-icon.png"
+            alt=""
+            class="h-10 w-10 rounded-xl object-contain shadow-sm"
+            width="40"
+            height="40"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-left">
+            <span class="block text-sm font-semibold text-slate-700 dark:text-slate-200">Powered by Cling</span>
+            <span class="block text-xs text-slate-500 dark:text-slate-400">Free forever for Home and Applications</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="mx-auto mt-8 grid w-full max-w-6xl grid-cols-1 gap-4 md:mt-10 md:grid-cols-2 md:gap-6" data-reveal="focus">
+      <figure>
+        <img
+          src="/cling-dockside.png"
+          alt="Dockside search ready to use Cling: fuzzy syntax for extensions, folders, exclusions, dates, and file size, with Home, Applications, and iCloud Drive indexed"
+          class="w-full rounded-2xl shadow-lg ring-1 ring-slate-200/80 dark:ring-slate-600/50"
+          width="2190"
+          height="1696"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="mt-2 text-center text-sm text-muted">
+          Cling is already installed. Dockside uses it. Nothing to connect.
+        </figcaption>
+      </figure>
+      <figure>
+        <img
+          src="/cling-dockside-2.png"
+          alt="Fuzzy Dockside search results powered by Cling, with a file preview and Open, Finder, Copy, Share, and Email actions"
+          class="w-full rounded-2xl shadow-lg ring-1 ring-slate-200/80 dark:ring-slate-600/50"
+          width="2190"
+          height="1670"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="mt-2 text-center text-sm text-muted">
+          Partial names, a live preview, then open, Finder, copy, share, or email.
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="mx-auto mt-12 max-w-6xl md:mt-16">
+      <h3 class="text-center font-heading text-2xl font-bold tracking-tight text-heading dark:text-white md:text-3xl">
+        The same with the other apps
+      </h3>
+      <p class="mx-auto mt-3 max-w-2xl text-center text-lg text-muted">
+        Clop, Popclip, and Dropshare sit beside Cling: shrink a file, send selected text, or upload a shareable link.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4 md:gap-6">
+        <a
+          href="https://lowtechguys.com/clop/#integration"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex w-[180px] flex-col items-center gap-3 rounded-2xl border border-slate-200/80 bg-white/90 p-5 shadow-lg transition-all duration-300 hover:scale-[1.03] hover:border-slate-300 hover:shadow-xl dark:border-slate-600/50 dark:bg-slate-800/80 dark:hover:border-slate-500 md:w-[210px]"
+        >
+          <img
+            src="https://lowtechguys.com/static/img/clop-icon.png"
+            alt=""
+            class="h-12 w-12 rounded-xl object-contain shadow-sm md:h-14 md:w-14"
+            width="56"
+            height="56"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-sm font-semibold text-slate-700 dark:text-slate-200">Clop</span>
+          <span class="text-center text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+            Shrink images, video, and PDFs on the shelf in one click. Optimised files can come back to the shelf.
+          </span>
+        </a>
+        <a
+          href="https://www.popclip.app/extensions/x/p8rrp7"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex w-[180px] flex-col items-center gap-3 rounded-2xl border border-slate-200/80 bg-white/90 p-5 shadow-lg transition-all duration-300 hover:scale-[1.03] hover:border-slate-300 hover:shadow-xl dark:border-slate-600/50 dark:bg-slate-800/80 dark:hover:border-slate-500 md:w-[210px]"
+        >
+          <img
+            src="https://www.popclip.app/icon128.png"
+            alt=""
+            class="h-12 w-12 rounded-xl object-contain shadow-sm md:h-14 md:w-14"
+            width="56"
+            height="56"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-sm font-semibold text-slate-700 dark:text-slate-200">Popclip</span>
+          <span class="text-center text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+            Select text anywhere. The Popclip extension sends it straight onto the shelf.
+          </span>
+        </a>
+        <a
+          href="https://dropshare.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex w-[180px] flex-col items-center gap-3 rounded-2xl border border-slate-200/80 bg-white/90 p-5 shadow-lg transition-all duration-300 hover:scale-[1.03] hover:border-slate-300 hover:shadow-xl dark:border-slate-600/50 dark:bg-slate-800/80 dark:hover:border-slate-500 md:w-[210px]"
+        >
+          <img
+            src="https://dropshare.app/logo.png"
+            alt=""
+            class="h-12 w-12 rounded-xl object-contain shadow-sm md:h-14 md:w-14"
+            width="56"
+            height="56"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-sm font-semibold text-slate-700 dark:text-slate-200">Dropshare</span>
+          <span class="text-center text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+            Upload a shelf file and get a shareable link. 29+ cloud services.
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -844,6 +1078,12 @@ const featuredMacVinceUrl = 'https://www.youtube.com/watch?v=06Zn0NVoG2g';
     id="Utilities & Integrations"
     items={[
       {
+        title: 'Search your Mac (via Cling)',
+        description:
+          'Fuzzy-find files on your Mac from the shelf when <a href="https://lowtechguys.com/cling/" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Cling</a> is installed—partial names, search operators, results in under 100ms. No extra setup. Free forever for Home and Applications.',
+        icon: 'tabler:search',
+      },
+      {
         title: 'Optimise Images, Videos, and PDFs (via Clop)',
         description:
           'Easily reduce file sizes with a single click for streamlined storage and sharing. Uses <a href="https://lowtechguys.com/clop/#integration" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Clop app</a>, fully integrated into Dockside.',
@@ -852,8 +1092,14 @@ const featuredMacVinceUrl = 'https://www.youtube.com/watch?v=06Zn0NVoG2g';
       {
         title: 'Upload Files to the Cloud (via Dropshare)',
         description:
-          'Upload files and instantly share links using <a href="https://support.dropshare.app/hc/en-us/articles/17220738142738-How-can-I-enable-Dropshare-integrations" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Dropshare app</a>, which supports over 29 cloud services.',
+          'Upload files and instantly share links using <a href="https://dropshare.app/" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Dropshare</a>, which supports over 29 cloud services.',
         icon: 'tabler:cloud-upload',
+      },
+      {
+        title: 'Send selected text (via Popclip)',
+        description:
+          'The <a href="https://www.popclip.app/extensions/x/p8rrp7" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Popclip</a> extension sends the current text selection straight onto the shelf.',
+        icon: 'tabler:cursor-text',
       },
       {
         title: 'Apple Shortcuts and Services',

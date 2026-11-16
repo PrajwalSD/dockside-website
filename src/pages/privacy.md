@@ -35,7 +35,7 @@ Since Dockside does not collect or transmit any data, your files and personal in
 
 ## Third-Party Integrations
 
-Dockside does not integrate with third-party data services without your explicit permission, and no external service providers have access to your personal data or activity. All your files and personal information remain securely on your device. Additionally, apps like Clop, Popclip and Dropshare, which work alongside Dockside when installed locally on your machine, do not access any data without direct user action.Dockside does not integrate with third-party data services without your explicit permission, and no external service providers have access to your personal data or activity. Your files and personal information stay entirely on your machine. Apps like Clop and Dropshare that works with Dockside also don't access data without user action.
+Dockside does not integrate with third-party data services without your explicit permission, and no external service providers have access to your personal data or activity. All your files and personal information remain securely on your device. Additionally, apps like Clop, Cling, Popclip and Dropshare, which work alongside Dockside when installed locally on your machine, do not access any data without direct user action.Dockside does not integrate with third-party data services without your explicit permission, and no external service providers have access to your personal data or activity. Your files and personal information stay entirely on your machine. Apps like Clop, Cling and Dropshare that works with Dockside also don't access data without user action.
 
 ## Indie Developer Commitment
 

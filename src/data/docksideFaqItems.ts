@@ -56,6 +56,11 @@ export const docksideFaqItems = [
       'Yes, apps can integrate with Dockside to send plain text or files/folders to the shelf. See <a href="/integrations" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Third-party App Integrations</a> for more info.',
   },
   {
+    title: 'Can Dockside search files on my Mac, not just the shelf?',
+    description:
+      'Yes. Dockside search filters what’s already on the shelf. If <a href="https://lowtechguys.com/cling/" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline; text-decoration-style: dotted;">Cling</a> is already installed, Dockside uses Cling’s fuzzy index automatically—no extra setup—so a partial or slightly wrong filename still matches, with operators like .pdf, in:Documents, and dm:7d, and results in under 100ms. That covers Home, Applications, Documents, and iCloud Drive. You can preview a result, then open it, reveal it in Finder, copy it, share it, or email it from the same window. Cling is free forever for Home and Applications search.',
+  },
+  {
     title: 'Is this a Dock replacement app?',
     description:
       'No, Dockside is more like a Dock companion app. See <a href="/dockside-usage-tips" class="text-blue-600 dark:text-blue-400 underline" style="text-decoration: underline;  text-decoration-style: dotted;">Dockside Usage Tips</a>',
